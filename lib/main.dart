@@ -13,7 +13,7 @@ Future<void> main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeViewModel(),
-      child: CurlyConnectionsApp(),
+      child: const CurlyConnectionsApp(),
     ),
   );
 }

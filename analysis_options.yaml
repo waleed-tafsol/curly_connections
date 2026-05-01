@@ -13,6 +13,22 @@ plugins:
   curly_connections_lints:
     path: ./curly_connection_lint
 
+analyzer:
+  errors:
+    prefer_const_constructors: error
+    prefer_const_constructors_in_immutables: error
+    prefer_const_declarations: error
+    prefer_const_literals_to_create_immutables: error
+    prefer_constructors_over_static_methods: error
+    lines_longer_than_80_chars: error
+    unused_field: error
+    unused_local_variable: error
+    unused_import: error
+    unused_shown_name: error
+    unused_element: error
+    prefer_relative_imports: warning
+    avoid_unnecessary_containers: error
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -25,6 +41,13 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
+    use_build_context_synchronously: false
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+    prefer_relative_imports: true
+    avoid_unnecessary_containers: true
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
