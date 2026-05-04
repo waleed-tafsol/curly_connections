@@ -1,9 +1,10 @@
 import 'dart:developer';
 
-import 'package:curly_connection/exceptions/app_exception.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import '../../exceptions/app_exception.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   bool _loading = false;
