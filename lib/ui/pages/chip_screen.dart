@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
-import '../../constants/assets.dart';
-
-import '../widgets/role_container.dart';
+import '../resources/app_colors.dart';
+import '../resources/app_fonts.dart';
+import '../widgets/categaory_chip.dart';
 
 class ChipScreen extends StatelessWidget {
   static const String routeName = "/chip_screen";
@@ -17,20 +18,26 @@ class ChipScreen extends StatelessWidget {
         children: [
           Center(
             child: Row(
+              mainAxisAlignment: .center,
               children: [
-                const RoleContainer(
-                  description: "I’m looking to manage my clients’ bookings.",
-                  imagePath: PngAssets.scissor,
-                  title: "I’m a Stylist",
-                  isSelected: true,
+                Container(
+                  padding: EdgeInsets.all(8.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(50.r),
+                    border: .all(color: AppColors.white, width: 2.w),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: .center,
+                    children: [
+                      Icon(TablerIcons.circleX, size: 13.sp),
+                      SizedBox(width: 8.w),
+                      Text("Hair Coloring", style: AppFonts.black14w400),
+                    ],
+                  ),
                 ),
-                SizedBox(width: 20.w),
-                const RoleContainer(
-                  description: "I’m looking to manage my clients’ bookings.",
-                  imagePath: PngAssets.scissor,
-                  title: "I’m a Stylist",
-                  isSelected: false,
-                ),
+                const CategaoryChip(isSelected: false),
+                const CategaoryChip(isSelected: true),
               ],
             ),
           ),

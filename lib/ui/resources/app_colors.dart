@@ -8,6 +8,7 @@ abstract final class AppColors {
   static const peach = Color(0xFFFEE1D6);
   static const stroke = Color(0xFFF3F4F6);
   static const borderPurple = Color(0xFFA83BE6);
+  static const orange = Color(0xFFFF8202);
 
   static const LinearGradient gradientPurpleToPeach = LinearGradient(
     begin: Alignment.topCenter,
