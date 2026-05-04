@@ -38,32 +38,27 @@ class CustomerBottomNavPage extends StatelessWidget {
                 ),
                 items: [
                   SalomonBottomBarItem(
-                    icon: const Icon(
-                      TablerIcons.home,
-                      color: AppColors.secondary,
-                    ),
+                    icon: const Icon(TablerIcons.home),
+                    selectedColor: AppColors.secondary,
+                    unselectedColor: AppColors.black,
                     title: Text('Home', style: AppFonts.black16w400),
                   ),
                   SalomonBottomBarItem(
-                    icon: const Icon(
-                      TablerIcons.scissors,
-                      color: AppColors.secondary,
-                    ),
+                    icon: const Icon(TablerIcons.scissors),
+                    selectedColor: AppColors.secondary,
+                    unselectedColor: AppColors.black,
                     title: Text('My Bookings', style: AppFonts.black16w400),
                   ),
                   SalomonBottomBarItem(
-                    icon: const Icon(
-                      TablerIcons.calendarWeek,
-                      color: AppColors.secondary,
-                    ),
-
+                    icon: const Icon(TablerIcons.calendarWeek),
+                    selectedColor: AppColors.secondary,
+                    unselectedColor: AppColors.black,
                     title: Text('Calendar', style: AppFonts.black16w400),
                   ),
                   SalomonBottomBarItem(
-                    icon: const Icon(
-                      TablerIcons.user,
-                      color: AppColors.secondary,
-                    ),
+                    icon: const Icon(TablerIcons.user),
+                    selectedColor: AppColors.secondary,
+                    unselectedColor: AppColors.black,
                     title: Text('Profile', style: AppFonts.black16w400),
                   ),
                 ],

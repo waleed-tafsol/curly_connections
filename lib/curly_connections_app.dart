@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/app_routes.dart';
-import 'ui/pages/splash_page.dart';
+import 'ui/pages/customer_bottom_nav_page.dart';
 import 'ui/resources/app_colors.dart';
 import 'ui/resources/app_fonts.dart';
 import 'ui/resources/design_size.dart';
@@ -58,7 +58,7 @@ class CurlyConnectionsApp extends StatelessWidget {
                 themeMode: vm.themeMode,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.lightTheme,
-                initialRoute: SplashPage.routeName,
+                initialRoute: CustomerBottomNavPage.routeName,
                 onGenerateRoute: AppRoutes.routes,
                 builder: (_, child) {
                   configLoading();
