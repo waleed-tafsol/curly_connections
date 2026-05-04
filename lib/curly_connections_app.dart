@@ -7,6 +7,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import 'ui/pages/chip_screen.dart';
 import 'ui/resources/app_colors.dart';
 import 'ui/resources/design_size.dart';
 import 'ui/themes/app_theme.dart';
@@ -53,6 +54,7 @@ class CurlyConnectionsApp extends StatelessWidget {
           child: Consumer<ThemeViewModel>(
             builder: (_, vm, _) {
               return MaterialApp(
+                home: const  ChipScreen(),
                 navigatorKey: AppRoutes.navigatorKey,
                 title: 'Curly Connections',
                 themeMode: vm.themeMode,

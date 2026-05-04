@@ -22,7 +22,7 @@ Size getDesignSize(BuildContext context, BoxConstraints constraints) {
   log('DEVICE: ${deviceType.name}');
   switch (deviceType) {
     case DeviceType.foldOuter:
-      return isLandscape ? const Size(932, 430) : const Size(430, 932);
+      return isLandscape ? const Size(917, 412) : const Size(412, 917);
     case DeviceType.mobile:
       return isLandscape ? const Size(917, 412) : const Size(412, 917);
     case DeviceType.tablet:
