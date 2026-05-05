@@ -54,6 +54,7 @@ class CurlyConnectionsApp extends StatelessWidget {
           child: Consumer<ThemeViewModel>(
             builder: (_, vm, _) {
               return MaterialApp(
+                debugShowCheckedModeBanner: false,
                 navigatorKey: AppRoutes.navigatorKey,
                 title: 'Curly Connections',
                 themeMode: vm.themeMode,
