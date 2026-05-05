@@ -4,7 +4,8 @@ abstract final class SvgAssets {
 }
 
 class DummyAssets {
-  //  static const String _assets = 'assets/dummy/';
+  static const String _assets = 'assets/dummy';
+  static const String smallMap = '$_assets/small_map.png';
 }
 
 class PngAssets {
