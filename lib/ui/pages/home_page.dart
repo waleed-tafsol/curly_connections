@@ -3,15 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
+import '../../constants/assets.dart';
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
+import '../widgets/app_current_location_card.dart';
 import '../widgets/app_divider.dart';
 import '../widgets/app_drop_down.dart';
 import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
 import '../widgets/upcoming_agenda.dart';
+import 'map_explore_page.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home_page';
@@ -64,55 +67,142 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildClientView(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(24.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(color: AppColors.white),
-              gradient: AppColors.gradientPeachToPurple,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: Column(
+          crossAxisAlignment: .start,
+          children: [
+            _buildClientTopView(),
+            SizedBox(height: 20.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  Text('FOR YOU', style: AppFonts.grey12w400),
+                  SizedBox(height: 12.h),
+                  Row(
+                    children: [
+                      Text('Top Rated Near You', style: AppFonts.black24w300),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          MapExplorePage.routeName,
+                        ),
+                        child: Row(
+                          children: [
+                            Text('See All', style: AppFonts.black12w500),
+                            Icon(TablerIcons.chevronRight, size: 25.sp),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16.h),
+                  _buildClientMap(),
+                  SizedBox(height: 8.h),
+                  for (int i = 0; i < 10; i++)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: const UpcomingAgenda(),
+                    ),
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
+                ],
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: .start,
-              children: [
-                _buildAppBar(name: 'Olivia Bennett', plan: 'Starter Plan'),
-                AppDivider(margin: EdgeInsets.symmetric(vertical: 24.h)),
-                Text('Find Your Perfect Stylist', style: AppFonts.grey12w400),
-                SizedBox(height: 14.h),
-                AppDropdown<String>(
-                  prefixIcon: TablerIcons.cut,
-                  items: const ['Option 1', 'Option 2'],
-                  builder: (item) => Text(item),
-                  onChanged: (_) {},
-                  hint: 'Service Type',
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container _buildClientMap() {
+    return Container(
+      height: 180.h,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        image: const DecorationImage(
+          image: AssetImage(DummyAssets.smallMap),
+          fit: BoxFit.fill,
+        ),
+        borderRadius: BorderRadius.circular(24.r),
+        border: Border.all(color: AppColors.white),
+      ),
+      child: Column(
+        crossAxisAlignment: .stretch,
+        children: [
+          const AppCurrentLocationCard(),
+          // const Spacer(),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Material(
+              type: MaterialType.transparency,
+              child: Padding(
+                padding: EdgeInsets.all(16.w),
+                child: InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(15.r),
+                  child: Ink(
+                    width: 40.w,
+                    height: 40.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(color: AppColors.lightOrange),
+                      color: AppColors.white,
+                    ),
+                    child: Icon(TablerIcons.currentLocation, size: 20.sp),
+                  ),
                 ),
-                SizedBox(height: 14.h),
-                AppDropdown<String>(
-                  prefixIcon: TablerIcons.mapPin,
-                  items: const ['Option 1', 'Option 2'],
-                  builder: (item) => Text(item),
-                  onChanged: (_) {},
-                  hint: 'Location',
-                ),
-                SizedBox(height: 14.h),
-                AppDropdown<String>(
-                  prefixIcon: TablerIcons.calendarDue,
-                  items: const ['Option 1', 'Option 2'],
-                  builder: (item) => Text(item),
-                  onChanged: (_) {},
-                  hint: 'Schedule',
-                ),
-                SizedBox(height: 14.h),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Find a Match'),
-                ),
-              ],
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Container _buildClientTopView() {
+    return Container(
+      padding: EdgeInsets.all(24.w),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: AppColors.white),
+        gradient: AppColors.gradientPeachToPurple,
+      ),
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          _buildAppBar(name: 'Olivia Bennett', plan: 'Starter Plan'),
+          AppDivider(margin: EdgeInsets.symmetric(vertical: 24.h)),
+          Text('Find Your Perfect Stylist', style: AppFonts.grey12w400),
+          SizedBox(height: 14.h),
+          AppDropdown<String>(
+            prefixIcon: TablerIcons.cut,
+            items: const ['Option 1', 'Option 2'],
+            builder: (item) => Text(item),
+            onChanged: (_) {},
+            hint: 'Service Type',
+          ),
+          SizedBox(height: 14.h),
+          AppDropdown<String>(
+            prefixIcon: TablerIcons.mapPin,
+            items: const ['Option 1', 'Option 2'],
+            builder: (item) => Text(item),
+            onChanged: (_) {},
+            hint: 'Location',
+          ),
+          SizedBox(height: 14.h),
+          AppDropdown<String>(
+            prefixIcon: TablerIcons.calendarDue,
+            items: const ['Option 1', 'Option 2'],
+            builder: (item) => Text(item),
+            onChanged: (_) {},
+            hint: 'Schedule',
+          ),
+          SizedBox(height: 14.h),
+          ElevatedButton(onPressed: () {}, child: const Text('Find a Match')),
         ],
       ),
     );
