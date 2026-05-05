@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/app_routes.dart';
-import 'ui/pages/chip_screen.dart';
+import 'ui/pages/customer_bottom_nav_page.dart';
 import 'ui/resources/app_colors.dart';
 import 'ui/resources/app_fonts.dart';
 import 'ui/resources/design_size.dart';
@@ -54,12 +54,11 @@ class CurlyConnectionsApp extends StatelessWidget {
             builder: (_, vm, _) {
               return MaterialApp(
                 navigatorKey: AppRoutes.navigatorKey,
-                home: const ChipScreen(),
                 title: 'Curly Connections',
                 themeMode: vm.themeMode,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.lightTheme,
-              //  initialRoute: CustomerBottomNavPage.routeName,
+                initialRoute: CustomerBottomNavPage.routeName,
                 onGenerateRoute: AppRoutes.routes,
                 builder: (_, child) {
                   configLoading();
