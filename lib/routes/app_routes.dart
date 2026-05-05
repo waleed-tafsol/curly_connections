@@ -8,6 +8,7 @@ import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
+import '../ui/pages/portfolio_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
@@ -61,6 +62,10 @@ abstract final class AppRoutes {
       OnboardingScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: OnboardingScreen.routeName),
         builder: (_) => const OnboardingScreen(),
+      ),
+      PortfolioScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: PortfolioScreen.routeName),
+        builder: (_) => const PortfolioScreen(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),

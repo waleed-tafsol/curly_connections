@@ -7,6 +7,8 @@ class DummyAssets {
   static const String _assets = 'assets/dummy';
   static const String smallMap = '$_assets/small_map.png';
   static const String largeMap = '$_assets/large_map.png';
+  static const String profile = '$_assets/profile.png';
+
 }
 
 class PngAssets {

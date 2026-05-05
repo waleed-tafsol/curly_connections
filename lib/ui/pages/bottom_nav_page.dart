@@ -8,6 +8,7 @@ import '../view_models/auth_view_model.dart';
 import '../view_models/bottom_nav_view_model.dart';
 import '../widgets/salomon_bottom_bar.dart';
 import 'home_page.dart';
+import 'profile_screen.dart';
 
 class BottomNavPage extends StatelessWidget {
   static const String routeName = '/bottom_nav_page';
@@ -48,7 +49,7 @@ class BottomNavPage extends StatelessWidget {
                   color: Colors.purpleAccent,
                   child: Center(),
                 ),
-                3 => const ColoredBox(color: Colors.redAccent, child: Center()),
+                3 => const ProfileScreen(),
                 int() => throw UnimplementedError(),
               },
             ),

@@ -12,6 +12,7 @@ abstract final class AppColors {
   static const peach = Color(0xFFFEE1D6);
   static const pink = Color(0xFFEAC3FF);
   static const borderPurple = Color(0xFFA83BE6);
+  static const dividerColor =Color(0xFFE0E0E1);
   static const orange = Color(0xFFFF8202);
   static const lightOrange = Color(0xFFF6D2A5);
   static final textGrey = const Color(0xFF0B0B0B).withValues(alpha: 0.5);
