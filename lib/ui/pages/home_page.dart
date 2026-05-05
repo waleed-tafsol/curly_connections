@@ -13,8 +13,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20.h,
-      children: [_buildAppBar(), const BookingSummary()],
+      children: [
+        _buildAppBar(),
+        SizedBox(height: 20.h),
+        const BookingSummary(),
+        SizedBox(height: 16.h),
+        Container(
+          height: 1.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            boxShadow: kElevationToShadow[1],
+          ),
+        ),
+        SizedBox(height: 16.h),
+        // _buildRecentRequests(),
+      ],
     );
   }
 

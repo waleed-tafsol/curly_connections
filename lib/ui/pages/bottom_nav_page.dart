@@ -21,18 +21,20 @@ class BottomNavPage extends StatelessWidget {
     final items = bottomNavViewModel.getBottomBarItems(userType);
     return Scaffold(
       extendBody: true,
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: AppColors.gradientScafoldBackground,
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: AppColors.gradientScafoldBackground,
+          ),
+          padding: EdgeInsets.all(20.w),
+          child: switch (currentPage) {
+            0 => const HomePage(),
+            1 => const ColoredBox(color: Colors.yellowAccent, child: Center()),
+            2 => const ColoredBox(color: Colors.purpleAccent, child: Center()),
+            3 => const ColoredBox(color: Colors.redAccent, child: Center()),
+            int() => throw UnimplementedError(),
+          },
         ),
-        padding: EdgeInsets.all(20.w),
-        child: switch (currentPage) {
-          0 => const HomePage(),
-          1 => const ColoredBox(color: Colors.yellowAccent, child: Center()),
-          2 => const ColoredBox(color: Colors.purpleAccent, child: Center()),
-          3 => const ColoredBox(color: Colors.redAccent, child: Center()),
-          int() => throw UnimplementedError(),
-        },
       ),
       bottomNavigationBar: Container(
         width: 380.w,
