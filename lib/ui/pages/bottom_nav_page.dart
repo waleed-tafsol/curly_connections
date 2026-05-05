@@ -22,9 +22,10 @@ class BottomNavPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       body: Container(
-        // decoration: BoxDecoration(
-        //   gradient:
-        // ),
+        decoration: const BoxDecoration(
+          gradient: AppColors.gradientScafoldBackground,
+        ),
+        padding: EdgeInsets.all(20.w),
         child: switch (currentPage) {
           0 => const HomePage(),
           1 => const ColoredBox(color: Colors.yellowAccent, child: Center()),

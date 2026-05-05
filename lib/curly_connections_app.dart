@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,12 +6,14 @@ import 'package:provider/provider.dart';
 
 import 'routes/app_routes.dart';
 import 'ui/pages/bottom_nav_page.dart';
+import 'ui/pages/splash_page.dart';
 import 'ui/resources/app_colors.dart';
 import 'ui/resources/app_fonts.dart';
 import 'ui/resources/design_size.dart';
 import 'ui/themes/app_theme.dart';
-import 'ui/themes/theme_view_model.dart';
 import 'ui/view_models/auth_view_model.dart';
+import 'ui/view_models/bottom_nav_view_model.dart';
+import 'ui/view_models/theme_view_model.dart';
 
 class CurlyConnectionsApp extends StatelessWidget {
   const CurlyConnectionsApp({super.key});
@@ -54,13 +57,19 @@ class CurlyConnectionsApp extends StatelessWidget {
           child: Consumer<ThemeViewModel>(
             builder: (_, vm, _) {
               return MaterialApp(
+                home: kDebugMode
+                    ? ChangeNotifierProvider(
+                        create: (_) => BottomNavViewModel(),
+                        child: const BottomNavPage(),
+                      )
+                    : null,
                 debugShowCheckedModeBanner: false,
                 navigatorKey: AppRoutes.navigatorKey,
                 title: 'Curly Connections',
                 themeMode: vm.themeMode,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.lightTheme,
-                initialRoute: BottomNavPage.routeName,
+                initialRoute: SplashScreen.routeName,
                 onGenerateRoute: AppRoutes.routes,
                 builder: (_, child) {
                   configLoading();
