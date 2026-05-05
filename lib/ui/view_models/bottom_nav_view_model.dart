@@ -14,7 +14,7 @@ class BottomNavViewModel extends BaseViewModel {
   ];
   static const List<BottomBarItem> _stylistItems = [
     BottomBarItem(icon: TablerIcons.home, title: 'Home'),
-    BottomBarItem(icon: TablerIcons.scissors, title: 'My Bookings'),
+    BottomBarItem(icon: TablerIcons.scissors, title: 'Requests'),
     BottomBarItem(icon: TablerIcons.calendarWeek, title: 'Calendar'),
     BottomBarItem(icon: TablerIcons.user, title: 'Profile'),
   ];

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'curly_connections_app.dart';
 import 'services/locator.dart';
-import 'ui/themes/theme_view_model.dart';
+import 'ui/view_models/theme_view_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

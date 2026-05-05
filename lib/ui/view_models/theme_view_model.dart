@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../services/locator.dart';
-import '../view_models/base_view_model.dart';
+import 'base_view_model.dart';
 
 class ThemeViewModel extends BaseViewModel {
   ThemeMode _themeMode = ThemeMode.light;

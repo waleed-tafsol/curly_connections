@@ -15,8 +15,6 @@ class AppTheme {
       ),
     ).copyWith(
       brightness: Brightness.light,
-
-      // primaryColor: AppColors.kPrimaryColor,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
@@ -30,7 +28,7 @@ class AppTheme {
         elevation: 0,
         // centerTitle: true,
       ),
-      textTheme: GoogleFonts.interTextTheme().copyWith(
+      textTheme: TextTheme(
         headlineLarge: TextStyle(
           fontSize: 25.sp,
           color: AppColors.black,
@@ -63,7 +61,7 @@ class AppTheme {
           color: AppColors.black,
           fontWeight: FontWeight.w400,
         ),
-      ),
+      ).apply(fontFamily: AppFonts.fontFamily),
       // Text Selection Theme for cursor color
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: AppColors.purple, // Cursor color
@@ -75,6 +73,8 @@ class AppTheme {
           borderRadius: BorderRadius.circular(30.r),
         ),
         side: BorderSide.none,
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        labelPadding: EdgeInsets.zero,
       ),
       checkboxTheme: CheckboxThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
