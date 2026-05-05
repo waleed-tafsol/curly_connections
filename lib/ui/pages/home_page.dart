@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +14,7 @@ import '../widgets/app_drop_down.dart';
 import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
 import '../widgets/upcoming_agenda.dart';
+import 'map_explore_page.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home_page';
@@ -88,9 +87,10 @@ class HomePage extends StatelessWidget {
                       Text('Top Rated Near You', style: AppFonts.black24w300),
                       const Spacer(),
                       InkWell(
-                        onTap: () {
-                          log('Hello');
-                        },
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          MapExplorePage.routeName,
+                        ),
                         child: Row(
                           children: [
                             Text('See All', style: AppFonts.black12w500),

@@ -6,6 +6,7 @@ import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
 import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
+import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
@@ -50,6 +51,10 @@ abstract final class AppRoutes {
       SubscriptionScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SubscriptionScreen.routeName),
         builder: (_) => const SubscriptionScreen(),
+      ),
+      MapExplorePage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: MapExplorePage.routeName),
+        builder: (_) => const MapExplorePage(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
