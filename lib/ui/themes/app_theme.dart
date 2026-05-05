@@ -69,7 +69,7 @@ class AppTheme {
       ).apply(fontFamily: AppFonts.fontFamily),
       // Text Selection Theme for cursor color
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.purple, // Cursor color
+        cursorColor: AppColors.borderPurple, // Cursor color
       ),
 
       iconTheme: const IconThemeData(color: Colors.black54),
@@ -82,6 +82,7 @@ class AppTheme {
         labelPadding: EdgeInsets.zero,
       ),
       checkboxTheme: CheckboxThemeData(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         visualDensity: VisualDensity.compact,
         checkColor: const WidgetStatePropertyAll(Colors.white),
@@ -89,7 +90,7 @@ class AppTheme {
           Set<WidgetState> states,
         ) {
           if (states.contains(WidgetState.selected)) {
-            return AppColors.purple;
+            return AppColors.borderPurple;
           }
           return null;
         }),
@@ -117,6 +118,7 @@ class AppTheme {
           textStyle: AppFonts.white15w500,
           backgroundColor: AppColors.brown,
           foregroundColor: Colors.white,
+          padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.r),
             side: const BorderSide(color: AppColors.fillColor),
@@ -130,24 +132,24 @@ class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
         filled: true,
         fillColor: AppColors.white,
         errorStyle: TextStyle(fontSize: 11.sp, overflow: TextOverflow.visible),
         errorMaxLines: 2,
-        suffixIconColor: AppColors.textGrey,
-        hintStyle: AppFonts.grey14w400,
+        suffixIconColor: AppColors.black,
+        hintStyle: AppFonts.grey15w400,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.r),
-          borderSide: const BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.r),
-          borderSide: const BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.r),
-          borderSide: const BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(

@@ -76,8 +76,8 @@ class ServiceRequest extends StatelessWidget {
                   iconAlignment: IconAlignment.end,
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 12.w,
-                      vertical: 8,
+                      horizontal: 8.w,
+                      vertical: 8.h,
                     ),
                   ),
                   onPressed: () {},
@@ -97,7 +97,7 @@ class ServiceRequest extends StatelessWidget {
                   child: Container(
                     height: 50.h,
                     padding: EdgeInsets.symmetric(
-                      horizontal: 12.w,
+                      horizontal: 8.w,
                       vertical: 8.h,
                     ),
                     decoration: BoxDecoration(
