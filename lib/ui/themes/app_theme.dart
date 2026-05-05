@@ -118,7 +118,7 @@ class AppTheme {
           textStyle: AppFonts.white15w500,
           backgroundColor: AppColors.brown,
           foregroundColor: Colors.white,
-          // padding: EdgeInsets.symmetric(vertical: 19.5.h),
+          padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.r),
             side: const BorderSide(color: AppColors.fillColor),

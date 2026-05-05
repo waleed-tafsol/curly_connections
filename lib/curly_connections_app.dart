@@ -70,14 +70,18 @@ class CurlyConnectionsApp extends StatelessWidget {
                 onGenerateRoute: AppRoutes.routes,
                 builder: (_, child) {
                   configLoading();
-                  return MultiProvider(
+                  return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler:const TextScaler.linear(1.0)), child:
+                  MultiProvider(
                     providers: [
                       ChangeNotifierProvider(create: (_) => AuthViewModel()),
                     ],
                     builder: (_, _) {
                       return FlutterEasyLoading(child: child);
                     },
+                  )
                   );
+                  
+                  
                 },
               );
             },
