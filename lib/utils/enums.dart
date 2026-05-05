@@ -11,6 +11,8 @@ enum BaseUrl {
   const BaseUrl(this.url);
 }
 
+enum UserType { stylist, client }
+
 enum Status {
   pending,
   confirmed,
@@ -34,12 +36,10 @@ enum Status {
       case Status.canceled:
         return AppColors.darkGrey;
       case Status.confirmed:
-        return  AppColors.greenColor;
+        return AppColors.greenColor;
     }
-
   }
 }
-
 
 enum Endpoint {
   login('/login');

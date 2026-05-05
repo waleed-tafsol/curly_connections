@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
+import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/chip_screen.dart';
-import '../ui/pages/customer_bottom_nav_page.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
 
@@ -19,11 +19,11 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: ChipScreen.routeName),
         builder: (_) => const ChipScreen(),
       ),
-      CustomerBottomNavPage.routeName => CupertinoPageRoute(
-        settings: const RouteSettings(name: CustomerBottomNavPage.routeName),
+      BottomNavPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: BottomNavPage.routeName),
         builder: (_) => ChangeNotifierProvider(
           create: (_) => BottomNavViewModel(),
-          child: const CustomerBottomNavPage(),
+          child: const BottomNavPage(),
         ),
       ),
       null => throw UnimplementedError(),
