@@ -8,6 +8,7 @@ import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import '../widgets/role_container.dart';
 import 'login_screen.dart';
+import 'onboarding_screen.dart';
 
 class SelectRoleScreen extends StatelessWidget {
   static const String routeName = "/select_role";
@@ -100,6 +101,10 @@ class SelectRoleScreen extends StatelessWidget {
                         textStyle: AppFonts.white20w500,
                       ),
                       onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          LoginScreen.routeName,
+                        );
                         Navigator.pushReplacementNamed(
                           context,
                           LoginScreen.routeName,
