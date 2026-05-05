@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/chip_screen.dart';
+import '../ui/pages/create_account_screen.dart';
 import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/select_role_screen.dart';
@@ -40,6 +41,10 @@ abstract final class AppRoutes {
       LoginScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: LoginScreen.routeName),
         builder: (_) => const LoginScreen(),
+      ),
+      CreateAccountScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: CreateAccountScreen.routeName),
+        builder: (_) => const CreateAccountScreen(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),

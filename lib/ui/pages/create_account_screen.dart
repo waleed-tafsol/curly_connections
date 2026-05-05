@@ -6,17 +6,16 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/text_form_field_with_title_widget.dart';
-import 'create_account_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = '/login';
-  const LoginScreen({super.key});
+class CreateAccountScreen extends StatefulWidget {
+  static const String routeName = '/create_account';
+  const CreateAccountScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _CreateAccountScreenState extends State<CreateAccountScreen> {
   final ValueNotifier<bool> _rememberMe = ValueNotifier<bool>(false);
 
   @override
@@ -32,9 +31,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 18.w),
           decoration: const BoxDecoration(
-            gradient: AppColors.gradientScafoldBackground
+            gradient: AppColors.gradientScafoldBackground,
           ),
+
           child: Column(
+            crossAxisAlignment: .start,
             children: [
               SizedBox(height: 21.h),
               Image.asset(PngAssets.splashLogo, height: 64.h, width: 95.w),
@@ -68,10 +69,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               TextFormFieldWithTitleWidget(
+                title: 'Full Name',
+                controller: TextEditingController(),
+                hintText: "e.g Kate Haley",
+              ),
+              TextFormFieldWithTitleWidget(
+                title: 'Location',
+                controller: TextEditingController(),
+                hintText: "e.g Kate Haley",
+                suffixIcon: TablerIcons.mapPin,
+              ),
+              TextFormFieldWithTitleWidget(
                 title: 'Email',
                 controller: TextEditingController(),
                 hintText: "your.email@example.com",
               ),
+
               SizedBox(height: 15.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,23 +111,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(height: 15.h),
-
-              // 👇 ValueListenableBuilder wrapping the checkbox row
-              ValueListenableBuilder<bool>(
-                valueListenable: _rememberMe,
-                builder: (context, value, _) {
-                  return Row(
-                    children: [
-                      Checkbox(
-                        value: value,
-                        onChanged: (newValue) {
-                          _rememberMe.value = newValue ?? false;
-                        },
-                      ),
-                      Text("Remember me", style: AppFonts.black13w400),
-                    ],
-                  );
-                },
+              Text(
+                "Confirm Password",
+                style: AppFonts.black14w400,
+                overflow: TextOverflow.ellipsis,
+              ),
+              SizedBox(height: 7.h),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: "••••••••",
+                  suffixIcon: Icon(TablerIcons.eye, size: 22.sp),
+                ),
               ),
 
               SizedBox(height: 18.h),
@@ -123,25 +130,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton.icon(
                   iconAlignment: IconAlignment.end,
                   onPressed: () {},
-                  label: const Text("Sign In"),
+                  label: const Text("Create Account"),
                   icon: Icon(TablerIcons.arrowRight, size: 13.sp),
                 ),
               ),
               SizedBox(height: 18.h),
-              GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, CreateAccountScreen.routeName);
-                },
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Don't have an account? ",
-                        style: AppFonts.black14w400,
-                      ),
-                      TextSpan(text: 'Sign Up', style: AppFonts.black14w500),
-                    ],
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Already have an account? ",
+                          style: AppFonts.black14w400,
+                        ),
+                        TextSpan(text: 'Sign In', style: AppFonts.black14w500),
+                      ],
+                    ),
                   ),
                 ),
               ),
