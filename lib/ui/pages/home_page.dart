@@ -4,6 +4,8 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/app_divider.dart';
+import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,21 +15,33 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: .start,
       children: [
         _buildAppBar(),
-        SizedBox(height: 20.h),
-        const BookingSummary(),
-        SizedBox(height: 16.h),
-        Container(
-          height: 1.h,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            boxShadow: kElevationToShadow[1],
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 20.h),
+                const BookingSummary(),
+                const AppDivider(),
+                AppItemsListView(
+                  title: 'Recent Requests',
+                  emptyItemsTitle:
+                      'You have not get any requests yet, the requests will appear here as you receive any.',
+                  items: List.generate(4, (index) => 'Elena K.'),
+                ),
+                const AppDivider(),
+                // const AppItemsListView(
+                //   title: 'Upcoming agenda',
+                //   emptyItemsTitle:
+                //       'You have not get any upcoming bookings yet, the bookings will appear here as you got any.',
+                // ),
+                SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
+              ],
+            ),
           ),
         ),
-        SizedBox(height: 16.h),
-        // _buildRecentRequests(),
       ],
     );
   }
@@ -39,6 +53,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: AppColors.white,
         child: const Center(),
       ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
       title: Text('Sarah Mendoza', style: AppFonts.black16w500),
       subtitle: Container(
         padding: EdgeInsets.only(top: 2.h),

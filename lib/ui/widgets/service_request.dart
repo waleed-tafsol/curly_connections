@@ -6,17 +6,18 @@ import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
-class RequestContainer extends StatelessWidget {
-  const RequestContainer({super.key});
+class ServiceRequest extends StatelessWidget {
+  const ServiceRequest({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20.w),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: AppColors.fillColor.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(12.r),
-        border: .all(color:AppColors.fillColor),
+        border: .all(color: AppColors.fillColor),
       ),
       child: Column(
         crossAxisAlignment: .start,
