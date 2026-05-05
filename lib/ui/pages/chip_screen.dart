@@ -4,6 +4,8 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/booking_container.dart';
+import '../widgets/review_container.dart';
 
 class ChipScreen extends StatelessWidget {
   static const String routeName = "/chip_screen";
@@ -12,119 +14,67 @@ class ChipScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white.withValues(alpha: 0.3),
       appBar: AppBar(title: const Text("Chip Screen")),
       body: Column(
         children: [
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                color: AppColors.fillColor,
-                borderRadius: BorderRadius.circular(12.r),
-                border: .all(color: Colors.white),
-              ),
-              child: Column(
-                crossAxisAlignment: .start,
-                children: [
-                  Text("April 24, Friday", style: AppFonts.grey16w400),
-                  SizedBox(height: 12.h),
-                  Row(
-                    mainAxisAlignment: .start,
-                    children: [
-                      Icon(TablerIcons.hourglassEmpty, size: 16.sp),
-                      SizedBox(width: 10.w),
-                      RichText(
-                        textAlign: .center,
-                        text: TextSpan(
+          SizedBox(height: 100.h),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
+            child: Center(
+              child: Container(
+                alignment: .center,
+                padding: EdgeInsets.all(16.w),
+                decoration: BoxDecoration(
+                  color: AppColors.fillColor.withValues(alpha: 0.8),
+                  borderRadius: BorderRadius.circular(16.r),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: .center,
+                      children: [
+                        CircleAvatar(
+                          radius: 20.sp,
+                          backgroundColor: AppColors.textGrey.withValues(
+                            alpha: 0.1,
+                          ),
+                          child: Text("OB", style: AppFonts.purple18w400),
+                        ),
+                        SizedBox(width: 8.w),
+                        Column(
+                          crossAxisAlignment: .start,
                           children: [
-                            TextSpan(
-                              text: '5:30  ',
-                              style: AppFonts.black14w500,
+                            Text("Olivia Bennett", style: AppFonts.black16w500),
+                            SizedBox(height: 4.h),
+                            Text(
+                              "Mon, sep 2, 2024 at 6:41 PM",
+                              style: AppFonts.grey16w400,
                             ),
-                            TextSpan(text: 'PM', style: AppFonts.grey14w500),
                           ],
                         ),
-                      ),
-                      SizedBox(width: 10.w),
-                      Icon(TablerIcons.arrowRight, size: 16.sp),
-                      SizedBox(width: 10.w),
-                      RichText(
-                        textAlign: .center,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '6:30  ',
-                              style: AppFonts.black14w500,
-                            ),
-                            TextSpan(text: 'PM', style: AppFonts.grey14w500),
-                          ],
+                        const Spacer(),
+                        Icon(
+                          TablerIcons.starFilled,
+                          size: 16.sp,
+                          color: AppColors.orange,
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 12.h),
-                  Text("Elena K.", style: AppFonts.black22w400),
-                  SizedBox(height: 4.h),
-                  Row(
-                    mainAxisAlignment: .center,
-                    children: [
-                      Text(
-                        "FULL COLOR + TREATMENT",
-                        style: AppFonts.grey14w400,
-                      ),
-                      const Spacer(),
-                      Text("• Pending", style: AppFonts.yellow14w400),
-                    ],
-                  ),
-                  SizedBox(height: 28.h),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          iconAlignment: IconAlignment.end,
-                          style: ElevatedButton.styleFrom(),
-                          onPressed: () {},
-                          label: Text(
-                            "Approve Request",
-                            style: AppFonts.white14w500,
-                          ),
-                          icon: Icon(
-                            TablerIcons.circleCheck,
-                            color: AppColors.white,
-                            size: 24.sp,
-                          ),
-                        ),
-                      ),
-
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 12.w,
-                            vertical: 8.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: .center,
-                            children: [
-                              Text(
-                                "Reject Request",
-                                style: AppFonts.black14w500,
-                              ),
-                              SizedBox(width: 5.w),
-                              Icon(TablerIcons.thumbDown, size: 24.sp),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                        SizedBox(width: 4.w),
+                        Text("5.0", style: AppFonts.black14w400),
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
+                    Text(
+                      "Incredible! Terrell Haag provided the best therapy I've had ever. Also, the salon has a really pleasant atmosphere.",
+                      style: AppFonts.black16w400,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
+          const BookingContainer(),
+          const ReviewContainer(),
         ],
       ),
     );

@@ -115,6 +115,7 @@ class AppTheme {
           // padding: EdgeInsets.symmetric(vertical: 19.5.h),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.r),
+            side: const BorderSide(color: AppColors.fillColor),
           ),
         ),
       ),
