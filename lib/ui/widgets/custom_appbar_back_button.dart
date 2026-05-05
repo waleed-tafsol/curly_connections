@@ -19,10 +19,10 @@ class CustomAppBarBackButton extends StatelessWidget
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       toolbarHeight: kToolbarHeight.h,
-       systemOverlayStyle: const SystemUiOverlayStyle( // 👈 add this
+       systemOverlayStyle: const SystemUiOverlayStyle( 
     statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,   // Android
-    statusBarBrightness: Brightness.light,       // iOS
+    statusBarIconBrightness: Brightness.dark,   
+    statusBarBrightness: Brightness.light,       
   ),
 
       leadingWidth: 62.w,
