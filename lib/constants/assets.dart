@@ -14,4 +14,7 @@ class PngAssets {
   static const String splashLogo = '${_assets}splash_logo.png';
   static const String getStarted = '${_assets}get_started.png';
   static const String selectrole = '${_assets}select_role.png';
+  static const String onboarding_1 = '${_assets}onboarding_1.png';
+  static const String onboarding_2 = '${_assets}onboarding_1.png';
+  static const String onboarding_3 = '${_assets}onboarding_1.png';
 }

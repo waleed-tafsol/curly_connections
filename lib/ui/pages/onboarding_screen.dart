@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+import '../../constants/assets.dart';
+import '../../utils/enums.dart';
+import '../view_models/auth_view_model.dart';
 
 class OnBoardingModel {
   final String image;
@@ -13,9 +19,8 @@ class OnBoardingModel {
 }
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key, required this.isStylist});
+  const OnboardingScreen({super.key});
   static const String routeName = "/onboarding";
-  final bool isStylist;
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -26,39 +31,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentIndex = 0;
   @override
   void initState() {
-    _Pages = widget.isStylist
+    _Pages = context.read<AuthViewModel>().userType == UserType.stylist
         ? [
             OnBoardingModel(
-              image: "assets/images/onboarding1.png",
+              image: PngAssets.onboarding_1,
               title: "Grow Your Beauty Business",
               desc:
                   "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
             ),
             OnBoardingModel(
-              image: "assets/images/onboarding2.png",
-              title: "Find the best services",
-              desc: "Explore top professionals بسهولة",
+              image: PngAssets.onboarding_2,
+              title: "Manage Bookings with Ease",
+              desc:
+                  "Accept appointments, set your availability, and stay organized. Everything you need, all in one place.",
             ),
             OnBoardingModel(
-              image: "assets/images/onboarding3.png",
-              title: "Book instantly",
-              desc: "Fast and easy booking experience",
+              image: PngAssets.onboarding_3,
+              title: "Showcase Your Skills",
+              desc:
+                  "Create your profile, add services, and highlight your expertise. Let your work speak for itself.",
             ),
           ]
         : [
             OnBoardingModel(
-              image: "assets/images/onboarding1.png",
+              image: PngAssets.onboarding_1,
               title: "Grow Your Beauty Business",
               desc:
                   "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
             ),
             OnBoardingModel(
-              image: "assets/images/onboarding2.png",
+              image: PngAssets.onboarding_2,
               title: "Find the best services",
               desc: "Explore top professionals بسهولة",
             ),
             OnBoardingModel(
-              image: "assets/images/onboarding3.png",
+              image: PngAssets.onboarding_3,
               title: "Book instantly",
               desc: "Fast and easy booking experience",
             ),
@@ -93,88 +100,115 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            /// Skip button
-            Align(
-              alignment: Alignment.topRight,
-              child: TextButton(onPressed: _skip, child: const Text("Skip")),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(PngAssets.selectrole),
+              fit: BoxFit.fill,
+              //   fit: BoxFit.contain,
             ),
+          ),
+          child: Column(
+            children: [
+              /// PageView
+              Expanded(
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: _Pages.length,
+                  onPageChanged: (index) {
+                    setState(() => _currentIndex = index);
+                  },
+                  itemBuilder: (context, index) {
+                    final page = _Pages[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(page.image, height: 250),
+                          const SizedBox(height: 30),
+                          Text(
+                            page.title,
 
-            /// PageView
-            Expanded(
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: _Pages.length,
-                onPageChanged: (index) {
-                  setState(() => _currentIndex = index);
-                },
-                itemBuilder: (context, index) {
-                  final page = _Pages[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(page.image, height: 250),
-                        const SizedBox(height: 30),
-                        Text(
-                          page.title,
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          page.desc,
-                          style: const TextStyle(fontSize: 14),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                          const SizedBox(height: 20),
+                          Text(
+                            page.desc,
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
 
-            /// Dots indicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                _Pages.length,
-                (index) => AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  margin: const EdgeInsets.all(4),
-                  width: _currentIndex == index ? 12 : 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: _currentIndex == index ? Colors.black : Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
+              /// Dots indicator
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  _Pages.length,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.all(4),
+                    width: _currentIndex == index ? 12 : 8,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: _currentIndex == index
+                          ? Colors.black
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
-            ),
+              const SizedBox(height: 20),
 
-            const SizedBox(height: 20),
-
-            /// Next / Get Started button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ElevatedButton(
-                onPressed: _nextPage,
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
-                ),
-                child: Text(
-                  _currentIndex == _Pages.length - 1 ? "Get Started" : "Next",
-                ),
+              /// Next / Get Started button
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        // minimumSize: const Size(double.infinity, 50),
+                      ),
+                      onPressed: _skip,
+                      child: const Text("Skip"),
+                    ),
+                  ),
+                  SizedBox(width: 20.w),
+                  Expanded(
+                    flex: 3,
+                    child: ElevatedButton(
+                      onPressed: _nextPage,
+                      style: ElevatedButton.styleFrom(
+                        // minimumSize: const Size(double.infinity, 50),
+                      ),
+                      child: Text(
+                        _currentIndex == _Pages.length - 1
+                            ? "Get Started"
+                            : "Next",
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-
-            const SizedBox(height: 30),
-          ],
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );

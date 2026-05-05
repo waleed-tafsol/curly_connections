@@ -18,15 +18,6 @@ class RoleContainer extends StatelessWidget {
     required this.imagePath,
     required this.onTap,
   });
-  final VoidCallback onTap;
-  const RoleContainer({
-    super.key,
-    required this.isSelected,
-    required this.title,
-    required this.description,
-    required this.imagePath,
-    required this.onTap,
-  });
 
   @override
   Widget build(BuildContext context) {

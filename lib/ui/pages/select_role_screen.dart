@@ -87,6 +87,10 @@ class SelectRoleScreen extends StatelessWidget {
                               context.read<AuthViewModel>().setUserType(
                                 userType,
                               );
+                              Navigator.pushReplacementNamed(
+                                context,
+                                OnboardingScreen.routeName,
+                              );
                             },
                           );
                         }).toList(),

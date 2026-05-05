@@ -16,7 +16,7 @@ abstract final class AppRoutes {
   static final navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> routes(RouteSettings settings) {
-    final args = settings.arguments;
+    // final args = settings.arguments;
     return switch (settings.name) {
       SplashScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SplashScreen.routeName),
@@ -55,7 +55,7 @@ abstract final class AppRoutes {
       ),
       OnboardingScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: OnboardingScreen.routeName),
-        builder: (_) => OnboardingScreen(isStylist: args as bool),
+        builder: (_) => const OnboardingScreen(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
