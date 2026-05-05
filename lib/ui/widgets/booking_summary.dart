@@ -12,6 +12,7 @@ class BookingSummary extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.symmetric(vertical: 12.w, horizontal: 16.w),
         decoration: BoxDecoration(
           gradient: AppColors.gradientPeachToPurple,
