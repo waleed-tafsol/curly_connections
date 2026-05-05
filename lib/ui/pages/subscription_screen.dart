@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../resources/app_colors.dart';
+import '../resources/app_fonts.dart';
 import '../widgets/custom_appbar_back_button.dart';
 
 class SubscriptionScreen extends StatefulWidget {
@@ -21,6 +22,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         decoration: const BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
+        child: Column(children: [
+          Text("Subscription Plans", style :AppFonts.black20w400)
+        ],),
       ),
     );
   }

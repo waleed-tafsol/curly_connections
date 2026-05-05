@@ -6,6 +6,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/text_form_field_with_title_widget.dart';
+import 'bottom_nav_page.dart';
 import 'create_account_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 18.w),
           decoration: const BoxDecoration(
-            gradient: AppColors.gradientScafoldBackground
+            gradient: AppColors.gradientScafoldBackground,
           ),
           child: Column(
             children: [
@@ -122,14 +123,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
                 child: ElevatedButton.icon(
                   iconAlignment: IconAlignment.end,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      BottomNavPage.routeName,
+                      (route) => false,
+                    );
+                  },
                   label: const Text("Sign In"),
                   icon: Icon(TablerIcons.arrowRight, size: 13.sp),
                 ),
               ),
               SizedBox(height: 18.h),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, CreateAccountScreen.routeName);
                 },
                 child: RichText(

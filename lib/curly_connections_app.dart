@@ -54,12 +54,12 @@ class CurlyConnectionsApp extends StatelessWidget {
           child: Consumer<ThemeViewModel>(
             builder: (_, vm, _) {
               return MaterialApp(
-                // home: kDebugMode
-                //     ? ChangeNotifierProvider(
-                //         create: (_) => BottomNavViewModel(),
-                //         child: const BottomNavPage(),
-                //       )
-                //     : null,
+              //  home: kDebugMode
+                    // ? ChangeNotifierProvider(
+                    //     create: (_) => BottomNavViewModel(),
+                    //     child: const BottomNavPage(),
+                    //   )
+                    // : null,
                 debugShowCheckedModeBanner: false,
                 navigatorKey: AppRoutes.navigatorKey,
                 title: 'Curly Connections',
