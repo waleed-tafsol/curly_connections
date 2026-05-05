@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
+import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/chip_screen.dart';
-import '../ui/pages/customer_bottom_nav_page.dart';
 import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/select_role_screen.dart';
@@ -22,6 +22,13 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: ChipScreen.routeName),
         builder: (_) => const ChipScreen(),
       ),
+      BottomNavPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: BottomNavPage.routeName),
+        builder: (_) => ChangeNotifierProvider(
+          create: (_) => BottomNavViewModel(),
+          child: const BottomNavPage(),
+        ),
+      ),
       GetStartedScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: GetStartedScreen.routeName),
         builder: (_) => const GetStartedScreen(),
@@ -33,13 +40,6 @@ abstract final class AppRoutes {
       LoginScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: LoginScreen.routeName),
         builder: (_) => const LoginScreen(),
-      ),
-      CustomerBottomNavPage.routeName => CupertinoPageRoute(
-        settings: const RouteSettings(name: CustomerBottomNavPage.routeName),
-        builder: (_) => ChangeNotifierProvider(
-          create: (_) => BottomNavViewModel(),
-          child: const CustomerBottomNavPage(),
-        ),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),

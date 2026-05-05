@@ -4,12 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/app_routes.dart';
-import 'ui/pages/splash_page.dart';
+import 'ui/pages/bottom_nav_page.dart';
 import 'ui/resources/app_colors.dart';
 import 'ui/resources/app_fonts.dart';
 import 'ui/resources/design_size.dart';
 import 'ui/themes/app_theme.dart';
 import 'ui/themes/theme_view_model.dart';
+import 'ui/view_models/auth_view_model.dart';
 
 class CurlyConnectionsApp extends StatelessWidget {
   const CurlyConnectionsApp({super.key});
@@ -59,11 +60,18 @@ class CurlyConnectionsApp extends StatelessWidget {
                 themeMode: vm.themeMode,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.lightTheme,
-                initialRoute: SplashScreen.routeName,
+                initialRoute: BottomNavPage.routeName,
                 onGenerateRoute: AppRoutes.routes,
                 builder: (_, child) {
                   configLoading();
-                  return FlutterEasyLoading(child: child);
+                  return MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider(create: (_) => AuthViewModel()),
+                    ],
+                    builder: (_, _) {
+                      return FlutterEasyLoading(child: child);
+                    },
+                  );
                 },
               );
             },
