@@ -14,6 +14,11 @@ class AppTheme {
         brightness: Brightness.light,
       ),
     ).copyWith(
+      listTileTheme: ListTileThemeData(
+        contentPadding: EdgeInsets.zero,
+        visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+        minLeadingWidth: 50.r,
+      ),
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
