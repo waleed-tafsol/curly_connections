@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
 class PortfolioScreen extends StatelessWidget {
-
   static const String routeName = '/portfolio_screen';
 
   const PortfolioScreen({super.key});
@@ -21,28 +21,161 @@ class PortfolioScreen extends StatelessWidget {
         alignment: Alignment.center,
         child: SafeArea(
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
             child: Column(
-              spacing: 20.h,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Header Row
                 Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(7.w),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(7.w),
                         decoration: BoxDecoration(
                           color: AppColors.primary,
                           borderRadius: BorderRadius.circular(12.r),
                           border: Border.all(
                             color: AppColors.white,
-                          )
+                          ),
                         ),
-                        child: Icon(CupertinoIcons.chevron_left, size: 20.sp)),
-                    SizedBox(width: 12.w,),
+                        child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
                     Text('Portfolio', style: AppFonts.black20w400),
                   ],
                 ),
+                SizedBox(height: 25.h),
 
+                // Upload Section Card
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(16.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.white.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(20.r),
+                    border: Border.all(
+                      color: AppColors.textFeildStroke,
+                      width: 2,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.image_outlined,
+                        size: 48.sp,
+                        color: AppColors.secondary,
+                      ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'Upload Portfolio Images',
+                        style: AppFonts.black16w500,
+                      ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'Upload photos of your past works to showcase the clients looking for stylists',
+                        textAlign: TextAlign.center,
+                        style: AppFonts.grey14w400.copyWith(height: 1.36),
+                      ),
+                      SizedBox(height: 12.h),
+                     ElevatedButton(onPressed: (){
+                       
+                     },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.file_copy_outlined, color: AppColors.white, size: 18.sp),
+                            SizedBox(width: 5.w),
+                            Text(
+                              'Choose Files',
+                              style: AppFonts.white15w500,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 25.h),
+                Row(
+                  children: [
+                    Text(
+                      'PHOTOS GALLERY',
+                      style: AppFonts.grey12w400,
+                    ),
+                    SizedBox(width: 4.w),
+                    Text(
+                      '(48)',
+                      style: AppFonts.grey12w400,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 12.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      child: Text(
+                        'SELECT PHOTOS',
+                        style: AppFonts.black12w500,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'SORT BY',
+                          style: AppFonts.black12w500,
+                        ),
+                        Icon(Icons.keyboard_arrow_down, size: 18.sp),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20.h),
 
+                // Image Wrap
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Wrap(
+                      spacing: 12.w,
+                      runSpacing: 12.h,
+                      children: List.generate(
+                        12,
+                        (index) => Stack(
+                          children: [
+                            Container(
+                              width: 116.w,
+                              height: 86.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.r),
+                                image:  const DecorationImage(
+                                  image: AssetImage(DummyAssets.saloon),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            // Positioned(
+                            //   top: 5.h,
+                            //   right: 5.w,
+                            //   child: Container(
+                            //     width: 20.w,
+                            //     height: 20.w,
+                            //     decoration: BoxDecoration(
+                            //       color: Colors.black.withOpacity(0.24),
+                            //       shape: BoxShape.circle,
+                            //     ),
+                            //     child: Icon(Icons.close, size: 14.sp, color: AppColors.white),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -50,10 +183,4 @@ class PortfolioScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }
-
-
-
-
