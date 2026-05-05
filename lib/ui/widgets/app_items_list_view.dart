@@ -61,6 +61,7 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
         SizedBox(
           height: 230.h,
           child: PageView.builder(
+            itemCount: widget.items.length,
             controller: _pageController,
             scrollDirection: Axis.horizontal,
             padEnds: true,

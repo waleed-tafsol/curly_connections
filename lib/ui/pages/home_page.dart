@@ -7,6 +7,7 @@ import '../resources/app_fonts.dart';
 import '../widgets/app_divider.dart';
 import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
+import '../widgets/upcoming_agenda.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home_page';
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: .start,
               children: [
                 SizedBox(height: 20.h),
                 const BookingSummary(),
@@ -32,11 +34,7 @@ class HomePage extends StatelessWidget {
                   items: List.generate(4, (index) => 'Elena K.'),
                 ),
                 const AppDivider(),
-                // const AppItemsListView(
-                //   title: 'Upcoming agenda',
-                //   emptyItemsTitle:
-                //       'You have not get any upcoming bookings yet, the bookings will appear here as you got any.',
-                // ),
+                _buildUpcomingAgenda(),
                 SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
               ],
             ),
@@ -68,6 +66,35 @@ class HomePage extends StatelessWidget {
       trailing: IconButton(
         onPressed: () {},
         icon: const Icon(TablerIcons.bell),
+      ),
+    );
+  }
+
+  Widget _buildUpcomingAgenda() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          Text('UPCOMING AGENDA', style: AppFonts.grey12w400),
+          SizedBox(height: 12.h),
+          Row(
+            children: [
+              Text('Today, April 24', style: AppFonts.black16w400),
+              const Spacer(),
+              Text('CHECK CALENDAR', style: AppFonts.black12w500),
+              Icon(TablerIcons.chevronRight, size: 25.sp),
+            ],
+          ),
+          SizedBox(height: 8.h),
+          ...List.generate(
+            4,
+            (_) => Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.h),
+              child: const UpcomingAgenda(),
+            ),
+          ),
+        ],
       ),
     );
   }

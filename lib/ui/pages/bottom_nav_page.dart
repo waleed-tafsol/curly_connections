@@ -25,16 +25,34 @@ class BottomNavPage extends StatelessWidget {
         decoration: const BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
-        padding: EdgeInsets.symmetric(vertical: 20.h),
         alignment: Alignment.center,
-        child: SafeArea(
-          child: switch (currentPage) {
-            0 => const HomePage(),
-            1 => const ColoredBox(color: Colors.yellowAccent, child: Center()),
-            2 => const ColoredBox(color: Colors.purpleAccent, child: Center()),
-            3 => const ColoredBox(color: Colors.redAccent, child: Center()),
-            int() => throw UnimplementedError(),
-          },
+        child: Column(
+          spacing: 20.h,
+          children: [
+            SafeArea(
+              bottom: false,
+              child: Container(
+                height: 1,
+                width: double.infinity,
+                color: AppColors.white,
+              ),
+            ),
+            Expanded(
+              child: switch (currentPage) {
+                0 => const HomePage(),
+                1 => const ColoredBox(
+                  color: Colors.yellowAccent,
+                  child: Center(),
+                ),
+                2 => const ColoredBox(
+                  color: Colors.purpleAccent,
+                  child: Center(),
+                ),
+                3 => const ColoredBox(color: Colors.redAccent, child: Center()),
+                int() => throw UnimplementedError(),
+              },
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: SafeArea(
