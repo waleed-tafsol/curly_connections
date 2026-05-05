@@ -122,33 +122,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   },
                   itemBuilder: (context, index) {
                     final page = _Pages[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(page.image, height: 250),
-                          const SizedBox(height: 30),
-                          Text(
-                            page.title,
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          page.image,
+                          height: 300.h,
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                        ),
+                        const SizedBox(height: 30),
+                        Text(
+                          page.title,
 
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.w400,
-                            ),
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.w400,
                           ),
-                          const SizedBox(height: 20),
-                          Text(
-                            page.desc,
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
                     );
                   },
                 ),
