@@ -29,11 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [AppColors.purple, AppColors.peach],
-          ),
+          gradient: AppColors.gradientScafoldBackground
         ),
         child: Center(
           child: Image.asset(

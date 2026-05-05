@@ -32,4 +32,10 @@ abstract final class AppColors {
     stops: [0.57, 1.0],
     colors: [peach, lightPurple],
   );
+  static const LinearGradient gradientScafoldBackground = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    stops: [0, 0.26, 1.0],
+    colors: [Color(0xFFF6E6FF), Color(0xFFF6E6FF), Color(0xFFFEE1D6)],
+  );
 }

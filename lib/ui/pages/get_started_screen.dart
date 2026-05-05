@@ -15,11 +15,7 @@ class GetStartedScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [AppColors.purple, AppColors.peach],
-          ),
+          gradient:   AppColors.gradientScafoldBackground
         ),
         padding: EdgeInsets.symmetric(horizontal: 46.w),
         child: Column(
