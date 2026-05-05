@@ -64,7 +64,7 @@ class AppTheme {
       ).apply(fontFamily: AppFonts.fontFamily),
       // Text Selection Theme for cursor color
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: AppColors.purple, // Cursor color
+        cursorColor: AppColors.borderPurple, // Cursor color
       ),
 
       iconTheme: const IconThemeData(color: Colors.black54),
