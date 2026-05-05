@@ -6,6 +6,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/text_form_field_with_title_widget.dart';
+import 'subscription_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   static const String routeName = '/create_account';
@@ -129,7 +130,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
                 child: ElevatedButton.icon(
                   iconAlignment: IconAlignment.end,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      SubscriptionScreen.routeName,
+                      (route) => false,
+                    );
+                  },
                   label: const Text("Create Account"),
                   icon: Icon(TablerIcons.arrowRight, size: 13.sp),
                 ),

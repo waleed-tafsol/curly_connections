@@ -8,6 +8,7 @@ import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/splash_page.dart';
+import '../ui/pages/subscription_screen.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
 
 abstract final class AppRoutes {
@@ -45,6 +46,10 @@ abstract final class AppRoutes {
       CreateAccountScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: CreateAccountScreen.routeName),
         builder: (_) => const CreateAccountScreen(),
+      ),
+      SubscriptionScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: SubscriptionScreen.routeName),
+        builder: (_) => const SubscriptionScreen(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
