@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../ui/pages/chip_screen.dart';
 import '../ui/pages/customer_bottom_nav_page.dart';
 import '../ui/pages/get_started_screen.dart';
+import '../ui/pages/login_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
@@ -28,6 +29,10 @@ abstract final class AppRoutes {
       SelectRoleScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SelectRoleScreen.routeName),
         builder: (_) => const SelectRoleScreen(),
+      ),
+      LoginScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: LoginScreen.routeName),
+        builder: (_) => const LoginScreen(),
       ),
       CustomerBottomNavPage.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: CustomerBottomNavPage.routeName),

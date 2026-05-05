@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/assets.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/role_container.dart';
+import 'login_screen.dart';
 
 class SelectRoleScreen extends StatelessWidget {
   static const String routeName = "/select_role";
@@ -70,7 +71,9 @@ class SelectRoleScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       textStyle: AppFonts.white20w500,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                    },
                     child: const Text("Get Started"),
                   ),
                 ),

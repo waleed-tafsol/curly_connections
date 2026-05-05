@@ -4,6 +4,7 @@ abstract final class AppColors {
   static const primary = Color(0xFFF6E6FF);
   static const primaryLight = Color(0xFFFCF0FC);
   static const secondary = Color(0xFFA15605);
+  static const textFeildStroke = Color(0xFFE5E7EB);
   static const white = Colors.white;
   static const black = Color(0xFF0B0B0B);
   static const purple = Color(0xFFF6E6FF);
