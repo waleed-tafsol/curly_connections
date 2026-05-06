@@ -10,6 +10,7 @@ class AppDropdown<T> extends StatelessWidget {
   final T? value;
   final String hint;
   final double? vPadding;
+   final double? hPadding;
   final List<T> items;
   final Widget Function(T) builder;
   final ValueSetter<T?>? onChanged;
@@ -19,6 +20,7 @@ class AppDropdown<T> extends StatelessWidget {
   final TextEditingController? searchController;
   final bool Function(DropdownItem<T>, String)? searchMatchFn;
   final IconData? prefixIcon;
+  final Color? broderColor;
 
   const AppDropdown({
     super.key,
@@ -34,6 +36,8 @@ class AppDropdown<T> extends StatelessWidget {
     this.searchController,
     this.searchMatchFn,
     this.prefixIcon,
+    this.broderColor,
+    this.hPadding,
   });
 
   @override
@@ -63,7 +67,7 @@ class AppDropdown<T> extends StatelessWidget {
                 borderSide: const BorderSide(color: Colors.red),
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              contentPadding: EdgeInsets.symmetric(vertical: 11.sp),
+              contentPadding: EdgeInsets.symmetric(vertical: 11.sp,horizontal: hPadding ?? 0  ),
             ),
             hint: Text(hint, style: AppFonts.grey12w400),
             items: items
@@ -145,7 +149,7 @@ class AppDropdown<T> extends StatelessWidget {
 
   OutlineInputBorder get border {
     return OutlineInputBorder(
-      borderSide: const BorderSide(color: AppColors.white),
+      borderSide: BorderSide(color: broderColor ?? AppColors.white),
       borderRadius: BorderRadius.circular(12.r),
     );
   }
