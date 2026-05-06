@@ -5,6 +5,7 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/bottom sheet/filter_sheet.dart';
 import '../widgets/service_request_card.dart';
 
 class RequestScreen extends StatefulWidget {
@@ -91,21 +92,43 @@ class _RequestScreenState extends State<RequestScreen> {
             ),
           ),
           SizedBox(height: 15.h),
-          Row(
-            mainAxisAlignment: .end,
-            children: [
-              Text("Filter", style: AppFonts.black14w500),
-              SizedBox(width: 5.w),
-              Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
-              SizedBox(width: 20.w),
-              Text("Sort By", style: AppFonts.black14w500),
-              SizedBox(width: 5.w),
-              Icon(
-                TablerIcons.sortDescending,
-                color: AppColors.black,
-                size: 23.sp,
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                barrierColor: Colors.white.withValues(alpha: 0.5),
+                builder: (_) => const FilterSheet(),
+              );
+            },
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.white.withValues(alpha: 0.5),
+                  builder: (_) => const FilterSheet(),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: .end,
+                children: [
+                  Text("Filter", style: AppFonts.black14w500),
+                  SizedBox(width: 5.w),
+                  Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
+                  SizedBox(width: 20.w),
+                  Text("Sort By", style: AppFonts.black14w500),
+                  SizedBox(width: 5.w),
+                  Icon(
+                    TablerIcons.sortDescending,
+                    color: AppColors.black,
+                    size: 23.sp,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
           SizedBox(height: 16.h),
           Expanded(
