@@ -7,6 +7,7 @@ import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
+import 'login_screen.dart';
 
 class OnBoardingModel {
   final String image;
@@ -84,11 +85,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-    } else {}
+    } else {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        LoginScreen.routeName,
+            (route) => false,
+      );
+    }
   }
 
   void _skip() {
-    _controller.jumpToPage(_Pages.length - 1);
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      LoginScreen.routeName,
+          (route) => false,
+    );
   }
 
   @override
@@ -102,60 +113,67 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     var page = _Pages[_currentIndex];
 
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(page.image),
-            fit: BoxFit.fill,
-            //   fit: BoxFit.contain,
-          ),
-        ),
-        child: Column(
-          children: [
-            /// PageView
-            Expanded(
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: _Pages.length,
-                onPageChanged: (index) {
-                  setState(() => _currentIndex = index);
-                },
-                itemBuilder: (context, index) {
-                  page = _Pages[index];
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Spacer(),
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.w,right: 104.w),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            page.title,
-                            textAlign: TextAlign.left,
-                            style: AppFonts.black32w400.copyWith(height: 1.2),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.w,right: 104.w),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            page.desc,
-                            textAlign: TextAlign.left,
-                            style: AppFonts.black14w400.copyWith(height: 1.4),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 600),
+              child: Container(
+                key: ValueKey<int>(_currentIndex),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(page.image),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
             ),
-             SizedBox(height: 30.h),
+          ),
+          Column(
+            children: [
+              /// PageView
+              Expanded(
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: _Pages.length,
+                  onPageChanged: (index) {
+                    setState(() => _currentIndex = index);
+                  },
+                  itemBuilder: (context, index) {
+                    final item = _Pages[index];
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Spacer(),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20.w, right: 104.w),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              item.title,
+                              textAlign: TextAlign.left,
+                              style: AppFonts.black32w400.copyWith(height: 1.2),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20.w, right: 104.w),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              item.desc,
+                              textAlign: TextAlign.left,
+                              style: AppFonts.black14w400.copyWith(height: 1.4),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 30.h),
 
             /// Dots indicator
             Padding(
@@ -219,7 +237,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 30),
           ],
         ),
-      ),
-    );
-  }
+      ],
+    ),
+  );
+}
 }
