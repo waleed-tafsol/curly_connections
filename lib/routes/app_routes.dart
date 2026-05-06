@@ -5,7 +5,6 @@ import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/calendar_booking_page.dart';
 import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
-import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
@@ -37,10 +36,6 @@ abstract final class AppRoutes {
           create: (_) => BottomNavViewModel(),
           child: const BottomNavPage(),
         ),
-      ),
-      GetStartedScreen.routeName => CupertinoPageRoute(
-        settings: const RouteSettings(name: GetStartedScreen.routeName),
-        builder: (_) => const GetStartedScreen(),
       ),
       SelectRoleScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SelectRoleScreen.routeName),
@@ -82,7 +77,6 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: CalendarBookingPage.routeName),
         builder: (_) => const CalendarBookingPage(),
       ),
-
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
     };

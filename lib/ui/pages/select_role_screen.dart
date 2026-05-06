@@ -7,7 +7,7 @@ import '../../utils/enums.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import '../widgets/role_container.dart';
-import 'login_screen.dart';
+import 'onboarding_screen.dart';
 
 class SelectRoleScreen extends StatelessWidget {
   static const String routeName = "/select_role";
@@ -54,7 +54,14 @@ class SelectRoleScreen extends StatelessWidget {
                 crossAxisAlignment: .stretch,
                 children: [
                   SizedBox(height: 21.h),
-                  Image.asset(PngAssets.splashLogo, height: 64.h, width: 95.w),
+                  Hero(
+                    tag: "logo",
+                    child: Image.asset(
+                      PngAssets.splashLogo,
+                      height: 64.h,
+                      width: 95.w,
+                    ),
+                  ),
                   SizedBox(height: 30.h),
                   Text(
                     "How curly can help you?",
@@ -100,9 +107,9 @@ class SelectRoleScreen extends StatelessWidget {
                         textStyle: AppFonts.white20w500,
                       ),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                           context,
-                          LoginScreen.routeName,
+                          OnboardingScreen.routeName,
                         );
                       },
                       child: const Text("Get Started"),
