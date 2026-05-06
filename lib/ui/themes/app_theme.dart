@@ -19,6 +19,8 @@ class AppTheme {
         visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
         minLeadingWidth: 50.r,
       ),
+         splashColor: AppColors.purple,
+      highlightColor: AppColors.purple,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
@@ -51,7 +53,7 @@ class AppTheme {
         ),
         displayLarge: TextStyle(
           fontSize: 15.sp,
-          color: AppColors.textGrey,
+          color: AppColors.black,
 
           fontWeight: FontWeight.w400,
         ),
@@ -61,6 +63,7 @@ class AppTheme {
 
           fontWeight: FontWeight.w400,
         ),
+        bodyLarge: AppFonts.black14w400,
         bodySmall: TextStyle(
           fontSize: 13.sp,
           color: AppColors.black,
@@ -135,20 +138,21 @@ class AppTheme {
         contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
         filled: true,
         fillColor: AppColors.white,
+
         errorStyle: TextStyle(fontSize: 11.sp, overflow: TextOverflow.visible),
         errorMaxLines: 2,
         suffixIconColor: AppColors.black,
         hintStyle: AppFonts.grey15w400,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.textFeildStroke),
         ),
       ),

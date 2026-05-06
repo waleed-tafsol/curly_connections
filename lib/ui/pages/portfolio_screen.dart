@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/custom_appbar.dart';
 
 class PortfolioScreen extends StatelessWidget {
   static const String routeName = '/portfolio_screen';
@@ -13,7 +15,8 @@ class PortfolioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: const CustomAppBar(title: 'Portfolio'),
       body: Container(
         decoration: const BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
@@ -26,36 +29,36 @@ class PortfolioScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header Row
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(7.w),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: Border.all(
-                            color: AppColors.white,
-                          ),
-                        ),
-                        child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-                    Text('Portfolio', style: AppFonts.black20w400),
-                  ],
-                ),
-                SizedBox(height: 25.h),
+                // Row(
+                //   children: [
+                //     GestureDetector(
+                //       onTap: (){
+                //         Navigator.pop(context);
+                //       },
+                //       child: Container(
+                //         padding: EdgeInsets.all(7.w),
+                //         decoration: BoxDecoration(
+                //           color: AppColors.primary,
+                //           borderRadius: BorderRadius.circular(12.r),
+                //           border: Border.all(
+                //             color: AppColors.white,
+                //           ),
+                //         ),
+                //         child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
+                //       ),
+                //     ),
+                //     SizedBox(width: 12.w),
+                //     Text('Portfolio', style: AppFonts.black20w400),
+                //   ],
+                // ),
+                // SizedBox(height: 25.h),
 
                 // Upload Section Card
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(16.w),
                   decoration: BoxDecoration(
-                    color: AppColors.white.withOpacity(0.4),
+                    color: AppColors.white.withValues(alpha: 0.4),
                     borderRadius: BorderRadius.circular(20.r),
                     border: Border.all(
                       color: AppColors.textFeildStroke,
@@ -64,11 +67,7 @@ class PortfolioScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Icon(
-                        Icons.image_outlined,
-                        size: 48.sp,
-                        color: AppColors.secondary,
-                      ),
+                      SvgPicture.asset(SvgAssets.photo, height: 48.sp),
                       SizedBox(height: 8.h),
                       Text(
                         'Upload Portfolio Images',
@@ -81,18 +80,18 @@ class PortfolioScreen extends StatelessWidget {
                         style: AppFonts.grey14w400.copyWith(height: 1.36),
                       ),
                       SizedBox(height: 12.h),
-                     ElevatedButton(onPressed: (){
-                       
-                     },
+                      ElevatedButton(
+                        onPressed: () {},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.file_copy_outlined, color: AppColors.white, size: 18.sp),
-                            SizedBox(width: 5.w),
-                            Text(
-                              'Choose Files',
-                              style: AppFonts.white15w500,
+                            Icon(
+                              Icons.file_copy_outlined,
+                              color: AppColors.white,
+                              size: 18.sp,
                             ),
+                            SizedBox(width: 5.w),
+                            Text('Choose Files', style: AppFonts.white15w500),
                           ],
                         ),
                       ),
@@ -102,15 +101,9 @@ class PortfolioScreen extends StatelessWidget {
                 SizedBox(height: 25.h),
                 Row(
                   children: [
-                    Text(
-                      'PHOTOS GALLERY',
-                      style: AppFonts.grey12w400,
-                    ),
+                    Text('PHOTOS GALLERY', style: AppFonts.grey12w400),
                     SizedBox(width: 4.w),
-                    Text(
-                      '(48)',
-                      style: AppFonts.grey12w400,
-                    ),
+                    Text('(48)', style: AppFonts.grey12w400),
                   ],
                 ),
                 SizedBox(height: 12.h),
@@ -118,18 +111,15 @@ class PortfolioScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                      child: Text(
-                        'SELECT PHOTOS',
-                        style: AppFonts.black12w500,
-                      ),
+                      child: Text('SELECT PHOTOS', style: AppFonts.black12w500),
                     ),
                     Row(
                       children: [
-                        Text(
-                          'SORT BY',
-                          style: AppFonts.black12w500,
+                        Text('SORT BY', style: AppFonts.black12w500),
+                        SvgPicture.asset(
+                          SvgAssets.reviewArrowDown,
+                          height: 18.sp,
                         ),
-                        Icon(Icons.keyboard_arrow_down, size: 18.sp),
                       ],
                     ),
                   ],
@@ -151,7 +141,7 @@ class PortfolioScreen extends StatelessWidget {
                               height: 86.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8.r),
-                                image:  const DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage(DummyAssets.saloon),
                                   fit: BoxFit.cover,
                                 ),

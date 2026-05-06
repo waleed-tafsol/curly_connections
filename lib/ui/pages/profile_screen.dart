@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
-
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import 'edit_profile_screen.dart';
 import 'portfolio_screen.dart';
+import 'review_screen.dart';
+import 'select_role_screen.dart';
+import 'terms_conditions_screen.dart';
+
 
 class ScheduleItem {
   final String service;
@@ -21,20 +25,12 @@ class ScheduleItem {
   });
 }
 
+
 final _schedules = [
-  const ScheduleItem(
-    service: 'Full Color Treatment',
-    day: 'Monday',
-    startTime: '8:30',
-    endTime: '16:30',
-  ),
-  const ScheduleItem(
-    service: 'Full Color Treatment',
-    day: 'Tuesday',
-    startTime: '8:30',
-    endTime: '16:30',
-  ),
+  const ScheduleItem(service: 'Full Color Treatment', day: 'Monday', startTime: '8:30', endTime: '16:30'),
+  const ScheduleItem(service: 'Full Color Treatment', day: 'Tuesday', startTime: '8:30', endTime: '16:30'),
 ];
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -42,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding:  EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -90,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: AppColors.white,
                         border: Border.all(
-                          color: AppColors.lightGreen,
+                          color: const Color(0xFFF3F4F6),
                           width: 1.5,
                         ),
                         image: const DecorationImage(
@@ -111,9 +107,7 @@ class ProfileScreen extends StatelessWidget {
                         // Free Plan Chip
                         Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 2.h,
-                          ),
+                              horizontal: 8.w, vertical: 2.h),
                           decoration: BoxDecoration(
                             color: AppColors.peach,
                             borderRadius: BorderRadius.circular(999.r),
@@ -134,7 +128,8 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: 4.w),
-                              Icon(Icons.arrow_forward_rounded, size: 14.w),
+                              Icon(Icons.arrow_forward_rounded,
+                                  size: 14.w),
                             ],
                           ),
                         ),
@@ -145,7 +140,9 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, EditProfileScreen.routeName);
+                },
                 child: Row(
                   children: [
                     Text('Edit Profile', style: AppFonts.black14w500),
@@ -161,9 +158,10 @@ class ProfileScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    padding: EdgeInsets.symmetric(horizontal:16.w,),
                     decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.80),
                       borderRadius: BorderRadius.circular(12.r),
@@ -171,13 +169,13 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        _statItem(
+                         _statItem(
                           icon: TablerIcons.calendarCheck,
                           value: '42',
                           label: 'Total Bookings',
                         ),
                         _verticalDivider(),
-                        _statItem(
+                         _statItem(
                           icon: Icons.check_circle_outline_rounded,
                           value: '10',
                           label: 'Completed',
@@ -200,20 +198,14 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         Text('Services schedule', style: AppFonts.black14w400),
                         SizedBox(height: 12.h),
-                        Divider(thickness: 1.h, color: AppColors.dividerColor),
+                        Divider(thickness: 1.h,color: AppColors.dividerColor,),
                         SizedBox(height: 12.h),
                         ListView.separated(
                           shrinkWrap: true,
                           padding: EdgeInsets.zero,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: _schedules.length,
-                          separatorBuilder: (_, _) => SizedBox(
-                            height: 20.h,
-                            child: Divider(
-                              thickness: 1.h,
-                              color: AppColors.dividerColor,
-                            ),
-                          ),
+                          separatorBuilder: (_, _) =>SizedBox(height: 20.h,child: Divider(thickness: 1.h,color: AppColors.dividerColor,),),
 
                           itemBuilder: (_, index) =>
                               _scheduleCard(item: _schedules[index]),
@@ -239,10 +231,7 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                             child: Center(
-                              child: Text(
-                                'Update Schedule',
-                                style: AppFonts.black14w500,
-                              ),
+                              child: Text('Update Schedule', style: AppFonts.black14w500),
                             ),
                           ),
                         ),
@@ -257,51 +246,94 @@ class ProfileScreen extends StatelessWidget {
                     subtitle: '(showcase your previous work)',
                     onTap: () {
                       Navigator.pushNamed(context, PortfolioScreen.routeName);
+
                     },
                   ),
                   SizedBox(height: 15.h),
                   _menuCard(
-                    icon: TablerIcons.stars,
+                    icon:  TablerIcons.stars,
                     title: 'Reviews & Ratings',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, ReviewScreen.routeName);
+
+                    },
                   ),
                   SizedBox(height: 15.h),
                   _menuCard(
-                    icon: TablerIcons.fileDescription,
+                    icon:  TablerIcons.fileDescription,
                     title: 'Terms & Privacy Policy',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, TermsConditionsScreen.routeName);
+
+                    },
                   ),
                   SizedBox(height: 15.h),
+                  ElevatedButton(onPressed: (){
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      SelectRoleScreen.routeName,
+                          (route) => false,
+                    );
+                  },
+                  child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Icon(Icons.logout_rounded,
+                  color: Colors.white, size: 20.w),
+                  SizedBox(width: 6.w),
+                  Text(
+                    'Sign out',
+                    style: AppFonts.black14w400.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),),
+                  SizedBox(height: 15.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        SelectRoleScreen.routeName,
+                            (route) => false,
+                      );
+                    },
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStateProperty.all(
+                        AppColors.white,
+                      ),
+                      backgroundColor: WidgetStateProperty.all(
+                        AppColors.white,
+                      ),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.logout_rounded,
-                          color: Colors.white,
-                          size: 20.w,
-                        ),
-                        SizedBox(width: 6.w),
                         Text(
-                          'Sign out',
-                          style: AppFonts.black14w400.copyWith(
-                            color: Colors.white,
+                          'Delete Account',
+                          style: AppFonts.black14w500.copyWith(
+                            color: Colors.red,
                           ),
                         ),
+                        SizedBox(width: 6.w),
+                        Icon(TablerIcons.trash, color: Colors.red, size: 20.w),
                       ],
                     ),
                   ),
-                  SizedBox(height: 120.h),
+
+                  SizedBox(height: 24.h),
+
+                  _socialSectionWidget(),
+                  SizedBox(height: 110.h),
                 ],
               ),
             ),
           ),
+
         ],
       ),
     );
   }
-
   Widget _glassCard({required Widget child}) {
     return Container(
       width: double.infinity,
@@ -346,11 +378,13 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _verticalDivider() {
-    return Container(width: 1, height: 40.h, color: AppColors.dividerColor);
+    return Container(
+      width: 1,
+      height: 40.h,
+      color: AppColors.dividerColor,
+    );
   }
-
   Widget _scheduleCard({required ScheduleItem item}) {
     return Container(
       width: double.infinity,
@@ -400,7 +434,6 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-
   Widget _menuCard({
     required IconData icon,
     required String title,
@@ -426,11 +459,70 @@ class ProfileScreen extends StatelessWidget {
             Icon(
               Icons.chevron_right_rounded,
               size: 20.w,
-              color: AppColors.black,
+              color:AppColors.black
             ),
           ],
         ),
       ),
     );
   }
+  Widget _socialSectionWidget() {
+    return Column(
+      children: [
+        Text('Follow us', style: AppFonts.black12w400),
+        SizedBox(height: 8.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _socialIconWidget(
+              icon: TablerIcons.brandTiktokFilled,
+              onTap: () {},
+            ),
+            SizedBox(width: 24.w),
+            _socialIconWidget(icon: TablerIcons.brandInstagram, onTap: () {}),
+            SizedBox(width: 24.w),
+            _socialIconWidget(
+              icon: TablerIcons.brandFacebookFilled,
+              onTap: () {},
+            ),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        // Version
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            'Version 7.70.0\nBuild: 2508202019',
+            textAlign: TextAlign.center,
+            style: AppFonts.black12w400.copyWith(height: 1.5),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _socialIconWidget({
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Icon(
+        icon,
+        size: 24.w,
+        color: AppColors.black,
+        shadows: [
+          Shadow(
+            offset: const Offset(0, 1),
+            blurRadius: 3,
+            color: AppColors.black.withValues(alpha:0.25),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+
+
+

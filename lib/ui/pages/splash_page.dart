@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
     _logoController.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (mounted) {
         setState(() {
           _showGetStarted = true;
@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   ),
                   AnimatedSize(
                     duration: const Duration(milliseconds: 1000),
-                    curve: Curves.bounceIn,
+                    curve: Curves.easeInBack,
                     child: _showGetStarted
                         ? Column(
                             children: [

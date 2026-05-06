@@ -1,24 +1,82 @@
-// ── 4. guidance_note_bottom_sheet.dart ──
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
-import '../../../constants/assets.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
+import '../app_drop_down.dart';
 
 class FilterSheet extends StatefulWidget {
   const FilterSheet({super.key});
 
   @override
-  State<FilterSheet> createState() =>
-      _FilterSheetState();
+  State<FilterSheet> createState() => _FilterSheetState();
 }
 
-class _FilterSheetState
-    extends State<FilterSheet> {
+class _FilterSheetState extends State<FilterSheet> {
+  final ValueNotifier<int> _selectedType = ValueNotifier(
+    0,
+  ); // 0=Upcoming, 1=Completed
+  TextEditingController _dateController = TextEditingController();
+  DateTime? _selectedDate;
+
+  String get _formattedDate {
+    if (_selectedDate == null) return 'April 24, Friday';
+    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    final months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    return '${months[_selectedDate!.month - 1]} ${_selectedDate!.day}, ${days[_selectedDate!.weekday - 1]}';
+  }
+
+  Future<void> _pickDate() async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
+      builder: (context, child) => Theme(
+        data: ThemeData.light().copyWith(
+          colorScheme: const ColorScheme.light(
+            primary: AppColors.secondary,
+            onPrimary: AppColors.white,
+          ),
+        ),
+        child: child!,
+      ),
+    );
+    if (picked != null) {
+      setState(() {
+        _selectedDate = picked;
+        _dateController.text = _formattedDate;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _selectedType.dispose();
+    _dateController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _dateController.text = 'April 24, Friday';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -37,66 +95,65 @@ class _FilterSheetState
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 12.h),
-              Text("Rescheduling request", style: AppFonts.grey20w400),
-              SizedBox(height: 24.h),
-              Divider(height: 0.h, color: AppColors.dividerColor),
+              Text("Filter", style: AppFonts.black32w400),
               SizedBox(height: 16.h),
-              Text("Previous Slot", style: AppFonts.black14w500),
-              SizedBox(height: 12.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(TablerIcons.hourglassEmpty, size: 16.sp),
-                  SizedBox(width: 10.w),
-                  Text('17:30', style: AppFonts.black14w500),
-                  SizedBox(width: 12.w),
-                  Icon(TablerIcons.arrowRight, size: 16.sp),
-                  SizedBox(width: 12.w),
-                  Text('18:30', style: AppFonts.black14w500),
-                  const Spacer(),
-                  Text("April 24, Friday", style: AppFonts.grey16w400),
-                ],
-              ),
-              SizedBox(height: 16.h),
-              Divider(height: 0.h, color: AppColors.dividerColor),
-              SizedBox(height: 12.h),
-              Text("Elena K.", style: AppFonts.black22w400),
-              SizedBox(height: 4.h),
-              Row(
-                children: [
-                  Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
-                  const Spacer(),
-                  SvgPicture.asset(
-                    SvgAssets.reschedule,
-                    height: 16.h,
-                    width: 16.w,
-                  ),
-                  SizedBox(width: 4.w),
-                  Text("Reschedule", style: AppFonts.grey14w400),
-                ],
-              ),
-              SizedBox(height: 12.h),
-              Divider(height: 0.h, color: AppColors.dividerColor),
-              SizedBox(height: 16.h),
-              Text("Requested Slot", style: AppFonts.black14w500),
-              SizedBox(height: 12.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(TablerIcons.hourglassEmpty, size: 16.sp),
-                  SizedBox(width: 10.w),
-                  Text('17:30', style: AppFonts.black14w500),
-                  SizedBox(width: 12.w),
-                  Icon(TablerIcons.arrowRight, size: 16.sp),
-                  SizedBox(width: 12.w),
-                  Text('18:30', style: AppFonts.black14w500),
-                  const Spacer(),
-                  Text("April 29, Tue", style: AppFonts.grey16w400),
-                ],
-              ),
 
-              SizedBox(height: 24.h),
+              Text("Booking Type", style: AppFonts.black14w500),
+              SizedBox(height: 10.h),
+
+              // ── Upcoming / Completed toggle ──
+              ValueListenableBuilder<int>(
+                valueListenable: _selectedType,
+                builder: (context, selected, _) {
+                  return Row(
+                    children: [
+                      _bookingTypeChip(
+                        label: 'Upcoming',
+                        index: 0,
+                        selected: selected,
+                      ),
+                      SizedBox(width: 10.w),
+                      _bookingTypeChip(
+                        label: 'Completed',
+                        index: 1,
+                        selected: selected,
+                      ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(height: 12.h),
+
+              Text("Date", style: AppFonts.black13w400),
+              SizedBox(height: 7.h),
+
+              GestureDetector(
+                onTap: _pickDate,
+                child: AbsorbPointer(
+                  child: TextField(
+                    readOnly: true,
+                    style: AppFonts.black14w400,
+                    controller: _dateController,
+                    decoration: const InputDecoration(
+                      hintText: 'April 24, Friday',
+                      suffixIcon: Icon(TablerIcons.calendarDue),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 12.h),
+
+              Text("Service", style: AppFonts.black13w400),
+              SizedBox(height: 7.h),
+              AppDropdown<String>(
+                hPadding: 16.w,
+                items: const ['Option 1', 'Option 2'],
+                builder: (item) => Text(item),
+                onChanged: (_) {},
+                hint: 'Select Service',
+                broderColor: AppColors.textFeildStroke,
+              ),
+              SizedBox(height: 56.h),
 
               IntrinsicHeight(
                 child: Row(
@@ -107,45 +164,11 @@ class _FilterSheetState
                         iconAlignment: IconAlignment.end,
                         onPressed: () => Navigator.pop(context),
                         icon: Icon(
-                          TablerIcons.history,
+                          TablerIcons.arrowRight,
                           size: 24.sp,
                           color: AppColors.white,
                         ),
-                        label: const Text('Reschedule'),
-                      ),
-                    ),
-                    SizedBox(width: 16.w),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.5),
-                                blurRadius: 10.r,
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Cancel Booking',
-                                style: AppFonts.black14w400,
-                              ),
-                              SizedBox(width: 4.w),
-                              Icon(
-                                TablerIcons.playstationX,
-                                size: 24.sp,
-                                color: AppColors.black,
-                              ),
-                            ],
-                          ),
-                        ),
+                        label: const Text('Apply Filter'),
                       ),
                     ),
                   ],
@@ -158,7 +181,7 @@ class _FilterSheetState
 
         // ── Floating ✕ button ──
         Positioned(
-          top: -20.h, // ← sits above the sheet
+          top: -20.h,
           right: 8.w,
           child: GestureDetector(
             onTap: () => Navigator.pop(context),
@@ -180,6 +203,37 @@ class _FilterSheetState
           ),
         ),
       ],
+    );
+  }
+
+  Widget _bookingTypeChip({
+    required String label,
+    required int index,
+    required int selected,
+  }) {
+    final isSelected = selected == index;
+    return GestureDetector(
+      onTap: () => _selectedType.value = index,
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.brown : AppColors.white,
+          borderRadius: BorderRadius.circular(12.r),
+          boxShadow: isSelected
+              ? null
+              : [
+                  BoxShadow(
+                    color: Colors.grey.withValues(alpha: 0.5),
+                    blurRadius: 10.r,
+                  ),
+                ],
+          border: Border.all(color: AppColors.white),
+        ),
+        child: Text(
+          label,
+          style: isSelected ? AppFonts.white15w500 : AppFonts.black15w500,
+        ),
+      ),
     );
   }
 }

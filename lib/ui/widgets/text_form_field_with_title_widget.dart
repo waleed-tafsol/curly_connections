@@ -36,7 +36,7 @@ class TextFormFieldWithTitleWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppFonts.black14w400,
+            style: AppFonts.black13w400,
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 7.h),
@@ -49,6 +49,7 @@ class TextFormFieldWithTitleWidget extends StatelessWidget {
             style: AppFonts.black14w400,
             decoration: InputDecoration(
               hintText: hintText ?? "",
+
               prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
               suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
             ),

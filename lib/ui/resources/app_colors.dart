@@ -25,6 +25,7 @@ abstract final class AppColors {
   static const darkPurple = Color(0xFF4F378A);
   static const darkPurple1 = Color(0xFFA300FF);
   static const lightGreen = Color(0xFFF3F4F6);
+  static const lightgreen = Color(0xFFB4E6DB);
 
   static const LinearGradient gradientPurpleToPeach = LinearGradient(
     begin: Alignment.topCenter,
