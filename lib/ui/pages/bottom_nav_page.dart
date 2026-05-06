@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
+import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import '../view_models/bottom_nav_view_model.dart';
 import '../widgets/salomon_bottom_bar.dart';
+import 'client_profile_screen.dart';
 import 'home_page.dart';
 import 'profile_screen.dart';
 import 'request_screen.dart';
@@ -47,7 +48,7 @@ class BottomNavPage extends StatelessWidget {
                   color: Colors.purpleAccent,
                   child: Center(),
                 ),
-                3 => const ProfileScreen(),
+                3 => userType ==UserType.client ? const ClientProfileScreen() : const ProfileScreen(),
                 int() => throw UnimplementedError(),
               },
             ),

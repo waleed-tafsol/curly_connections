@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/custom_appbar.dart';
 
 class PortfolioScreen extends StatelessWidget {
   static const String routeName = '/portfolio_screen';
@@ -13,7 +15,10 @@ class PortfolioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: const CustomAppBar(
+        title: 'Portfolio',
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
@@ -26,29 +31,29 @@ class PortfolioScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header Row
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(7.w),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: Border.all(
-                            color: AppColors.white,
-                          ),
-                        ),
-                        child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-                    Text('Portfolio', style: AppFonts.black20w400),
-                  ],
-                ),
-                SizedBox(height: 25.h),
+                // Row(
+                //   children: [
+                //     GestureDetector(
+                //       onTap: (){
+                //         Navigator.pop(context);
+                //       },
+                //       child: Container(
+                //         padding: EdgeInsets.all(7.w),
+                //         decoration: BoxDecoration(
+                //           color: AppColors.primary,
+                //           borderRadius: BorderRadius.circular(12.r),
+                //           border: Border.all(
+                //             color: AppColors.white,
+                //           ),
+                //         ),
+                //         child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
+                //       ),
+                //     ),
+                //     SizedBox(width: 12.w),
+                //     Text('Portfolio', style: AppFonts.black20w400),
+                //   ],
+                // ),
+                // SizedBox(height: 25.h),
 
                 // Upload Section Card
                 Container(
@@ -64,10 +69,9 @@ class PortfolioScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Icon(
-                        Icons.image_outlined,
-                        size: 48.sp,
-                        color: AppColors.secondary,
+                      SvgPicture.asset(
+                          SvgAssets.photo,
+                          height: 48.sp,
                       ),
                       SizedBox(height: 8.h),
                       Text(
@@ -129,7 +133,7 @@ class PortfolioScreen extends StatelessWidget {
                           'SORT BY',
                           style: AppFonts.black12w500,
                         ),
-                        Icon(Icons.keyboard_arrow_down, size: 18.sp),
+                        SvgPicture.asset(SvgAssets.reviewArrowDown,height:18.sp),
                       ],
                     ),
                   ],

@@ -2,18 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../ui/pages/bottom_nav_page.dart';
+import '../ui/pages/change_password_screen.dart';
 import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
+import '../ui/pages/edit_profile_screen.dart';
 import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
 import '../ui/pages/portfolio_screen.dart';
+import '../ui/pages/review_screen.dart';
 import '../ui/pages/select_categories_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/set_schedule_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
+import '../ui/pages/terms_conditions_screen.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
 
 abstract final class AppRoutes {
@@ -77,7 +81,23 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: SetScheduleScreen.routeName),
         builder: (_) => const SetScheduleScreen(),
       ),
-      
+      ReviewScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: ReviewScreen.routeName),
+        builder: (_) => const ReviewScreen(),
+      ),
+      TermsConditionsScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: TermsConditionsScreen.routeName),
+        builder: (_) => const TermsConditionsScreen(),
+      ),
+      EditProfileScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: EditProfileScreen.routeName),
+        builder: (_) => const EditProfileScreen(),
+      ),
+      ChangePasswordScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: ChangePasswordScreen.routeName),
+        builder: (_) => const ChangePasswordScreen(),
+      ),
+
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
     };

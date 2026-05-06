@@ -1,16 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../resources/app_colors.dart';
-import '../resources/app_fonts.dart';
 
 class ReviewScreen extends StatelessWidget {
   static const String routeName = '/review_screen';
@@ -19,7 +12,6 @@ class ReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Dummy Data
     final List<Map<String, dynamic>> reviews = [
       {
         'initials': 'OB',
@@ -34,6 +26,20 @@ class ReviewScreen extends StatelessWidget {
         'date': 'Tue, sep 3, 2024 at 2:15 PM',
         'rating': '4.7',
         'comment': 'Great experience! The staff was very friendly and attentive, and the massage was top-notch.',
+      },
+      {
+        'initials': 'AM',
+        'name': 'Alice Morgan',
+        'date': 'Wed, sep 4, 2024 at 11:30 AM',
+        'rating': '5.0',
+        'comment': 'Absolutely wonderful! The facial treatment left my skin glowing, and I felt rejuvenated after.',
+      },
+      {
+        'initials': 'AM',
+        'name': 'Alice Morgan',
+        'date': 'Wed, sep 4, 2024 at 11:30 AM',
+        'rating': '5.0',
+        'comment': 'Absolutely wonderful! The facial treatment left my skin glowing, and I felt rejuvenated after.',
       },
       {
         'initials': 'AM',
@@ -60,13 +66,17 @@ class ReviewScreen extends StatelessWidget {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Navigator.pop(context),
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
                       child: Container(
                         padding: EdgeInsets.all(7.w),
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: AppColors.primary,
                           borderRadius: BorderRadius.circular(12.r),
-                          border: Border.all(color: AppColors.stroke),
+                          border: Border.all(
+                            color: AppColors.white,
+                          ),
                         ),
                         child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
                       ),
@@ -76,7 +86,6 @@ class ReviewScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 25.h),
-                // Review List
                 Expanded(
                   child: ListView.separated(
                     itemCount: reviews.length,
@@ -103,7 +112,7 @@ class ReviewScreen extends StatelessWidget {
                                     color: AppColors.primary,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Text(review['initials'], style: AppFonts.initials18w400),
+                                  child: Text(review['initials'], style: AppFonts.purple18w400),
                                 ),
                                 SizedBox(width: 8.w),
                                 // Name and Date
@@ -119,15 +128,15 @@ class ReviewScreen extends StatelessWidget {
                                 // Rating
                                 Row(
                                   children: [
-                                    Icon(Icons.star, color: Colors.amber, size: 16.sp),
+                                    Icon(Icons.star, color: AppColors.orange, size: 16.sp),
                                     SizedBox(width: 4.w),
-                                    Text(review['rating'], style: AppFonts.rating14w400),
+                                    Text(review['rating'], style: AppFonts.black14w400),
                                   ],
                                 ),
                               ],
                             ),
                             SizedBox(height: 16.h),
-                            Text(review['comment'], style: AppFonts.reviewText16w400),
+                            Text(review['comment'], style: AppFonts.black16w400),
                           ],
                         ),
                       );

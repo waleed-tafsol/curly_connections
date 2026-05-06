@@ -4,7 +4,11 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import 'edit_profile_screen.dart';
+import 'login_screen.dart';
 import 'portfolio_screen.dart';
+import 'review_screen.dart';
+import 'terms_conditions_screen.dart';
 
 
 class ScheduleItem {
@@ -136,7 +140,9 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, EditProfileScreen.routeName);
+                },
                 child: Row(
                   children: [
                     Text('Edit Profile', style: AppFonts.black14w500),
@@ -247,17 +253,27 @@ class ProfileScreen extends StatelessWidget {
                   _menuCard(
                     icon:  TablerIcons.stars,
                     title: 'Reviews & Ratings',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, ReviewScreen.routeName);
+
+                    },
                   ),
                   SizedBox(height: 15.h),
                   _menuCard(
                     icon:  TablerIcons.fileDescription,
                     title: 'Terms & Privacy Policy',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, TermsConditionsScreen.routeName);
+
+                    },
                   ),
                   SizedBox(height: 15.h),
                   ElevatedButton(onPressed: (){
-
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      LoginScreen.routeName,
+                          (route) => false,
+                    );
                   },
                   child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

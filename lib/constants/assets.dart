@@ -1,6 +1,8 @@
 abstract final class SvgAssets {
   static const String _assets = 'assets/svg';
   static const String flower = '$_assets/flower.svg';
+  static const String photo = '$_assets/photo.svg';
+  static const String reviewArrowDown = '$_assets/review_arrow_down.svg';
 }
 
 class DummyAssets {
