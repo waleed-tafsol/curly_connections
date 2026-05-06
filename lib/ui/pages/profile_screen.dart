@@ -404,24 +404,16 @@ class ProfileScreen extends StatelessWidget {
           // Time Range
           Row(
             children: [
-              Opacity(
-                opacity: 0.9,
-                child: Text(item.startTime, style: AppFonts.black16w500),
-              ),
-              SizedBox(width: 8.w),
-              Opacity(
-                opacity: 0.5,
-                child: Icon(
+              Text(item.startTime, style: AppFonts.black16w500),
+          Icon(
                   Icons.arrow_forward_rounded,
                   size: 16.w,
-                  color: const Color(0xFF0B0B0B),
+                  color:AppColors.black,
                 ),
-              ),
+
               SizedBox(width: 8.w),
-              Opacity(
-                opacity: 0.9,
-                child: Text(item.endTime, style: AppFonts.black16w500),
-              ),
+              SizedBox(width: 8.w),
+              Text(item.endTime, style: AppFonts.black16w500),
             ],
           ),
         ],
