@@ -108,6 +108,7 @@ class HomePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
                       child: UpcomingAgenda(
+                        showAsSaloon: true,
                         onTap: () =>
                             Navigator.pushNamed(context, SalonPage.routeName),
                       ),
