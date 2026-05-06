@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../ui/pages/bottom_nav_page.dart';
+import '../ui/pages/calendar_booking_page.dart';
 import '../ui/pages/change_password_screen.dart';
 import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
@@ -41,10 +42,6 @@ abstract final class AppRoutes {
           child: const BottomNavPage(),
         ),
       ),
-      GetStartedScreen.routeName => CupertinoPageRoute(
-        settings: const RouteSettings(name: GetStartedScreen.routeName),
-        builder: (_) => const GetStartedScreen(),
-      ),
       SelectRoleScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SelectRoleScreen.routeName),
         builder: (_) => const SelectRoleScreen(),
@@ -73,13 +70,17 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: PortfolioScreen.routeName),
         builder: (_) => const PortfolioScreen(),
       ),
-       SelectCategoriesScreen.routeName => CupertinoPageRoute(
+      SelectCategoriesScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SelectCategoriesScreen.routeName),
         builder: (_) => const SelectCategoriesScreen(),
       ),
-       SetScheduleScreen.routeName => CupertinoPageRoute(
+      SetScheduleScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SetScheduleScreen.routeName),
         builder: (_) => const SetScheduleScreen(),
+      ),
+      CalendarBookingPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: CalendarBookingPage.routeName),
+        builder: (_) => const CalendarBookingPage(),
       ),
       ReviewScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: ReviewScreen.routeName),

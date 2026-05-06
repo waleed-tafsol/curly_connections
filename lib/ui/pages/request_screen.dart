@@ -5,6 +5,7 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../widgets/bottom sheet/filter_sheet.dart';
 import '../widgets/service_request_card.dart';
 
 class RequestScreen extends StatefulWidget {
@@ -19,19 +20,15 @@ class _RequestScreenState extends State<RequestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
-      decoration: const BoxDecoration(
-        gradient: AppColors.gradientScafoldBackground,
-      ),
       child: Column(
         children: [
           ListTile(
             title: Text("Service requests", style: AppFonts.black20w400),
-            trailing: Icon(
-              TablerIcons.bell,
-              size: 32.sp,
-              color: AppColors.black,
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(TablerIcons.bell, size: 32.sp, color: AppColors.black),
             ),
           ),
           SizedBox(height: 22.h),
@@ -91,21 +88,43 @@ class _RequestScreenState extends State<RequestScreen> {
             ),
           ),
           SizedBox(height: 15.h),
-          Row(
-            mainAxisAlignment: .end,
-            children: [
-              Text("Filter", style: AppFonts.black14w500),
-              SizedBox(width: 5.w),
-              Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
-              SizedBox(width: 20.w),
-              Text("Sort By", style: AppFonts.black14w500),
-              SizedBox(width: 5.w),
-              Icon(
-                TablerIcons.sortDescending,
-                color: AppColors.black,
-                size: 23.sp,
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                barrierColor: Colors.white.withValues(alpha: 0.5),
+                builder: (_) => const FilterSheet(),
+              );
+            },
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.white.withValues(alpha: 0.5),
+                  builder: (_) => const FilterSheet(),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: .end,
+                children: [
+                  Text("Filter", style: AppFonts.black14w500),
+                  SizedBox(width: 5.w),
+                  Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
+                  SizedBox(width: 20.w),
+                  Text("Sort By", style: AppFonts.black14w500),
+                  SizedBox(width: 5.w),
+                  Icon(
+                    TablerIcons.sortDescending,
+                    color: AppColors.black,
+                    size: 23.sp,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
           SizedBox(height: 16.h),
           Expanded(
@@ -116,14 +135,16 @@ class _RequestScreenState extends State<RequestScreen> {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(bottom: 15.h),
-                  child: const ServiceRequestCard(),
+                  padding: EdgeInsets.only(
+                    bottom: index == 9
+                        ? MediaQuery.paddingOf(context).bottom + 30.h
+                        : 15.h,
+                  ),
+                  child: ServiceRequestCard(index: _selectedIndex),
                 );
               },
             ),
           ),
-
-          
         ],
       ),
     );
