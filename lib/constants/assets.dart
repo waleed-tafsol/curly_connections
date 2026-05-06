@@ -16,7 +16,10 @@ class PngAssets {
   static const String splashLogo = '${_assets}splash_logo.png';
   static const String getStarted = '${_assets}get_started.png';
   static const String selectrole = '${_assets}select_role.png';
-  static const String onboarding_1 = '${_assets}onboarding_1.png';
-  static const String onboarding_2 = '${_assets}onboarding_1.png';
-  static const String onboarding_3 = '${_assets}onboarding_1.png';
+  static const String onboardingClt1 = '${_assets}onboarding_clt_1.png';
+  static const String onboardingClt2 = '${_assets}onboarding_clt_2.png';
+  static const String onboardingClt3 = '${_assets}onboarding_clt_3.png';
+  static const String onboardingSty1 = '${_assets}onboarding_sty_1.png';
+  static const String onboardingSty2 = '${_assets}onboarding_sty_2.png';
+  static const String onboardingSty3 = '${_assets}onboarding_sty_3.png';
 }
