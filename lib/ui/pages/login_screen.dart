@@ -29,12 +29,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 18.w),
-          decoration: const BoxDecoration(
-            gradient: AppColors.gradientScafoldBackground,
-          ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        decoration: const BoxDecoration(
+          gradient: AppColors.gradientScafoldBackground,
+        ),
+        child: SafeArea(
           child: Column(
             children: [
               SizedBox(height: 21.h),

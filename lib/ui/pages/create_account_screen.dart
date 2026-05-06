@@ -6,6 +6,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/text_form_field_with_title_widget.dart';
+import 'login_screen.dart';
 import 'subscription_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
@@ -28,14 +29,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.symmetric(horizontal: 18.w),
-          decoration: const BoxDecoration(
-            gradient: AppColors.gradientScafoldBackground,
-          ),
-
+      body: Container(
+        alignment: Alignment.topCenter,
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        decoration: const BoxDecoration(
+          gradient: AppColors.gradientScafoldBackground,
+        ),
+        child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: .start,
@@ -142,7 +142,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       Navigator.pushNamedAndRemoveUntil(
                         context,
                         SubscriptionScreen.routeName,
-                        (route) => false,
+                        ModalRoute.withName(LoginScreen.routeName),
                       );
                     },
                     label: const Text("Create Account"),
