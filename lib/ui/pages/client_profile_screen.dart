@@ -7,7 +7,6 @@ import '../resources/app_fonts.dart';
 import 'change_password_screen.dart';
 import 'edit_profile_screen.dart';
 import 'login_screen.dart';
-import 'review_screen.dart';
 import 'terms_conditions_screen.dart';
 
 class ClientProfileScreen extends StatelessWidget {
@@ -103,8 +102,10 @@ class ClientProfileScreen extends StatelessWidget {
                   _menuCard(
                     icon: TablerIcons.headset,
                     title: 'Contact Support',
-                    onTap: () =>
-                        Navigator.pushNamed(context, ReviewScreen.routeName),
+                    onTap: () {
+
+                    }
+
                   ),
 
                   SizedBox(height: 15.h),
