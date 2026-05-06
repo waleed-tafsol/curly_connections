@@ -54,7 +54,10 @@ class SelectRoleScreen extends StatelessWidget {
                 crossAxisAlignment: .stretch,
                 children: [
                   SizedBox(height: 21.h),
-                  Image.asset(PngAssets.splashLogo, height: 64.h, width: 95.w),
+                  Hero(
+                    tag: "logo",
+                    child: Image.asset(PngAssets.splashLogo, height: 64.h, width: 95.w),
+                  ),
                   SizedBox(height: 30.h),
                   Text(
                     "How curly can help you?",
