@@ -7,9 +7,11 @@ import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/bottom sheet/add_schedule_sheet.dart';
 import '../widgets/custom_appbar_back_button.dart';
+import 'bottom_nav_page.dart';
 
 class SetScheduleScreen extends StatefulWidget {
   static const String routeName = '/set_schedule';
+
   const SetScheduleScreen({super.key});
 
   @override
@@ -33,7 +35,15 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBarBackButton(),
+      appBar: CustomAppBarBackButton(
+        onNext: () {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            BottomNavPage.routeName,
+            (route) => false,
+          );
+        },
+      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(

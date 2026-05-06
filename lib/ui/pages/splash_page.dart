@@ -16,6 +16,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
   late AnimationController _logoController;
+  late Animation<double> _logoAnimation;
   bool _showGetStarted = false;
 
   @override
@@ -24,6 +25,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     _logoController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,
+    );
+    _logoAnimation = CurvedAnimation(
+      parent: _logoController,
+      curve: Curves.easeOutBack,
     );
 
     _logoController.forward();
@@ -54,66 +59,64 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         ),
         child: Stack(
           children: [
-            // Single Hero that handles the transition of the "Main Visual"
+            // Logo that animates position and scale
             AnimatedAlign(
               duration: const Duration(milliseconds: 1000),
               curve: Curves.easeInOutQuart,
-              alignment: _showGetStarted ? const Alignment(0, -0.2) : Alignment.center,
-              child: Hero(
-                tag: "logo",
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
-                    final isSplash = child.key == const ValueKey('splash');
-                    return FadeTransition(
-                      opacity: animation,
-                      child: ScaleTransition(
-                        scale: isSplash 
-                          ? animation // Small to Big for splash
-                          : Tween<double>(begin: 1.5, end: 1.0).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutBack)), // Big to Small for second
-                        child: child,
-                      ),
-                    );
-                  },
-                  child: _showGetStarted
-                      ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                              PngAssets.getStarted,
-                              key: const ValueKey('get_started'),
-                              height: 190.h,
-                              fit: BoxFit.contain,
-                            ),
-                          SizedBox(height:59.w),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 46.0.w),
-                            child: ElevatedButton.icon(
-                              iconAlignment: IconAlignment.end,
-                              onPressed: () {
-                                Navigator.pushNamed(context, SelectRoleScreen.routeName);
-                              },
-                              label: const Text("Get Started"),
-                              icon: Icon(TablerIcons.arrowRight, size: 13.sp),
-                            ),
-                          )
-                        ],
-                      )
-                      : Image.asset(
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Hero(
+                    tag: "logo",
+                    child: ScaleTransition(
+                      scale: _logoAnimation,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 1000),
+                        curve: Curves.easeInOutQuart,
+                        width: _showGetStarted ? 186.sp : 291.w,
+                        child: Image.asset(
                           PngAssets.splashLogo,
-                          key: const ValueKey('splash'),
-                          height: 196.h,
-                          width: 291.w,
                           fit: BoxFit.contain,
                         ),
-                ),
+                      ),
+                    ),
+                  ),
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.bounceIn,
+                    child: _showGetStarted
+                        ? Column(
+                            children: [
+                              SizedBox(height: 8.h),
+                              Image.asset(
+                                PngAssets.getStarted,
+                                width: 305.sp,
+                                fit: BoxFit.contain,
+                              ),
+                              SizedBox(height: 59.h),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 46.0.w),
+                                child: ElevatedButton.icon(
+                                  iconAlignment: IconAlignment.end,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, SelectRoleScreen.routeName);
+                                  },
+                                  label: const Text("Get Started"),
+                                  icon: Icon(TablerIcons.arrowRight, size: 13.sp),
+                                ),
+                              ),
+                            ],
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+                ],
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 }
-
