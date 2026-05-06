@@ -9,7 +9,9 @@ import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
 import '../ui/pages/portfolio_screen.dart';
+import '../ui/pages/select_categories_screen.dart';
 import '../ui/pages/select_role_screen.dart';
+import '../ui/pages/set_schedule_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
@@ -67,6 +69,15 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: PortfolioScreen.routeName),
         builder: (_) => const PortfolioScreen(),
       ),
+       SelectCategoriesScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: SelectCategoriesScreen.routeName),
+        builder: (_) => const SelectCategoriesScreen(),
+      ),
+       SetScheduleScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: SetScheduleScreen.routeName),
+        builder: (_) => const SetScheduleScreen(),
+      ),
+      
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
     };

@@ -9,9 +9,9 @@ import '../resources/app_fonts.dart';
 class CustomAppBarBackButton extends StatelessWidget
     implements PreferredSizeWidget {
   final VoidCallback? onBack;
-  final VoidCallback? onSkip;
+  final VoidCallback? onNext;
 
-  const CustomAppBarBackButton({super.key, this.onBack, this.onSkip});
+  const CustomAppBarBackButton({super.key, this.onBack, this.onNext});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,13 @@ class CustomAppBarBackButton extends StatelessWidget
       leadingWidth: 100.w,
       actions: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            if (onNext != null) {
+              onNext!.call();
+            } else {
+              Navigator.pop(context);
+            }
+          },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8),
             margin: EdgeInsets.only(right: 18.w),

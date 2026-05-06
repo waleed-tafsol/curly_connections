@@ -5,6 +5,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/custom_appbar_back_button.dart';
+import 'select_categories_screen.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   static const String routeName = '/subscription';
@@ -19,7 +20,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBarBackButton(),
+      appBar: CustomAppBarBackButton(
+        onNext: () {
+          Navigator.pushReplacementNamed(
+            context,
+            SelectCategoriesScreen.routeName,
+          );
+        },
+      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -41,6 +49,11 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Container(
                 padding: EdgeInsets.only(top: 16.h),
                 decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFF6E6FF), Color(0xFFFEE1D6)],
+                  ),
                   borderRadius: BorderRadius.circular(16.r),
                   border: .all(color: AppColors.black),
                 ),
@@ -61,18 +74,35 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           SizedBox(height: 14.h),
                           Row(
                             children: [
-                              Transform.scale(
-                                scale: 0.8,
-                                child: Switch(
-                                  value: true,
-                                  onChanged: (_) {},
-                                  activeColor: AppColors.mediumPurple,
-                                  activeTrackColor: AppColors.mediumPurple,
-                                  activeThumbColor: AppColors.white,
-                                  inactiveThumbColor: AppColors.white,
-                                  inactiveTrackColor: AppColors.white,
+                              Switch(
+                                padding: EdgeInsets.zero,
+                                value: true,
+                                onChanged: (_) {},
+                                activeColor: AppColors.white,
+                                activeTrackColor: AppColors.mediumPurple,
+                                inactiveThumbColor: AppColors.textGrey,
+                                inactiveTrackColor: AppColors.white,
+                                trackOutlineColor: WidgetStateProperty.all(
+                                  Colors.transparent,
                                 ),
+                                thumbColor: WidgetStateProperty.resolveWith((
+                                  states,
+                                ) {
+                                  if (states.contains(WidgetState.selected)) {
+                                    return AppColors.white;
+                                  }
+                                  return AppColors.textGrey;
+                                }),
+                                trackColor: WidgetStateProperty.resolveWith((
+                                  states,
+                                ) {
+                                  if (states.contains(WidgetState.selected)) {
+                                    return AppColors.mediumPurple;
+                                  }
+                                  return AppColors.white;
+                                }),
                               ),
+                              SizedBox(width: 14.w),
 
                               Text(
                                 "billed annually",
@@ -120,7 +150,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                               textStyle: AppFonts.white20w500,
                             ),
                             onPressed: () {
-                              // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                              Navigator.pushNamed(
+                                context,
+                                SelectCategoriesScreen.routeName,
+                              );
                             },
                             child: const Text("Get Started"),
                           ),
@@ -175,7 +208,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 padding: EdgeInsetsGeometry.symmetric(horizontal: 24.w),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+                    Navigator.pushNamed(
+                      context,
+                      SelectCategoriesScreen.routeName,
+                    );
                   },
                   child: const Text("Strat Now"),
                 ),
