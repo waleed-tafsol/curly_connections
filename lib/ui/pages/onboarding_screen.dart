@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../constants/assets.dart';
 import '../../utils/enums.dart';
+import '../resources/app_colors.dart';
+import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 
 class OnBoardingModel {
@@ -20,6 +22,7 @@ class OnBoardingModel {
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
+
   static const String routeName = "/onboarding";
 
   @override
@@ -29,24 +32,25 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
+
   @override
   void initState() {
     _Pages = context.read<AuthViewModel>().userType == UserType.stylist
         ? [
             OnBoardingModel(
-              image: PngAssets.onboarding_1,
+              image: PngAssets.onboardingSty1,
               title: "Grow Your Beauty Business",
               desc:
                   "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_2,
+              image: PngAssets.onboardingSty2,
               title: "Manage Bookings with Ease",
               desc:
                   "Accept appointments, set your availability, and stay organized. Everything you need, all in one place.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_3,
+              image: PngAssets.onboardingSty3,
               title: "Showcase Your Skills",
               desc:
                   "Create your profile, add services, and highlight your expertise. Let your work speak for itself.",
@@ -54,20 +58,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ]
         : [
             OnBoardingModel(
-              image: PngAssets.onboarding_1,
-              title: "Grow Your Beauty Business",
+              image: PngAssets.onboardingClt1,
+              title: "Discover Top Hair Stylists",
               desc:
-                  "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
+            'Find trusted professionals near you with ease. Browse profiles, compare services, and choose what suits you best.'),
+            OnBoardingModel(
+              image: PngAssets.onboardingClt2,
+              title: "Effortless Beauty Booking",
+              desc: "Search, select, and book in seconds. Managing your appointments has never been easier.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_2,
-              title: "Find the best services",
-              desc: "Explore top professionals بسهولة",
-            ),
-            OnBoardingModel(
-              image: PngAssets.onboarding_3,
-              title: "Book instantly",
-              desc: "Fast and easy booking experience",
+              image: PngAssets.onboardingClt3,
+              title: "Your Style, Your Choice",
+              desc: "Explore a wide range of services tailored to your needs. Pick the right stylist for your perfect look.",
             ),
           ];
     super.initState();
@@ -81,9 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-    } else {
-      // TODO: Navigate to next screen
-    }
+    } else {}
   }
 
   void _skip() {
@@ -98,79 +99,93 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(PngAssets.selectrole),
-              fit: BoxFit.fill,
-              //   fit: BoxFit.contain,
-            ),
-          ),
-          child: Column(
-            children: [
-              /// PageView
-              Expanded(
-                child: PageView.builder(
-                  controller: _controller,
-                  itemCount: _Pages.length,
-                  onPageChanged: (index) {
-                    setState(() => _currentIndex = index);
-                  },
-                  itemBuilder: (context, index) {
-                    final page = _Pages[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          page.image,
-                          height: 300.h,
-                          width: double.infinity,
-                          fit: BoxFit.fitWidth,
-                        ),
-                        const SizedBox(height: 30),
-                        Text(
-                          page.title,
+    var page = _Pages[_currentIndex];
 
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w400,
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(page.image),
+            fit: BoxFit.fill,
+            //   fit: BoxFit.contain,
+          ),
+        ),
+        child: Column(
+          children: [
+            /// PageView
+            Expanded(
+              child: PageView.builder(
+                controller: _controller,
+                itemCount: _Pages.length,
+                onPageChanged: (index) {
+                  setState(() => _currentIndex = index);
+                },
+                itemBuilder: (context, index) {
+                  page = _Pages[index];
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.w,right: 104.w),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            page.title,
+                            textAlign: TextAlign.left,
+                            style: AppFonts.black32w400.copyWith(height: 1.2),
                           ),
                         ),
-                        const SizedBox(height: 20),
-                      ],
-                    );
-                  },
-                ),
+                      ),
+                      SizedBox(height: 10.h),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20.w,right: 104.w),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            page.desc,
+                            textAlign: TextAlign.left,
+                            style: AppFonts.black14w400.copyWith(height: 1.4),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
+            ),
+             SizedBox(height: 30.h),
 
-              /// Dots indicator
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+            /// Dots indicator
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: List.generate(
                   _Pages.length,
                   (index) => AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
                     margin: const EdgeInsets.all(4),
-                    width: _currentIndex == index ? 12 : 8,
-                    height: 8,
+                    width:  57.sp,
+                    height:_currentIndex == index
+                        ? 3.sp: 2.sp,
                     decoration: BoxDecoration(
                       color: _currentIndex == index
-                          ? Colors.black
-                          : Colors.grey,
+                          ? AppColors.white
+                          : AppColors.white.withValues(alpha: 0.6),
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+            ),
+            SizedBox(height: 30.h),
 
-              /// Next / Get Started button
-              Row(
+            /// Next / Get Started button
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
@@ -200,9 +215,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
-            ],
-          ),
+            ),
+            const SizedBox(height: 30),
+          ],
         ),
       ),
     );
