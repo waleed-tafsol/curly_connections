@@ -9,6 +9,7 @@ import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
 import '../ui/pages/portfolio_screen.dart';
+import '../ui/pages/salon_page.dart';
 import '../ui/pages/select_categories_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/set_schedule_screen.dart';
@@ -76,6 +77,10 @@ abstract final class AppRoutes {
       CalendarBookingPage.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: CalendarBookingPage.routeName),
         builder: (_) => const CalendarBookingPage(),
+      ),
+      SalonPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: SalonPage.routeName),
+        builder: (_) => const SalonPage(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),
