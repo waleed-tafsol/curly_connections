@@ -19,13 +19,13 @@ class CustomAppBarBackButton extends StatelessWidget
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       toolbarHeight: kToolbarHeight.h,
-       systemOverlayStyle: const SystemUiOverlayStyle( 
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,   
-    statusBarBrightness: Brightness.light,       
-  ),
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
 
-      leadingWidth: 62.w,
+      leadingWidth: 100.w,
       actions: [
         GestureDetector(
           onTap: () {},
@@ -61,6 +61,8 @@ class CustomAppBarBackButton extends StatelessWidget
             }
           },
           child: Row(
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
             children: [
               Icon(CupertinoIcons.chevron_left, size: 20.sp),
               SizedBox(width: 5.w),
