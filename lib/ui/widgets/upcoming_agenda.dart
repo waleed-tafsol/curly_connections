@@ -8,12 +8,13 @@ import '../resources/app_fonts.dart';
 
 class UpcomingAgenda extends StatelessWidget {
   final bool isReschedulable;
-  const UpcomingAgenda({super.key, this.isReschedulable = false});
+  final VoidCallback? onTap;
+  const UpcomingAgenda({super.key, this.isReschedulable = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(

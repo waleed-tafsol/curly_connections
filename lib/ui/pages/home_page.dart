@@ -15,6 +15,7 @@ import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
 import '../widgets/upcoming_agenda.dart';
 import 'map_explore_page.dart';
+import 'salon_page.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home_page';
@@ -106,7 +107,10 @@ class HomePage extends StatelessWidget {
                   for (int i = 0; i < 10; i++)
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
-                      child: const UpcomingAgenda(),
+                      child: UpcomingAgenda(
+                        onTap: () =>
+                            Navigator.pushNamed(context, SalonPage.routeName),
+                      ),
                     ),
                   SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
                 ],

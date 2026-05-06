@@ -31,7 +31,7 @@ class AppTheme {
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
         ),
-
+        scrolledUnderElevation: 0,
         elevation: 0,
         // centerTitle: true,
       ),
