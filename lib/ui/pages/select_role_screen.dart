@@ -56,7 +56,11 @@ class SelectRoleScreen extends StatelessWidget {
                   SizedBox(height: 21.h),
                   Hero(
                     tag: "logo",
-                    child: Image.asset(PngAssets.splashLogo, height: 64.h, width: 95.w),
+                    child: Image.asset(
+                      PngAssets.splashLogo,
+                      height: 64.h,
+                      width: 95.w,
+                    ),
                   ),
                   SizedBox(height: 30.h),
                   Text(

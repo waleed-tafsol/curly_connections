@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
-import '../view_models/auth_view_model.dart';
-import '../widgets/booking_request_card.dart';
 import '../widgets/bottom sheet/filter_sheet.dart';
 import '../widgets/service_request_card.dart';
 
@@ -23,67 +20,49 @@ class _RequestScreenState extends State<RequestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userType = context.read<AuthViewModel>().userType;
-    return Container(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
-      decoration: const BoxDecoration(
-        gradient: AppColors.gradientScafoldBackground,
-      ),
       child: Column(
-        crossAxisAlignment: .start,
         children: [
           ListTile(
             title: Text("Service requests", style: AppFonts.black20w400),
-            trailing: Icon(
-              TablerIcons.bell,
-              size: 32.sp,
-              color: AppColors.black,
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(TablerIcons.bell, size: 32.sp, color: AppColors.black),
             ),
           ),
           SizedBox(height: 22.h),
-          if (userType == UserType.stylist)
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(ServiceRequest.values.length, (index) {
-                  final isSelected = _selectedIndex == index;
-                  return Padding(
-                    padding: EdgeInsets.only(right: 12.w),
-                    child: GestureDetector(
-                      onTap: () => setState(() => _selectedIndex = index),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20.w,
-                          vertical: 12.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isSelected
-                              ? Colors.white.withValues(alpha: 0.4)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(50.r),
-                          border: Border.all(color: Colors.white),
-                        ),
-                        child: Text(
-                          ServiceRequest.values[index].label,
-                          style: AppFonts.black14w400,
-                        ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(ServiceRequest.values.length, (index) {
+                final isSelected = _selectedIndex == index;
+                return Padding(
+                  padding: EdgeInsets.only(right: 12.w),
+                  child: GestureDetector(
+                    onTap: () => setState(() => _selectedIndex = index),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? Colors.white.withValues(alpha: 0.4)
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(50.r),
+                        border: Border.all(color: Colors.white),
+                      ),
+                      child: Text(
+                        ServiceRequest.values[index].name,
+                        style: AppFonts.black14w400,
                       ),
                     ),
-                  );
-                }),
-              ),
+                  ),
+                );
+              }),
             ),
-          if (userType == UserType.client)
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.4),
-
-                borderRadius: BorderRadius.circular(50.r),
-                border: Border.all(color: Colors.white),
-              ),
-              child: Text("Booking", style: AppFonts.black14w400),
-            ),
+          ),
           SizedBox(height: 18.h),
           TextField(
             decoration: InputDecoration(
@@ -149,26 +128,19 @@ class _RequestScreenState extends State<RequestScreen> {
           ),
           SizedBox(height: 16.h),
           Expanded(
-            child: Consumer<AuthViewModel>(
-              builder: (context, authVM, _) {
-                final userType = authVM.userType;
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
 
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        bottom: index == 9
-                            ? MediaQuery.paddingOf(context).bottom + 30.h
-                            : 15.h,
-                      ),
-                      child: userType == UserType.stylist
-                          ? ServiceRequestCard(index: _selectedIndex)
-                          : const BookingRequestCard(),
-                    );
-                  },
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: index == 9
+                        ? MediaQuery.paddingOf(context).bottom + 30.h
+                        : 15.h,
+                  ),
+                  child: ServiceRequestCard(index: _selectedIndex),
                 );
               },
             ),

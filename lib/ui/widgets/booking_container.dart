@@ -14,7 +14,7 @@ class BookingContainer extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 89.h,
+        height: 92.h,
         decoration: BoxDecoration(
           color: AppColors.fillColor.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(12.r),
@@ -33,10 +33,9 @@ class BookingContainer extends StatelessWidget {
                 width: 8.w,
                 decoration: const BoxDecoration(color: AppColors.orange),
               ),
-              SizedBox(width: 8.w),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 16.0.w,
+                  left: 8.w,
                   right: 16.w,
                   top: 16.w,
                   bottom: 7.h,
