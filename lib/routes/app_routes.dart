@@ -4,6 +4,7 @@ import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/calendar_booking_page.dart';
 import '../ui/pages/change_password_screen.dart';
 import '../ui/pages/chip_screen.dart';
+import '../ui/pages/contact_us_screen.dart';
 import '../ui/pages/create_account_screen.dart';
 import '../ui/pages/edit_profile_screen.dart';
 import '../ui/pages/login_screen.dart';
@@ -95,6 +96,10 @@ abstract final class AppRoutes {
       ChangePasswordScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: ChangePasswordScreen.routeName),
         builder: (_) => const ChangePasswordScreen(),
+      ),
+      ContactUsScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: ContactUsScreen.routeName),
+        builder: (_) => const ContactUsScreen(),
       ),
 
       null => throw UnimplementedError(),

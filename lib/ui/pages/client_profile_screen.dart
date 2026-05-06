@@ -5,6 +5,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import 'change_password_screen.dart';
+import 'contact_us_screen.dart';
 import 'edit_profile_screen.dart';
 import 'login_screen.dart';
 import 'terms_conditions_screen.dart';
@@ -103,7 +104,7 @@ class ClientProfileScreen extends StatelessWidget {
                     icon: TablerIcons.headset,
                     title: 'Contact Support',
                     onTap: () {
-
+                        Navigator.pushNamed(context, ContactUsScreen.routeName);
                     }
 
                   ),
