@@ -75,7 +75,7 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.lightgreen),
+                          border: .all(color: AppColors.lightGreen),
                         ),
                         child: Text(
                           "08:30 - 09:30",
@@ -124,7 +124,7 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.lightgreen),
+                          border: .all(color: AppColors.lightGreen),
                         ),
                         child: Text(
                           "08:30 - 09:30",

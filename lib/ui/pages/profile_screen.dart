@@ -6,6 +6,7 @@ import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import 'portfolio_screen.dart';
+import 'select_role_screen.dart';
 
 class ScheduleItem {
   final String service;
@@ -273,7 +274,13 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        SelectRoleScreen.routeName,
+                        (route) => false,
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
