@@ -116,14 +116,16 @@ class _RequestScreenState extends State<RequestScreen> {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(bottom: 15.h),
-                  child: const ServiceRequestCard(),
+                  padding: EdgeInsets.only(
+                    bottom: index == 9
+                        ? MediaQuery.paddingOf(context).bottom + 30.h
+                        : 15.h,
+                  ),
+                  child: ServiceRequestCard(index: _selectedIndex),
                 );
               },
             ),
           ),
-
-          
         ],
       ),
     );

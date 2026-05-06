@@ -109,10 +109,7 @@ class SelectRoleScreen extends StatelessWidget {
                           context,
                           LoginScreen.routeName,
                         );
-                        Navigator.pushReplacementNamed(
-                          context,
-                          LoginScreen.routeName,
-                        );
+                       
                       },
                       child: const Text("Get Started"),
                     ),
