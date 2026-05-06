@@ -19,19 +19,15 @@ class _RequestScreenState extends State<RequestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
-      decoration: const BoxDecoration(
-        gradient: AppColors.gradientScafoldBackground,
-      ),
       child: Column(
         children: [
           ListTile(
             title: Text("Service requests", style: AppFonts.black20w400),
-            trailing: Icon(
-              TablerIcons.bell,
-              size: 32.sp,
-              color: AppColors.black,
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(TablerIcons.bell, size: 32.sp, color: AppColors.black),
             ),
           ),
           SizedBox(height: 22.h),

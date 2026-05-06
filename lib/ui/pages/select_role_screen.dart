@@ -8,7 +8,6 @@ import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import '../widgets/role_container.dart';
 import 'login_screen.dart';
-import 'onboarding_screen.dart';
 
 class SelectRoleScreen extends StatelessWidget {
   static const String routeName = "/select_role";
@@ -87,10 +86,6 @@ class SelectRoleScreen extends StatelessWidget {
                               context.read<AuthViewModel>().setUserType(
                                 userType,
                               );
-                              Navigator.pushReplacementNamed(
-                                context,
-                                OnboardingScreen.routeName,
-                              );
                             },
                           );
                         }).toList(),
@@ -109,7 +104,6 @@ class SelectRoleScreen extends StatelessWidget {
                           context,
                           LoginScreen.routeName,
                         );
-                       
                       },
                       child: const Text("Get Started"),
                     ),

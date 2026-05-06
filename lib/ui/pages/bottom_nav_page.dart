@@ -7,6 +7,7 @@ import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import '../view_models/bottom_nav_view_model.dart';
 import '../widgets/salomon_bottom_bar.dart';
+import 'calendar_booking_page.dart';
 import 'home_page.dart';
 import 'profile_screen.dart';
 import 'request_screen.dart';
@@ -43,10 +44,7 @@ class BottomNavPage extends StatelessWidget {
               child: switch (currentPage) {
                 0 => const HomePage(),
                 1 => const RequestScreen(),
-                2 => const ColoredBox(
-                  color: Colors.purpleAccent,
-                  child: Center(),
-                ),
+                2 => const CalendarBookingPage(),
                 3 => const ProfileScreen(),
                 int() => throw UnimplementedError(),
               },
