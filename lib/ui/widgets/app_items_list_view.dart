@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
-import 'service_request.dart';
+import 'service_request_card.dart';
 
 class AppItemsListView<T> extends StatefulWidget {
   final String title;
@@ -65,7 +65,10 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
             controller: _pageController,
             scrollDirection: Axis.horizontal,
             padEnds: true,
-            itemBuilder: (_, _) => const ServiceRequest(),
+            itemBuilder: (_, _) => Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: const ServiceRequestCard(),
+            ),
           ),
         ),
         SizedBox(height: 12.h),

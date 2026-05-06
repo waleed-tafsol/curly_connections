@@ -9,6 +9,7 @@ import '../view_models/bottom_nav_view_model.dart';
 import '../widgets/salomon_bottom_bar.dart';
 import 'home_page.dart';
 import 'profile_screen.dart';
+import 'request_screen.dart';
 
 class BottomNavPage extends StatelessWidget {
   static const String routeName = '/bottom_nav_page';
@@ -41,10 +42,7 @@ class BottomNavPage extends StatelessWidget {
             Expanded(
               child: switch (currentPage) {
                 0 => const HomePage(),
-                1 => const ColoredBox(
-                  color: Colors.yellowAccent,
-                  child: Center(),
-                ),
+                1 => const RequestScreen(),
                 2 => const ColoredBox(
                   color: Colors.purpleAccent,
                   child: Center(),

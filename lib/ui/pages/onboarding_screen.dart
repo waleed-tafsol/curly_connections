@@ -34,19 +34,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _Pages = context.read<AuthViewModel>().userType == UserType.stylist
         ? [
             OnBoardingModel(
-              image: PngAssets.onboarding_1,
+              image: PngAssets.onboardingSty1,
               title: "Grow Your Beauty Business",
               desc:
                   "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_2,
+              image: PngAssets.onboardingSty2,
               title: "Manage Bookings with Ease",
               desc:
                   "Accept appointments, set your availability, and stay organized. Everything you need, all in one place.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_3,
+              image: PngAssets.onboardingSty3,
               title: "Showcase Your Skills",
               desc:
                   "Create your profile, add services, and highlight your expertise. Let your work speak for itself.",
@@ -54,18 +54,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ]
         : [
             OnBoardingModel(
-              image: PngAssets.onboarding_1,
+              image: PngAssets.onboardingClt1,
               title: "Grow Your Beauty Business",
               desc:
                   "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_2,
+              image: PngAssets.onboardingClt1,
               title: "Find the best services",
               desc: "Explore top professionals بسهولة",
             ),
             OnBoardingModel(
-              image: PngAssets.onboarding_3,
+              image: PngAssets.onboardingClt3,
               title: "Book instantly",
               desc: "Fast and easy booking experience",
             ),
@@ -81,9 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-    } else {
-      // TODO: Navigate to next screen
-    }
+    } else {}
   }
 
   void _skip() {
@@ -101,7 +99,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -125,20 +122,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          page.image,
-                          height: 300.h,
-                          width: double.infinity,
-                          fit: BoxFit.fitWidth,
+                        Expanded(
+                          child: Image.asset(
+                            page.image,
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                         const SizedBox(height: 30),
-                        Text(
-                          page.title,
-
-                          textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w400,
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              page.title,
+                              textAlign: TextAlign.left,
+                              style: const TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              page.desc,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -149,20 +167,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
 
               /// Dots indicator
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  _Pages.length,
-                  (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.all(4),
-                    width: _currentIndex == index ? 12 : 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      color: _currentIndex == index
-                          ? Colors.black
-                          : Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    _Pages.length,
+                    (index) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      margin: const EdgeInsets.all(4),
+                      width: _currentIndex == index ? 12 : 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == index
+                            ? Colors.black
+                            : Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
@@ -170,35 +191,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               const SizedBox(height: 20),
 
               /// Next / Get Started button
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        // minimumSize: const Size(double.infinity, 50),
-                      ),
-                      onPressed: _skip,
-                      child: const Text("Skip"),
-                    ),
-                  ),
-                  SizedBox(width: 20.w),
-                  Expanded(
-                    flex: 3,
-                    child: ElevatedButton(
-                      onPressed: _nextPage,
-                      style: ElevatedButton.styleFrom(
-                        // minimumSize: const Size(double.infinity, 50),
-                      ),
-                      child: Text(
-                        _currentIndex == _Pages.length - 1
-                            ? "Get Started"
-                            : "Next",
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          // minimumSize: const Size(double.infinity, 50),
+                        ),
+                        onPressed: _skip,
+                        child: const Text("Skip"),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 20.w),
+                    Expanded(
+                      flex: 3,
+                      child: ElevatedButton(
+                        onPressed: _nextPage,
+                        style: ElevatedButton.styleFrom(
+                          // minimumSize: const Size(double.infinity, 50),
+                        ),
+                        child: Text(
+                          _currentIndex == _Pages.length - 1
+                              ? "Get Started"
+                              : "Next",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 30),
             ],

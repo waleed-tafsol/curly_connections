@@ -1,0 +1,131 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabler_icons_plus/tabler_icons_plus.dart';
+
+import '../../utils/enums.dart';
+import '../resources/app_colors.dart';
+import '../resources/app_fonts.dart';
+import '../widgets/service_request_card.dart';
+
+class RequestScreen extends StatefulWidget {
+  const RequestScreen({super.key});
+
+  @override
+  State<RequestScreen> createState() => _RequestScreenState();
+}
+
+class _RequestScreenState extends State<RequestScreen> {
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 18.w),
+      decoration: const BoxDecoration(
+        gradient: AppColors.gradientScafoldBackground,
+      ),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text("Service requests", style: AppFonts.black20w400),
+            trailing: Icon(
+              TablerIcons.bell,
+              size: 32.sp,
+              color: AppColors.black,
+            ),
+          ),
+          SizedBox(height: 22.h),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(ServiceRequest.values.length, (index) {
+                final isSelected = _selectedIndex == index;
+                return Padding(
+                  padding: EdgeInsets.only(right: 12.w),
+                  child: GestureDetector(
+                    onTap: () => setState(() => _selectedIndex = index),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 12.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? Colors.white.withValues(alpha: 0.4)
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(50.r),
+                        border: Border.all(color: Colors.white),
+                      ),
+                      child: Text(
+                        ServiceRequest.values[index].name,
+                        style: AppFonts.black14w400,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
+          SizedBox(height: 18.h),
+          TextField(
+            decoration: InputDecoration(
+              hintText: "Search for requests",
+              hintStyle: AppFonts.grey14w400,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50.r),
+                borderSide: const BorderSide(color: AppColors.white),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50.r),
+                borderSide: const BorderSide(color: AppColors.white),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50.r),
+                borderSide: const BorderSide(color: AppColors.white),
+              ),
+              suffixIcon: Icon(
+                TablerIcons.search,
+                color: AppColors.black,
+                size: 24.sp,
+              ),
+            ),
+          ),
+          SizedBox(height: 15.h),
+          Row(
+            mainAxisAlignment: .end,
+            children: [
+              Text("Filter", style: AppFonts.black14w500),
+              SizedBox(width: 5.w),
+              Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
+              SizedBox(width: 20.w),
+              Text("Sort By", style: AppFonts.black14w500),
+              SizedBox(width: 5.w),
+              Icon(
+                TablerIcons.sortDescending,
+                color: AppColors.black,
+                size: 23.sp,
+              ),
+            ],
+          ),
+          SizedBox(height: 16.h),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 15.h),
+                  child: const ServiceRequestCard(),
+                );
+              },
+            ),
+          ),
+
+          
+        ],
+      ),
+    );
+  }
+}

@@ -9,9 +9,9 @@ import '../resources/app_fonts.dart';
 class CustomAppBarBackButton extends StatelessWidget
     implements PreferredSizeWidget {
   final VoidCallback? onBack;
-  final VoidCallback? onSkip;
+  final VoidCallback? onNext;
 
-  const CustomAppBarBackButton({super.key, this.onBack, this.onSkip});
+  const CustomAppBarBackButton({super.key, this.onBack, this.onNext});
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +19,22 @@ class CustomAppBarBackButton extends StatelessWidget
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       toolbarHeight: kToolbarHeight.h,
-       systemOverlayStyle: const SystemUiOverlayStyle( 
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,   
-    statusBarBrightness: Brightness.light,       
-  ),
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
 
-      leadingWidth: 62.w,
+      leadingWidth: 100.w,
       actions: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            if (onNext != null) {
+              onNext!.call();
+            } else {
+              Navigator.pop(context);
+            }
+          },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8),
             margin: EdgeInsets.only(right: 18.w),
@@ -61,6 +67,8 @@ class CustomAppBarBackButton extends StatelessWidget
             }
           },
           child: Row(
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
             children: [
               Icon(CupertinoIcons.chevron_left, size: 20.sp),
               SizedBox(width: 5.w),

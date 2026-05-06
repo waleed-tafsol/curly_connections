@@ -13,6 +13,25 @@ enum BaseUrl {
 
 enum UserType { stylist, client }
 
+enum ServiceRequest {
+  bookingRequest,
+  reschedulingRequest,
+  cancellationRequest;
+
+
+String get label {
+    switch (this) {
+      case ServiceRequest.bookingRequest:
+        return 'Booking Request';
+      case ServiceRequest.reschedulingRequest:
+        return 'Rescheduling Request';
+      case ServiceRequest.cancellationRequest:
+        return 'Cancellation Request';
+    }
+  }
+
+}
+
 enum Status {
   pending,
   confirmed,

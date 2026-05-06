@@ -6,13 +6,13 @@ import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
-class ServiceRequest extends StatelessWidget {
-  const ServiceRequest({super.key});
+class ServiceRequestCard extends StatelessWidget {
+  const ServiceRequestCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      //margin: EdgeInsets.symmetric(horizontal: 20.w),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: AppColors.fillColor.withValues(alpha: 0.8),
