@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-
 import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/calendar_booking_page.dart';
 import '../ui/pages/change_password_screen.dart';
 import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
 import '../ui/pages/edit_profile_screen.dart';
-import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
