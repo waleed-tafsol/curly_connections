@@ -289,7 +289,36 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),),
-                  SizedBox(height: 120.h),
+                  SizedBox(height: 15.h),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      foregroundColor: WidgetStateProperty.all(
+                        AppColors.white,
+                      ),
+                      backgroundColor: WidgetStateProperty.all(
+                        AppColors.white,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Delete Account',
+                          style: AppFonts.black14w500.copyWith(
+                            color: Colors.red,
+                          ),
+                        ),
+                        SizedBox(width: 6.w),
+                        Icon(TablerIcons.trash, color: Colors.red, size: 20.w),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 24.h),
+
+                  _socialSectionWidget(),
+                  SizedBox(height: 110.h),
                 ],
               ),
             ),
@@ -428,6 +457,61 @@ class ProfileScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+  Widget _socialSectionWidget() {
+    return Column(
+      children: [
+        Text('Follow us', style: AppFonts.black12w400),
+        SizedBox(height: 8.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _socialIconWidget(
+              icon: TablerIcons.brandTiktokFilled,
+              onTap: () {},
+            ),
+            SizedBox(width: 24.w),
+            _socialIconWidget(icon: TablerIcons.brandInstagram, onTap: () {}),
+            SizedBox(width: 24.w),
+            _socialIconWidget(
+              icon: TablerIcons.brandFacebookFilled,
+              onTap: () {},
+            ),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        // Version
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            'Version 7.70.0\nBuild: 2508202019',
+            textAlign: TextAlign.center,
+            style: AppFonts.black12w400.copyWith(height: 1.5),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _socialIconWidget({
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Icon(
+        icon,
+        size: 24.w,
+        color: AppColors.black,
+        shadows: [
+          Shadow(
+            offset: const Offset(0, 1),
+            blurRadius: 3,
+            color: AppColors.black.withValues(alpha:0.25),
+          ),
+        ],
       ),
     );
   }

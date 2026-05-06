@@ -141,10 +141,10 @@ class ClientProfileScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(
+                      foregroundColor: WidgetStateProperty.all(
                         AppColors.white,
                       ),
-                      backgroundColor: MaterialStateProperty.all(
+                      backgroundColor: WidgetStateProperty.all(
                         AppColors.white,
                       ),
                     ),
@@ -182,7 +182,7 @@ class ClientProfileScreen extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.80),
+        color: Colors.white.withValues(alpha:0.80),
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.white, width: 2),
       ),
@@ -304,7 +304,7 @@ class ClientProfileScreen extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withValues(alpha:0.5),
               borderRadius: BorderRadius.circular(40.r),
             ),
             child: Row(
@@ -355,12 +355,12 @@ class ClientProfileScreen extends StatelessWidget {
                       vertical: 8.h,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.66),
+                      color: Colors.white.withValues(alpha:0.66),
                       borderRadius: BorderRadius.circular(52.r),
                       border: Border.all(color: Colors.white, width: 2),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.10),
+                          color: Colors.black.withValues(alpha:0.10),
                           blurRadius: 5,
                           offset: const Offset(0, 1),
                         ),
@@ -465,7 +465,7 @@ class ClientProfileScreen extends StatelessWidget {
           Shadow(
             offset: const Offset(0, 1),
             blurRadius: 3,
-            color: Colors.black.withOpacity(0.25),
+            color: AppColors.black.withValues(alpha:0.25),
           ),
         ],
       ),
