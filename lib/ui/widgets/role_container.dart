@@ -9,33 +9,48 @@ class RoleContainer extends StatelessWidget {
   final String title;
   final String description;
   final String imagePath;
-  const RoleContainer({super.key, required this.isSelected,required this.title,required this.description, required this.imagePath});
+  final VoidCallback onTap;
+  const RoleContainer({
+    super.key,
+    required this.isSelected,
+    required this.title,
+    required this.description,
+    required this.imagePath,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
-        decoration: BoxDecoration(
-          gradient: AppColors.gradientPurpleToPeach,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: onTap,
           borderRadius: BorderRadius.circular(22.r),
-          border: .all(
-            color: isSelected ? AppColors.borderPurple : Colors.white,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: .center,
-          children: [
-            Text(title, style: AppFonts.black20w400),
-            SizedBox(height: 10.h),
-            Image.asset(imagePath, height: 100.h, width: 100.h),
-            SizedBox(height: 10.h),
-            Text(
-             description,
-              style: AppFonts.black12w400,
-              textAlign: .center,
+          child: Ink(
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+            decoration: BoxDecoration(
+              gradient: AppColors.gradientPurpleToPeach,
+              borderRadius: BorderRadius.circular(22.r),
+              border: .all(
+                color: isSelected ? AppColors.borderPurple : Colors.white,
+              ),
             ),
-          ],
+            child: Column(
+              crossAxisAlignment: .center,
+              children: [
+                Text(title, style: AppFonts.black20w400),
+                SizedBox(height: 10.h),
+                Image.asset(imagePath, height: 100.h, width: 100.h),
+                SizedBox(height: 10.h),
+                Text(
+                  description,
+                  style: AppFonts.black12w400,
+                  textAlign: .center,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

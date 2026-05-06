@@ -6,6 +6,9 @@ import '../ui/pages/chip_screen.dart';
 import '../ui/pages/create_account_screen.dart';
 import '../ui/pages/get_started_screen.dart';
 import '../ui/pages/login_screen.dart';
+import '../ui/pages/map_explore_page.dart';
+import '../ui/pages/onboarding_screen.dart';
+import '../ui/pages/portfolio_screen.dart';
 import '../ui/pages/select_role_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
@@ -15,6 +18,7 @@ abstract final class AppRoutes {
   static final navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> routes(RouteSettings settings) {
+    // final args = settings.arguments;
     return switch (settings.name) {
       SplashScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SplashScreen.routeName),
@@ -50,6 +54,18 @@ abstract final class AppRoutes {
       SubscriptionScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SubscriptionScreen.routeName),
         builder: (_) => const SubscriptionScreen(),
+      ),
+      MapExplorePage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: MapExplorePage.routeName),
+        builder: (_) => const MapExplorePage(),
+      ),
+      OnboardingScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: OnboardingScreen.routeName),
+        builder: (_) => const OnboardingScreen(),
+      ),
+      PortfolioScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: PortfolioScreen.routeName),
+        builder: (_) => const PortfolioScreen(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),

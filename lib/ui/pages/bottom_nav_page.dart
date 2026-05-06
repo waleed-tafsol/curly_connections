@@ -8,6 +8,7 @@ import '../view_models/auth_view_model.dart';
 import '../view_models/bottom_nav_view_model.dart';
 import '../widgets/salomon_bottom_bar.dart';
 import 'home_page.dart';
+import 'profile_screen.dart';
 
 class BottomNavPage extends StatelessWidget {
   static const String routeName = '/bottom_nav_page';
@@ -21,50 +22,70 @@ class BottomNavPage extends StatelessWidget {
     final items = bottomNavViewModel.getBottomBarItems(userType);
     return Scaffold(
       extendBody: true,
-      body: SafeArea(
-        bottom: false,
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: AppColors.gradientScafoldBackground,
-          ),
-          padding: EdgeInsets.symmetric(vertical: 20.h),
-          alignment: Alignment.center,
-          child: switch (currentPage) {
-            0 => const HomePage(),
-            1 => const ColoredBox(color: Colors.yellowAccent, child: Center()),
-            2 => const ColoredBox(color: Colors.purpleAccent, child: Center()),
-            3 => const ColoredBox(color: Colors.redAccent, child: Center()),
-            int() => throw UnimplementedError(),
-          },
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: AppColors.gradientScafoldBackground,
+        ),
+        alignment: Alignment.center,
+        child: Column(
+          spacing: 20.h,
+          children: [
+            SafeArea(
+              bottom: false,
+              child: Container(
+                height: 1,
+                width: double.infinity,
+                color: AppColors.white,
+              ),
+            ),
+            Expanded(
+              child: switch (currentPage) {
+                0 => const HomePage(),
+                1 => const ColoredBox(
+                  color: Colors.yellowAccent,
+                  child: Center(),
+                ),
+                2 => const ColoredBox(
+                  color: Colors.purpleAccent,
+                  child: Center(),
+                ),
+                3 => const ProfileScreen(),
+                int() => throw UnimplementedError(),
+              },
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: Container(
-        width: 380.w,
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(100.r),
-          border: Border.all(color: AppColors.pink, width: 2.sp),
-        ),
-        margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-        child: SalomonBottomBar(
-          onTap: (newIndex) => bottomNavViewModel.setCurrentPage(newIndex),
-          currentIndex: currentPage,
-          margin: EdgeInsets.all(8.w),
-          selectedItemColor: AppColors.primaryLight,
-          itemShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(99.r),
-            side: const BorderSide(color: AppColors.primary),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          width: 380.w,
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(100.r),
+            border: Border.all(color: AppColors.pink, width: 2.sp),
           ),
-          items: items
-              .map(
-                (item) => SalomonBottomBarItem(
-                  icon: Icon(item.icon),
-                  selectedColor: AppColors.secondary,
-                  unselectedColor: AppColors.black,
-                  title: Text(item.title, style: AppFonts.black16w400),
-                ),
-              )
-              .toList(),
+          clipBehavior: Clip.antiAlias,
+          margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+          child: SalomonBottomBar(
+            onTap: (newIndex) => bottomNavViewModel.setCurrentPage(newIndex),
+            currentIndex: currentPage,
+            margin: EdgeInsets.all(8.w),
+            selectedItemColor: AppColors.primaryLight,
+            itemShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(99.r),
+              side: const BorderSide(color: AppColors.primary),
+            ),
+            items: items
+                .map(
+                  (item) => SalomonBottomBarItem(
+                    icon: Icon(item.icon),
+                    selectedColor: AppColors.secondary,
+                    unselectedColor: AppColors.black,
+                    title: Text(item.title, style: AppFonts.black16w400),
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );

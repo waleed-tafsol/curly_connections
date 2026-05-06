@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SalomonBottomBar extends StatelessWidget {
   const SalomonBottomBar({
@@ -90,16 +91,11 @@ class SalomonBottomBar extends StatelessWidget {
                     color: items.indexOf(item) == currentIndex
                         ? selectedItemColor
                         : Colors.white,
-                    // color: Color.lerp(
-                    //   selectedColor.withValues(alpha: 0.0),
-                    //   selectedColor.withValues(
-                    //     alpha: selectedColorOpacity ?? 0.1,
-                    //   ),
-                    //   t,
-                    // ),
                     shape: items.indexOf(item) == currentIndex
                         ? itemShape
-                        : null,
+                        : RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(99.r),
+                          ),
                     child: InkWell(
                       onTap: () => onTap?.call(items.indexOf(item)),
                       customBorder: itemShape,
