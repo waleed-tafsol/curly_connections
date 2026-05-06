@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+
+import '../ui/pages/booking_page.dart';
 import '../ui/pages/bottom_nav_page.dart';
 import '../ui/pages/calendar_booking_page.dart';
 import '../ui/pages/change_password_screen.dart';
@@ -97,10 +99,13 @@ abstract final class AppRoutes {
         settings: const RouteSettings(name: ChangePasswordScreen.routeName),
         builder: (_) => const ChangePasswordScreen(),
       ),
-
       SalonPage.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SalonPage.routeName),
         builder: (_) => const SalonPage(),
+      ),
+      BookingPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: BookingPage.routeName),
+        builder: (_) => const BookingPage(),
       ),
       null => throw UnimplementedError(),
       String() => throw UnimplementedError(),

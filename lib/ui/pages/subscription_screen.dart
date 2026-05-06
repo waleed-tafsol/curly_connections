@@ -83,7 +83,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                 padding: EdgeInsets.zero,
                                 value: true,
                                 onChanged: (_) {},
-                                activeColor: AppColors.white,
+                                activeThumbColor: AppColors.white,
                                 activeTrackColor: AppColors.mediumPurple,
                                 inactiveThumbColor: AppColors.textGrey,
                                 inactiveTrackColor: AppColors.white,

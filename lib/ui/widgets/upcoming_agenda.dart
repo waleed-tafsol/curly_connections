@@ -8,8 +8,14 @@ import '../resources/app_fonts.dart';
 
 class UpcomingAgenda extends StatelessWidget {
   final bool isReschedulable;
+  final bool showAsSaloon;
   final VoidCallback? onTap;
-  const UpcomingAgenda({super.key, this.isReschedulable = false, this.onTap});
+  const UpcomingAgenda({
+    super.key,
+    this.isReschedulable = false,
+    this.showAsSaloon = false,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -79,14 +85,30 @@ class UpcomingAgenda extends StatelessWidget {
               children: [
                 Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
                 const Spacer(),
-                Text(
-                  Status.confirmed.label,
-                  style: AppFonts.black14w400.copyWith(
-                    color: Status.confirmed.color,
+                if (!showAsSaloon)
+                  Text(
+                    Status.confirmed.label,
+                    style: AppFonts.black14w400.copyWith(
+                      color: Status.confirmed.color,
+                    ),
                   ),
-                ),
               ],
             ),
+            if (showAsSaloon) ...{
+              SizedBox(height: 12.h),
+              Row(
+                crossAxisAlignment: .center,
+                spacing: 6.w,
+                children: [
+                  Icon(
+                    TablerIcons.mapPin,
+                    size: 16.sp,
+                    color: AppColors.orange,
+                  ),
+                  Text('Stockton', style: AppFonts.black14w500),
+                ],
+              ),
+            },
           ],
         ),
       ),

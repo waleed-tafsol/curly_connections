@@ -8,6 +8,7 @@ import '../resources/app_fonts.dart';
 import '../widgets/app_divider.dart';
 import '../widgets/app_tab_item.dart';
 import '../widgets/review_container.dart';
+import 'booking_page.dart';
 
 class SalonPage extends StatefulWidget {
   static const String routeName = '/salon_page';
@@ -76,7 +77,8 @@ class _SalonPageState extends State<SalonPage> {
                   backgroundColor: AppColors.white,
                   foregroundColor: AppColors.black,
                 ),
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.pushNamed(context, BookingPage.routeName),
                 label: const Text('Book Now'),
                 icon: const Icon(TablerIcons.arrowRight),
                 iconAlignment: IconAlignment.end,

@@ -61,13 +61,13 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
         SizedBox(
           height: 230.h,
           child: PageView.builder(
+            pageSnapping: true,
             itemCount: widget.items.length,
             controller: _pageController,
             scrollDirection: Axis.horizontal,
-            padEnds: true,
             itemBuilder: (_, _) => Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child:  ServiceRequestCard(),
+              child: ServiceRequestCard(),
             ),
           ),
         ),
@@ -75,7 +75,7 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
         ListenableBuilder(
           listenable: _pageController,
           builder: (_, _) {
-            final currentPage = _pageController.page?.toInt();
+            final currentPage = _pageController.page?.toInt() ?? 0;
             return SingleChildScrollView(
               child: Row(
                 mainAxisAlignment: .center,

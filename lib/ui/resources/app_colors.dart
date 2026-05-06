@@ -15,6 +15,7 @@ abstract final class AppColors {
   static const dividerColor = Color(0xFFE0E0E1);
   static const orange = Color(0xFFFF8202);
   static const lightOrange = Color(0xFFF6D2A5);
+  static const lightOrange1 = Color(0xFFFDF4E9);
   static const textGrey = Color(0xFF8F9BB3);
   static const textYellow = Color(0xFFDBA400);
   static const brown = Color(0xFF683600);
@@ -24,8 +25,7 @@ abstract final class AppColors {
   static const mediumPurple = Color(0xFFE8C0FF);
   static const darkPurple = Color(0xFF4F378A);
   static const darkPurple1 = Color(0xFFA300FF);
-  static const lightGreen = Color(0xFFF3F4F6);
-  static const lightgreen = Color(0xFFB4E6DB);
+  static const lightGreen = Color(0xFFB4E6DB);
 
   static const LinearGradient gradientPurpleToPeach = LinearGradient(
     begin: Alignment.topCenter,

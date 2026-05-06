@@ -8,4 +8,12 @@ extension DateTimeUtils on DateTime {
   String get shortWeekDay {
     return DateFormat('EEE').format(this);
   }
+
+  String get monthYear {
+    return DateFormat('MMM yyyy').format(this);
+  }
+
+  String get time24Hours {
+    return DateFormat('HH:mm').format(this);
+  }
 }
