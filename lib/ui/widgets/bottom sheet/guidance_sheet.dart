@@ -48,7 +48,7 @@ class _GuidanceNoteBottomSheetState extends State<GuidanceNoteBottomSheet> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Back button
+                 
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Row(
@@ -80,6 +80,7 @@ class _GuidanceNoteBottomSheetState extends State<GuidanceNoteBottomSheet> {
                         Text("Type your note", style: AppFonts.black14w500),
                         SizedBox(height: 12.h),
                         TextFormField(
+                          controller: _noteCtrl,
                           decoration: InputDecoration(
                             hintText: "e.g estimated time",
                             contentPadding: EdgeInsets.zero,

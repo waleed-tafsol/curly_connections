@@ -67,7 +67,7 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
             padEnds: true,
             itemBuilder: (_, _) => Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: const ServiceRequestCard(),
+              child:  ServiceRequestCard(),
             ),
           ),
         ),
