@@ -291,7 +291,13 @@ class ProfileScreen extends StatelessWidget {
               ),),
                   SizedBox(height: 15.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        SelectRoleScreen.routeName,
+                            (route) => false,
+                      );
+                    },
                     style: ButtonStyle(
                       foregroundColor: WidgetStateProperty.all(
                         AppColors.white,

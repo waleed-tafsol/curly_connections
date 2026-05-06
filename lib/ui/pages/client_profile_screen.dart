@@ -6,7 +6,7 @@ import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import 'change_password_screen.dart';
 import 'edit_profile_screen.dart';
-import 'login_screen.dart';
+import 'select_role_screen.dart';
 import 'terms_conditions_screen.dart';
 
 class ClientProfileScreen extends StatelessWidget {
@@ -114,7 +114,7 @@ class ClientProfileScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamedAndRemoveUntil(
                         context,
-                        LoginScreen.routeName,
+                        SelectRoleScreen.routeName,
                         (route) => false,
                       );
                     },
@@ -139,7 +139,13 @@ class ClientProfileScreen extends StatelessWidget {
 
                   SizedBox(height: 15.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        SelectRoleScreen.routeName,
+                            (route) => false,
+                      );
+                    },
                     style: ButtonStyle(
                       foregroundColor: WidgetStateProperty.all(
                         AppColors.white,

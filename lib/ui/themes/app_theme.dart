@@ -19,6 +19,8 @@ class AppTheme {
         visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
         minLeadingWidth: 50.r,
       ),
+         splashColor: AppColors.purple,
+      highlightColor: AppColors.purple,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
