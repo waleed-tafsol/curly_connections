@@ -64,16 +64,16 @@ class SelectRoleScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30.h),
                   Text(
-                    "How curly can help you?",
-                    style: AppFonts.black22w400,
+                    "How curly can help \n you?",
+                    style: AppFonts.black22w400.copyWith(height: 1.3),
                     textAlign: .center,
                   ),
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 6.h),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                     child: Text(
-                      "Kindly select the purpose you are using this app to get the best of it’s experience",
-                      style: AppFonts.black14w400,
+                      "Kindly select the purpose you are using this \n app to get the best of it’s experience",
+                      style: AppFonts.black14w400.copyWith(height: 1.3),
                       textAlign: .center,
                     ),
                   ),

@@ -36,7 +36,7 @@ class TextFormFieldWithTitleWidget extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppFonts.black13w400,
+            style: AppFonts.black14w400,
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 7.h),

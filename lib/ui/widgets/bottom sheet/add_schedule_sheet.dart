@@ -94,7 +94,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                 SizedBox(height: 12.h),
                 Divider(
                   height: 0.h,
-                  color: AppColors.textGrey.withValues(alpha: 0.2),
+                  color: AppColors.textGrey.withValues(alpha: 0.1),
                 ),
                 SizedBox(height: 16.h),
 
@@ -138,7 +138,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                 SizedBox(height: 16.h),
                 Divider(
                   height: 0.h,
-                  color: AppColors.textGrey.withValues(alpha: 0.2),
+                  color: AppColors.textGrey.withValues(alpha: 0.1),
                 ),
                 SizedBox(height: 24.h),
 
@@ -194,7 +194,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                 SizedBox(height: 24.h),
                 Divider(
                   height: 0.h,
-                  color: AppColors.textGrey.withOpacity(0.2),
+                  color: AppColors.textGrey.withValues(alpha: 0.1),
                 ),
                 SizedBox(height: 24.h),
 
@@ -267,6 +267,8 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                     ),
                   ],
                 ),
+                SizedBox(height: 20.h),
+
               ],
             ),
           ),

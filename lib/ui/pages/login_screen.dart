@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 3.h),
                       Text(
                         "Sign in to your Curly account",
-                        style: AppFonts.grey14w400,
+                        style: AppFonts.grey14w400.copyWith(height: 1.5),
                       ),
                     ],
                   ),
@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 4.h),
               TextFormFieldWithTitleWidget(
                 title: 'Email',
                 controller: TextEditingController(),

@@ -54,12 +54,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Welcome Back", style: AppFonts.black22w400),
-                        SizedBox(height: 3.h),
-                        Text(
-                          "Sign in to your Curly account",
-                          style: AppFonts.grey14w400,
-                        ),
+                        Text("Create your curly account", style: AppFonts.black22w400),
                       ],
                     ),
                     const Spacer(),
@@ -77,6 +72,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 12.h),
                 TextFormFieldWithTitleWidget(
                   title: 'Full Name',
                   controller: TextEditingController(),
@@ -105,7 +101,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     ),
                     GestureDetector(
                       child: Text(
-                        "Forgot password?",
+                        "create a strong password",
                         style: AppFonts.grey14w400,
                         overflow: TextOverflow.ellipsis,
                       ),

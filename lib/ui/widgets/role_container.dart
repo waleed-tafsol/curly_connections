@@ -45,7 +45,7 @@ class RoleContainer extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Text(
                   description,
-                  style: AppFonts.black12w400,
+                  style: AppFonts.black12w400.copyWith(height: 1.3),
                   textAlign: .center,
                 ),
               ],

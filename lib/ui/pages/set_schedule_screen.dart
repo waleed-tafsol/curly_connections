@@ -54,21 +54,21 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 117.5.h),
-              Text('Set your schedule', style: AppFonts.black20w400),
+              SizedBox(height: 132.h),
+              Text('Set your schedule', style: AppFonts.black20w400.copyWith(height: 1.5)),
               SizedBox(height: 4.h),
-              Text('You can update it later', style: AppFonts.grey12w400),
-              SizedBox(height: 20.h),
-              Text('Schedule List', style: AppFonts.black14w400),
+              Text('You can update it later', style: AppFonts.grey12w400..copyWith(height: 1.5)),
+              SizedBox(height: 41.h),
+              Text('Schedule List', style: AppFonts.black16w500),
               SizedBox(height: 12.h),
               ..._scheduleItems.map(
                 (item) => GestureDetector(
                   onTap: _openAddSchedule,
                   child: Container(
-                    margin: EdgeInsets.only(bottom: 10.h),
+                    margin: EdgeInsets.only(bottom: 16.h),
                     padding: EdgeInsets.symmetric(
                       horizontal: 16.w,
-                      vertical: 14.h,
+                      vertical: 16.h,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.white.withOpacity(0.6),
@@ -78,7 +78,7 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(item, style: AppFonts.black14w400),
-                        Icon(Icons.chevron_right, size: 18.sp),
+                        Icon(Icons.chevron_right, size: 25.sp, color: AppColors.black,),
                       ],
                     ),
                   ),

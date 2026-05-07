@@ -45,14 +45,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
             children: [
               SizedBox(height: 117.5.h),
               Text("Subscription Plans", style: AppFonts.black20w400),
-              SizedBox(height: 4.h),
+              SizedBox(height: 10.h),
               Text(
                 "Choose the plan that suits you!",
                 style: AppFonts.grey12w400,
               ),
               SizedBox(height: 20.h),
               Container(
-                padding: EdgeInsets.only(top: 16.h),
+                padding: EdgeInsets.only(top: 32.h),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     begin: Alignment.topCenter,
@@ -71,7 +71,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                         crossAxisAlignment: .start,
                         children: [
                           Text("Starter", style: AppFonts.black30w700),
-                          SizedBox(height: 10.h),
+                          SizedBox(height: 15.h),
                           Text(
                             "Manage Bookings with Ease",
                             style: AppFonts.black18w400,
@@ -138,7 +138,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 4.h),
+                          SizedBox(height: 7.h),
                           Row(
                             children: [
                               Text("or", style: AppFonts.grey16w400),
@@ -173,7 +173,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                             },
                             child: const Text("Get Started"),
                           ),
-                          SizedBox(height: 24.h),
+                          SizedBox(height: 32.h),
                         ],
                       ),
                     ),
@@ -209,14 +209,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Center(
                 child: Text(
                   "Start your Free Trial",
-                  style: AppFonts.black16w500,
+                  style: AppFonts.black16w500.copyWith(height: 1),
                 ),
               ),
               SizedBox(height: 5.h),
               Center(
                 child: Text(
                   "Explore what we have to serve you with a 30 days trial",
-                  style: AppFonts.black12w400,
+                  style: AppFonts.black12w400.copyWith(height: 1.5),
                 ),
               ),
               SizedBox(height: 16.h),
@@ -240,7 +240,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       );
                     }
                   },
-                  child: const Text("Strat Now"),
+                  child: const Text("Start Now"),
                 ),
               ),
             ],

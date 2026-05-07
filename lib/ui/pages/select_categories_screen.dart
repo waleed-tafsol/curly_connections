@@ -107,16 +107,16 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 117.5.h),
-              Text('Select categories', style: AppFonts.black20w400),
+              SizedBox(height: 132.h),
+              Text('Select categories', style: AppFonts.black20w400.copyWith(height: 1.5)),
               SizedBox(height: 4.h),
               Text(
                 'Select the services categories you work in to let you set your schedules',
-                style: AppFonts.grey12w400,
+                style: AppFonts.grey12w400.copyWith(height: 1.5),
               ),
               SizedBox(height: 16.h),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 22.h),
                 decoration: BoxDecoration(
                   color: AppColors.white.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16.r),
@@ -125,7 +125,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
                   itemCount: _sections.length,
-                  separatorBuilder: (_, __) => SizedBox(height: 12.h),
+                  separatorBuilder: (_, __) => SizedBox(height: 22.h),
                   itemBuilder: (context, index) {
                     final section = _sections[index];
                     final selectedCount = section.selectedChips.length;
@@ -222,14 +222,13 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
                               }).toList(),
                             ),
                           ),
-                          SizedBox(height: 4.h),
+                          SizedBox(height: 20.h),
                         ],
                       ],
                     );
                   },
                 ),
               ),
-              SizedBox(height: 24.h),
             ],
           ),
         ),
