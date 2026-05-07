@@ -34,7 +34,7 @@ class ReviewContainer extends StatelessWidget {
                   Text("Olivia Bennett", style: AppFonts.black16w500),
                   SizedBox(height: 4.h),
                   Text(
-                    "Mon, sep 2, 2024 at 6:41 PM",
+                    "Mon, sep 2, 2024 at 18:41",
                     style: AppFonts.grey16w400,
                   ),
                 ],

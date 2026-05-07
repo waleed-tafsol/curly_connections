@@ -7,8 +7,8 @@ import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
 
 class SetTimeBottomSheet extends StatefulWidget {
-  final TimeOfDay initialStart;
-  final TimeOfDay initialEnd;
+  final DateTime initialStart;
+  final DateTime initialEnd;
 
   const SetTimeBottomSheet({
     super.key,
@@ -21,8 +21,8 @@ class SetTimeBottomSheet extends StatefulWidget {
 }
 
 class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
-  late TimeOfDay _startTime;
-  late TimeOfDay _endTime;
+  late DateTime _startTime;
+  late DateTime _endTime;
 
   @override
   void initState() {
@@ -97,9 +97,6 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
   //   );
   // }
 
-  String _formatHour(TimeOfDay t) => t.hour.toString().padLeft(2, '0');
-
-  String _formatMinute(TimeOfDay t) => t.minute.toString().padLeft(2, '0');
   void _save() {
     Navigator.pop(context, {'start': _startTime, 'end': _endTime});
   }
@@ -179,13 +176,13 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
                 children: [
                   Expanded(
                     child: _timeBox(
-                      value: _formatHour(_startTime),
+                      value: _startTime.hour.toString().padLeft(2, '0'),
                       label: 'Hour',
                       onTap: () async {
                         final h = await _pickHour(_startTime.hour);
                         if (h != null) {
                           setState(
-                            () => _startTime = TimeOfDay(
+                            () => _startTime = _startTime.copyWith(
                               hour: h,
                               minute: _startTime.minute,
                             ),
@@ -204,13 +201,13 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
                   ),
                   Expanded(
                     child: _timeBox(
-                      value: _formatMinute(_startTime),
+                      value: _startTime.minute.toString().padLeft(2, '0'),
                       label: 'Minute',
                       onTap: () async {
                         final m = await _pickMinute(_startTime.minute);
                         if (m != null) {
                           setState(
-                            () => _startTime = TimeOfDay(
+                            () => _startTime = _startTime.copyWith(
                               hour: _startTime.hour,
                               minute: m,
                             ),
@@ -229,13 +226,13 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
                 children: [
                   Expanded(
                     child: _timeBox(
-                      value: _formatHour(_endTime),
+                      value: _endTime.hour.toString().padLeft(2, '0'),
                       label: 'Hour',
                       onTap: () async {
                         final h = await _pickHour(_endTime.hour);
                         if (h != null) {
                           setState(
-                            () => _endTime = TimeOfDay(
+                            () => _endTime = _endTime.copyWith(
                               hour: h,
                               minute: _endTime.minute,
                             ),
@@ -254,13 +251,13 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
                   ),
                   Expanded(
                     child: _timeBox(
-                      value: _formatMinute(_endTime),
+                      value: _endTime.minute.toString().padLeft(2, '0'),
                       label: 'Minute',
                       onTap: () async {
                         final m = await _pickMinute(_endTime.minute);
                         if (m != null) {
                           setState(
-                            () => _endTime = TimeOfDay(
+                            () => _endTime = _endTime.copyWith(
                               hour: _endTime.hour,
                               minute: m,
                             ),
@@ -459,7 +456,9 @@ class _NumberPickerDialogState extends State<_NumberPickerDialog> {
                 Expanded(
                   child: ElevatedButton.icon(
                     iconAlignment: .end,
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      Navigator.pop(context, _selected);
+                    },
                     icon: Icon(
                       TablerIcons.circleCheck,
                       size: 24.sp,

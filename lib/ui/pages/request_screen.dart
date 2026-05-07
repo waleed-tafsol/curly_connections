@@ -60,7 +60,7 @@ class _RequestScreenState extends State<RequestScreen> {
                           border: Border.all(color: Colors.white),
                         ),
                         child: Text(
-                          ServiceRequest.values[index].name,
+                          ServiceRequest.values[index].label,
                           style: AppFonts.black14w400,
                         ),
                       ),

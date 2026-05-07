@@ -21,8 +21,10 @@ class ServiceRequestCard extends StatelessWidget {
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
           barrierColor: Colors.white.withValues(alpha: 0.5),
-          builder: (_) => index == 0
-              ? const StylistBookingRequestSheet()
+          builder: (_) => index != 1
+              ? StylistBookingRequestSheet(
+                  showButton: index == 2 ? false : true,
+                )
               : const StylistReschdulingRequestSheet(),
         );
       },
@@ -47,8 +49,7 @@ class ServiceRequestCard extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '5:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '17:30', style: AppFonts.black14w500),
                     ],
                   ),
                 ),
@@ -59,8 +60,7 @@ class ServiceRequestCard extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '6:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '18:30', style: AppFonts.black14w500),
                     ],
                   ),
                 ),
@@ -75,68 +75,74 @@ class ServiceRequestCard extends StatelessWidget {
                 Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
                 const Spacer(),
                 Text(
-                  Status.pending.label,
+                  index == 2 ? Status.canceled.label : Status.pending.label,
                   style: AppFonts.black14w400.copyWith(
-                    color: Status.pending.color,
+                    color: index == 2
+                        ? Status.canceled.color
+                        : Status.pending.color,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 28.h),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton.icon(
-                    iconAlignment: IconAlignment.end,
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
+            if (index != 2) SizedBox(height: 28.h),
+            if (index != 2)
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      iconAlignment: IconAlignment.end,
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8.w,
+                          vertical: 8.h,
+                        ),
+                      ),
+                      onPressed: () {},
+                      label: Text(
+                        "Approve Request",
+                        style: AppFonts.white14w500,
+                      ),
+                      icon: Icon(
+                        TablerIcons.circleCheck,
+                        color: AppColors.white,
+                        size: 24.sp,
                       ),
                     ),
-                    onPressed: () {},
-                    label: Text("Approve Request", style: AppFonts.white14w500),
-                    icon: Icon(
-                      TablerIcons.circleCheck,
-                      color: AppColors.white,
-                      size: 24.sp,
-                    ),
                   ),
-                ),
-                SizedBox(width: 16.w),
+                  SizedBox(width: 16.w),
 
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 50.h,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            blurRadius: 10.r,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: .center,
-                        children: [
-                          Text("Reject Request", style: AppFonts.black14w500),
-                          SizedBox(width: 5.w),
-                          Icon(TablerIcons.thumbDown, size: 24.sp),
-                        ],
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: 50.h,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8.w,
+                          vertical: 8.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withValues(alpha: 0.5),
+                              blurRadius: 10.r,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: .center,
+                          children: [
+                            Text("Reject Request", style: AppFonts.black14w500),
+                            SizedBox(width: 5.w),
+                            Icon(TablerIcons.thumbDown, size: 24.sp),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ],
         ),
       ),

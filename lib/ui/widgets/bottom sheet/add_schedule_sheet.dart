@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
+import '../../../utils/date_time_utils.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
 import 'guidance_sheet.dart';
@@ -19,15 +20,8 @@ class AddScheduleBottomSheet extends StatefulWidget {
 class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
   final List<String> _days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   int _selectedDayIndex = 2; // Tuesday
-  TimeOfDay _startTime = const TimeOfDay(hour: 8, minute: 30);
-  TimeOfDay _endTime = const TimeOfDay(hour: 18, minute: 30);
-
-  String _formatTime(TimeOfDay t) {
-    final hour = t.hourOfPeriod == 0 ? 12 : t.hourOfPeriod;
-    final minute = t.minute.toString().padLeft(2, '0');
-    //final period = t.period == DayPeriod.am ? 'AM' : 'PM';
-    return '$hour:$minute';
-  }
+  DateTime _startTime = DateTime(0, 0, 0, 17, 30);
+  DateTime _endTime = DateTime(0, 0, 0, 18, 30);
 
   String _dayName(int index) {
     const names = [
@@ -43,7 +37,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
   }
 
   void _openSetTime() async {
-    final result = await showModalBottomSheet<Map<String, TimeOfDay>>(
+    final result = await showModalBottomSheet<Map<String, DateTime>>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -167,11 +161,11 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                         Row(
                           children: [
                             Text(
-                              '${_formatTime(_startTime)}',
+                              '${_startTime.time24Hours}',
                               style: AppFonts.black16w500,
                             ),
-                            SizedBox(width: 4.w),
-                            Text("AM", style: AppFonts.grey16w500),
+                            // SizedBox(width: 4.w),
+                            // Text("AM", style: AppFonts.grey16w500),
                             SizedBox(width: 12.w),
                             Icon(
                               Icons.arrow_forward,
@@ -180,11 +174,11 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                             ),
                             SizedBox(width: 12.w),
                             Text(
-                              '${_formatTime(_endTime)}',
+                              '${_endTime.time24Hours}',
                               style: AppFonts.black16w500,
                             ),
-                            SizedBox(width: 4.w),
-                            Text("PM", style: AppFonts.grey16w500),
+                            // SizedBox(width: 4.w),
+                            // Text("PM", style: AppFonts.grey16w500),
                           ],
                         ),
                         SizedBox(width: 6.w),

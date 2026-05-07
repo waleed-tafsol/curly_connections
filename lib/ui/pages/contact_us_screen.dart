@@ -36,7 +36,7 @@ class ContactUsScreen extends StatelessWidget {
                       _buildContactInfo(
                         icon: TablerIcons.brandTeams,
                         title: "Customer Service",
-                        value: "Opening Time (02:30PM - 9:30PM)",
+                        value: "Opening Time (13:30 - 20:30)",
                       ),
                       SizedBox(height: 10.h),
                       _buildContactInfo(

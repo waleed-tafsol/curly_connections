@@ -10,7 +10,9 @@ import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
 
 class StylistBookingRequestSheet extends StatefulWidget {
-  const StylistBookingRequestSheet({super.key});
+  final bool showButton;
+  
+  const StylistBookingRequestSheet({super.key, this.showButton = true});
 
   @override
   State<StylistBookingRequestSheet> createState() =>
@@ -102,75 +104,78 @@ class _StylistBookingRequestSheetState
                   Text("Stockton", style: AppFonts.black14w500),
                   const Spacer(),
                   Text(
-                    Status.pending.label,
+                    widget.showButton
+                        ? Status.pending.label
+                        : Status.confirmed.label,
                     style: AppFonts.black14w400.copyWith(
-                      color: Status.pending.color,
+                      color: widget.showButton
+                          ? Status.pending.color
+                          : Status.confirmed.color,
                     ),
                   ),
                 ],
               ),
-
-              SizedBox(height: 24.h),
-
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        iconAlignment: IconAlignment.end,
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(
-                          TablerIcons.circleCheck,
-                          size: 24.sp,
-                          color: AppColors.white,
-                        ),
-                        label: const Text('Approve Request'),
-                      ),
-                    ),
-                    SizedBox(width: 16.w),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.5),
-                                blurRadius: 10.r,
-                              ),
-                            ],
+              if (widget.showButton) SizedBox(height: 24.h),
+              if (widget.showButton)
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          iconAlignment: IconAlignment.end,
+                          onPressed: () => Navigator.pop(context),
+                          icon: Icon(
+                            TablerIcons.circleCheck,
+                            size: 24.sp,
+                            color: AppColors.white,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Reject Request',
-                                style: AppFonts.black14w400,
-                              ),
-                              SizedBox(width: 4.w),
-                              Icon(
-                                TablerIcons.thumbDown,
-                                size: 24.sp,
-                                color: AppColors.black,
-                              ),
-                            ],
-                          ),
+                          label: const Text('Approve Request'),
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 16.w),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12.w),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withValues(alpha: 0.5),
+                                  blurRadius: 10.r,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Reject Request',
+                                  style: AppFonts.black14w400,
+                                ),
+                                SizedBox(width: 4.w),
+                                Icon(
+                                  TablerIcons.thumbDown,
+                                  size: 24.sp,
+                                  color: AppColors.black,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),
         Positioned(
-          top: -20.h, 
+          top: -20.h,
           right: 8.w,
           child: GestureDetector(
             onTap: () => Navigator.pop(context),

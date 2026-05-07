@@ -7,12 +7,13 @@ import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
 class UpcomingAgenda extends StatelessWidget {
-  final bool isReschedulable;
+  final Status status;
+
   final bool showAsSaloon;
   final VoidCallback? onTap;
   const UpcomingAgenda({
     super.key,
-    this.isReschedulable = false,
+    this.status = Status.pending,
     this.showAsSaloon = false,
     this.onTap,
   });
@@ -40,8 +41,7 @@ class UpcomingAgenda extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '5:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '17:30', style: AppFonts.black14w500),
                     ],
                   ),
                 ),
@@ -52,13 +52,12 @@ class UpcomingAgenda extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '6:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '18:30', style: AppFonts.black14w500),
                     ],
                   ),
                 ),
-                if (isReschedulable) const Spacer(),
-                if (isReschedulable)
+                if (status != Status.confirmed) const Spacer(),
+                if (status != Status.confirmed)
                   Row(
                     children: [
                       Icon(
@@ -87,10 +86,8 @@ class UpcomingAgenda extends StatelessWidget {
                 const Spacer(),
                 if (!showAsSaloon)
                   Text(
-                    Status.confirmed.label,
-                    style: AppFonts.black14w400.copyWith(
-                      color: Status.confirmed.color,
-                    ),
+                    status.label,
+                    style: AppFonts.black14w400.copyWith(color: status.color),
                   ),
               ],
             ),

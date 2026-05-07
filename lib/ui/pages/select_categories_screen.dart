@@ -36,7 +36,10 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
       subCategories: [
         'Haircuts & Styling',
         'Hair Coloring',
+        'Hair Size',
         'Hair Treatments',
+        'Hair Length',
+        'knotless & normal',
         'Grooming Services',
         'Hair Extensions & Wigs',
       ],

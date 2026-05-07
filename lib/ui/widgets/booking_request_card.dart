@@ -42,8 +42,8 @@ class BookingRequestCard extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '5:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '17:30', style: AppFonts.black14w500),
+                   
                     ],
                   ),
                 ),
@@ -54,8 +54,8 @@ class BookingRequestCard extends StatelessWidget {
                   textAlign: .center,
                   text: TextSpan(
                     children: [
-                      TextSpan(text: '6:30  ', style: AppFonts.black14w500),
-                      TextSpan(text: 'PM', style: AppFonts.grey14w500),
+                      TextSpan(text: '18:30', style: AppFonts.black14w500),
+                  
                     ],
                   ),
                 ),

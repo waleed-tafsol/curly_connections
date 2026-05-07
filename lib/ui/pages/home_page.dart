@@ -13,6 +13,8 @@ import '../widgets/app_divider.dart';
 import '../widgets/app_drop_down.dart';
 import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
+import '../widgets/bottom sheet/stylist_booking_request_sheet.dart';
+import '../widgets/bottom sheet/stylist_rescheduling_request.dart';
 import '../widgets/upcoming_agenda.dart';
 import 'map_explore_page.dart';
 import 'salon_page.dart';
@@ -57,7 +59,7 @@ class HomePage extends StatelessWidget {
                   items: List.generate(4, (index) => 'Elena K.'),
                 ),
                 const AppDivider(),
-                _buildUpcomingAgenda(),
+                _buildUpcomingAgenda(context: context),
                 SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
               ],
             ),
@@ -244,7 +246,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildUpcomingAgenda() {
+  Widget _buildUpcomingAgenda({required BuildContext context}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -263,9 +265,22 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 8.h),
           ...List.generate(
             4,
-            (_) => Padding(
+            (index) => Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: const UpcomingAgenda(),
+              child: UpcomingAgenda(
+                status: index % 2 == 0 ? Status.confirmed : Status.pending,
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    barrierColor: Colors.white.withValues(alpha: 0.5),
+                    builder: (_) => index % 2 == 0
+                        ? const StylistBookingRequestSheet(showButton: false)
+                        : const StylistReschdulingRequestSheet(),
+                  );
+                },
+              ),
             ),
           ),
         ],
