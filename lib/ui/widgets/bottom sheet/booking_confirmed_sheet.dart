@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../../constants/assets.dart';
-import '../../pages/review_detail_screen.dart';
+import '../../pages/bottom_nav_page.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
 
@@ -62,7 +62,7 @@ class _BookingConfirmedSheetState extends State<BookingConfirmedSheet> {
 
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, ReviewDetailScreen.routeName);
+                    Navigator.pushNamed(context, BottomNavPage.routeName);
                   },
                   child: Container(
                     alignment: .center,

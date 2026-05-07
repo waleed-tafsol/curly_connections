@@ -148,7 +148,11 @@ class _RequestScreenState extends State<RequestScreen> {
                         : 15.h,
                   ),
                   child: userType == UserType.client
-                      ? const BookingRequestCard()
+                      ? BookingRequestCard(
+                          status: index % 2 == 0
+                              ? Status.booked
+                              : Status.completed,
+                        )
                       : ServiceRequestCard(index: _selectedIndex),
                 );
               },
