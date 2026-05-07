@@ -56,8 +56,8 @@ class UpcomingAgenda extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (status != Status.confirmed) const Spacer(),
-                if (status != Status.confirmed)
+                if (status != Status.confirmed && !showAsSaloon) const Spacer(),
+                if (status != Status.confirmed && !showAsSaloon)
                   Row(
                     children: [
                       Icon(
