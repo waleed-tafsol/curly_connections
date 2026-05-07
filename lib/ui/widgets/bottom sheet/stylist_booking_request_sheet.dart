@@ -19,8 +19,6 @@ class StylistBookingRequestSheet extends StatefulWidget {
 
 class _StylistBookingRequestSheetState
     extends State<StylistBookingRequestSheet> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -167,7 +165,7 @@ class _StylistBookingRequestSheetState
                   ],
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),

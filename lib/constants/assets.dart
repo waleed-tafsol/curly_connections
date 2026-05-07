@@ -29,4 +29,5 @@ class PngAssets {
   static const String onboardingSty1 = '${_assets}onboarding_sty_1.png';
   static const String onboardingSty2 = '${_assets}onboarding_sty_2.png';
   static const String onboardingSty3 = '${_assets}onboarding_sty_3.png';
+  static const String thumbsUp = '${_assets}thumbs_up.png';
 }

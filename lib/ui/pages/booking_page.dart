@@ -6,6 +6,7 @@ import '../../utils/date_time_utils.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../widgets/app_divider.dart';
+import '../widgets/bottom sheet/booking_confirmed_sheet.dart';
 
 class BookingPage extends StatelessWidget {
   static const String routeName = '/booking_page';
@@ -69,7 +70,15 @@ class BookingPage extends StatelessWidget {
               _buildSlots(),
               const Spacer(),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    barrierColor: Colors.white.withValues(alpha: 0.5),
+                    builder: (_) => const BookingConfirmedSheet(),
+                  );
+                },
                 label: const Text('Confirm Booking'),
                 icon: const Icon(TablerIcons.arrowRight),
                 iconAlignment: IconAlignment.end,

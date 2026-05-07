@@ -13,6 +13,7 @@ import '../ui/pages/login_screen.dart';
 import '../ui/pages/map_explore_page.dart';
 import '../ui/pages/onboarding_screen.dart';
 import '../ui/pages/portfolio_screen.dart';
+import '../ui/pages/review_detail_screen.dart';
 import '../ui/pages/review_screen.dart';
 import '../ui/pages/salon_page.dart';
 import '../ui/pages/select_categories_screen.dart';
@@ -107,9 +108,14 @@ abstract final class AppRoutes {
       BookingPage.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: BookingPage.routeName),
         builder: (_) => const BookingPage(),
-      ),      ContactUsScreen.routeName => CupertinoPageRoute(
+      ),
+      ContactUsScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: ContactUsScreen.routeName),
         builder: (_) => const ContactUsScreen(),
+      ),
+      ReviewDetailScreen.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: ReviewDetailScreen.routeName),
+        builder: (_) => const ReviewDetailScreen(),
       ),
 
       null => throw UnimplementedError(),

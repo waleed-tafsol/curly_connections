@@ -14,7 +14,6 @@ class CancelBookingSheet extends StatefulWidget {
 
 class _CancelBookingSheetState extends State<CancelBookingSheet> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Padding(
       // This pushes the sheet up when the keyboard appears
@@ -76,7 +75,11 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                         children: [
                           Text("Cancel Booking", style: AppFonts.black14w500),
                           SizedBox(width: 5.w),
-                          Icon(TablerIcons.playstationX, size: 24.sp,color: AppColors.black,),
+                          Icon(
+                            TablerIcons.playstationX,
+                            size: 24.sp,
+                            color: AppColors.black,
+                          ),
                         ],
                       ),
                     ),
@@ -101,7 +104,11 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                   border: Border.all(color: AppColors.dividerColor),
                 ),
                 alignment: Alignment.center,
-                child: Icon(TablerIcons.playstationX, size: 20.sp),
+                child: Icon(
+                  TablerIcons.playstationX,
+                  size: 20.sp,
+                  color: AppColors.black,
+                ),
               ),
             ),
           ),

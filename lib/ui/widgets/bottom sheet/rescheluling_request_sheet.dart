@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
+import '../../../utils/date_time_utils.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
 
@@ -66,75 +67,9 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                   Divider(height: 0.h, color: AppColors.dividerColor),
                   SizedBox(height: 12.h),
                   Text("Schedule Slots", style: AppFonts.black14w500),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.lightGreen),
-                        ),
-                        child: Text(
-                          "08:30 - 09:30",
-                          style: AppFonts.black16w500,
-                        ),
-                      ),
-                      SizedBox(width: 12.w),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.textGrey),
-                        ),
-                        child: Text(
-                          "08:30 - 09:30",
-                          style: AppFonts.black16w500,
-                        ),
-                      ),
-                    ],
-                  ),
                   SizedBox(height: 12.h),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.textGrey),
-                        ),
-                        child: Text(
-                          "08:30 - 09:30",
-                          style: AppFonts.black16w500,
-                        ),
-                      ),
-                      SizedBox(width: 12.w),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 16.w,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          border: .all(color: AppColors.lightGreen),
-                        ),
-                        child: Text(
-                          "08:30 - 09:30",
-                          style: AppFonts.black16w500,
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildSlots(),
                   SizedBox(height: 40.h),
-
                   IntrinsicHeight(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -206,6 +141,37 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
           ),
         ],
       ),
+    );
+  }
+
+  Wrap _buildSlots() {
+    final time = DateTime(0, 0, 0, 8, 30);
+    return Wrap(
+      spacing: 12.w,
+      runSpacing: 12.h,
+      children: List.generate(5, (index) {
+        final start = time.add(Duration(hours: index));
+        final end = start.add(const Duration(hours: 1));
+        return Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(12.r),
+            child: Ink(
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(color: AppColors.lightGreen),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              child: Text(
+                '${start.time24Hours} - ${end.time24Hours}',
+                style: AppFonts.black16w600,
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }

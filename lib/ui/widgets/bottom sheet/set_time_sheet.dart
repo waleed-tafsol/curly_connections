@@ -136,233 +136,224 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
-    return SizedBox(
-      height: screenHeight * 0.75 + 18.h,
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: screenHeight * 0.75,
-            child: Container(
-              padding: EdgeInsets.all(20.w),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.r),
-                  topRight: Radius.circular(24.r),
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          padding: EdgeInsets.all(20.w),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.r),
+              topRight: Radius.circular(24.r),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Back button
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      TablerIcons.chevronLeft,
+                      size: 24.sp,
+                      color: AppColors.black,
+                    ),
+                    SizedBox(width: 5.w),
+                    Text('Back', style: AppFonts.black14w500),
+                  ],
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              SizedBox(height: 24.h),
+              Text('Set start and end time', style: AppFonts.black20w400),
+              SizedBox(height: 4.h),
+
+              // ── Starts from ──
+              Text('Starts from', style: AppFonts.grey12w400),
+              SizedBox(height: 24.h),
+              Row(
                 children: [
-                  // Back button
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          TablerIcons.chevronLeft,
-                          size: 24.sp,
-                          color: AppColors.black,
-                        ),
-                        SizedBox(width: 5.w),
-                        Text('Back', style: AppFonts.black14w500),
-                      ],
+                  Expanded(
+                    child: _timeBox(
+                      value: _formatHour(_startTime),
+                      label: 'Hour',
+                      onTap: () async {
+                        final h = await _pickHour(_startTime.hour);
+                        if (h != null) {
+                          setState(
+                            () => _startTime = TimeOfDay(
+                              hour: h,
+                              minute: _startTime.minute,
+                            ),
+                          );
+                        }
+                      },
                     ),
                   ),
-                  SizedBox(height: 24.h),
-                  Text('Set start and end time', style: AppFonts.black20w400),
-                  SizedBox(height: 4.h),
-
-                  // ── Starts from ──
-                  Text('Starts from', style: AppFonts.grey12w400),
-                  SizedBox(height: 24.h),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _timeBox(
-                          value: _formatHour(_startTime),
-                          label: 'Hour',
-                          onTap: () async {
-                            final h = await _pickHour(_startTime.hour);
-                            if (h != null) {
-                              setState(
-                                () => _startTime = TimeOfDay(
-                                  hour: h,
-                                  minute: _startTime.minute,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 12.w,
-                          right: 12.w,
-                          bottom: 20.h,
-                        ),
-                        child: Text(':', style: AppFonts.black30w700),
-                      ),
-                      Expanded(
-                        child: _timeBox(
-                          value: _formatMinute(_startTime),
-                          label: 'Minute',
-                          onTap: () async {
-                            final m = await _pickMinute(_startTime.minute);
-                            if (m != null) {
-                              setState(
-                                () => _startTime = TimeOfDay(
-                                  hour: _startTime.hour,
-                                  minute: m,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 12.w,
+                      right: 12.w,
+                      bottom: 20.h,
+                    ),
+                    child: Text(':', style: AppFonts.black30w700),
                   ),
-                  SizedBox(height: 20.h),
-
-                  Text('Ends at', style: AppFonts.grey12w400),
-                  SizedBox(height: 12.h),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _timeBox(
-                          value: _formatHour(_endTime),
-                          label: 'Hour',
-                          onTap: () async {
-                            final h = await _pickHour(_endTime.hour);
-                            if (h != null) {
-                              setState(
-                                () => _endTime = TimeOfDay(
-                                  hour: h,
-                                  minute: _endTime.minute,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 12.w,
-                          right: 12.w,
-                          bottom: 20.h,
-                        ),
-                        child: Text(':', style: AppFonts.black30w700),
-                      ),
-                      Expanded(
-                        child: _timeBox(
-                          value: _formatMinute(_endTime),
-                          label: 'Minute',
-                          onTap: () async {
-                            final m = await _pickMinute(_endTime.minute);
-                            if (m != null) {
-                              setState(
-                                () => _endTime = TimeOfDay(
-                                  hour: _endTime.hour,
-                                  minute: m,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                    ],
+                  Expanded(
+                    child: _timeBox(
+                      value: _formatMinute(_startTime),
+                      label: 'Minute',
+                      onTap: () async {
+                        final m = await _pickMinute(_startTime.minute);
+                        if (m != null) {
+                          setState(
+                            () => _startTime = TimeOfDay(
+                              hour: _startTime.hour,
+                              minute: m,
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ),
-                  SizedBox(height: 12.h),
-                  Row(
-                    children: [
-                      const Spacer(),
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          iconAlignment: .end,
-                          onPressed: () {
-                            _save();
-                         //   Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            TablerIcons.circleCheck,
-                            size: 24.sp,
-                            color: AppColors.white,
-                          ),
-                          label: const Text('Save'),
-                        ),
-                      ),
-                      SizedBox(width: 16.w),
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          height: 50.h,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 12.w,
-                            vertical: 8.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.5),
-                                blurRadius: 10.r,
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            children: [
-                              Text('Cancel', style: AppFonts.black14w400),
-                              SizedBox(width: 4.w),
-                              Icon(
-                                TablerIcons.trash,
-                                size: 24.sp,
-                                color: AppColors.black,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 8.h),
                 ],
               ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            right: 8.w,
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                width: 40.w,
-                height: 40.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.white,
-                  border: .all(color: AppColors.dividerColor),
-                ),
-                alignment: .center,
-                child: Center(
-                  child: Icon(
-                    TablerIcons.playstationX,
-                    size: 30.sp,
-                    color: AppColors.black,
+              SizedBox(height: 20.h),
+
+              Text('Ends at', style: AppFonts.grey12w400),
+              SizedBox(height: 12.h),
+              Row(
+                children: [
+                  Expanded(
+                    child: _timeBox(
+                      value: _formatHour(_endTime),
+                      label: 'Hour',
+                      onTap: () async {
+                        final h = await _pickHour(_endTime.hour);
+                        if (h != null) {
+                          setState(
+                            () => _endTime = TimeOfDay(
+                              hour: h,
+                              minute: _endTime.minute,
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 12.w,
+                      right: 12.w,
+                      bottom: 20.h,
+                    ),
+                    child: Text(':', style: AppFonts.black30w700),
+                  ),
+                  Expanded(
+                    child: _timeBox(
+                      value: _formatMinute(_endTime),
+                      label: 'Minute',
+                      onTap: () async {
+                        final m = await _pickMinute(_endTime.minute);
+                        if (m != null) {
+                          setState(
+                            () => _endTime = TimeOfDay(
+                              hour: _endTime.hour,
+                              minute: m,
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 12.h),
+              Row(
+                children: [
+                  const Spacer(),
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      iconAlignment: .end,
+                      onPressed: () {
+                        _save();
+                        //   Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        TablerIcons.circleCheck,
+                        size: 24.sp,
+                        color: AppColors.white,
+                      ),
+                      label: const Text('Save'),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      height: 50.h,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 8.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withValues(alpha: 0.5),
+                            blurRadius: 10.r,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Text('Cancel', style: AppFonts.black14w400),
+                          SizedBox(width: 4.w),
+                          Icon(
+                            TablerIcons.trash,
+                            size: 24.sp,
+                            color: AppColors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: MediaQuery.paddingOf(context).bottom + 20.h),
+            ],
+          ),
+        ),
+        Positioned(
+          top: -20.h,
+          right: 8.w,
+          child: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              width: 40.w,
+              height: 40.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.white,
+                border: .all(color: AppColors.dividerColor),
+              ),
+              alignment: .center,
+              child: Center(
+                child: Icon(
+                  TablerIcons.playstationX,
+                  size: 30.sp,
+                  color: AppColors.black,
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
