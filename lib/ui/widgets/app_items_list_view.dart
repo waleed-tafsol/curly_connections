@@ -59,7 +59,7 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
         } else
           SizedBox(height: 12.h),
         SizedBox(
-          height: 230.h,
+          height: 210.sp,
           child: PageView.builder(
             pageSnapping: true,
             itemCount: widget.items.length,

@@ -16,7 +16,7 @@ class BookingSummary extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 12.w, horizontal: 16.w),
         decoration: BoxDecoration(
           gradient: AppColors.gradientPeachToPurple,
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(20.r),
           border: .all(color: AppColors.fillColor, width: 2.w),
         ),
         child: Column(
