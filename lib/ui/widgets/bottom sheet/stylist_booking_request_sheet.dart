@@ -169,10 +169,8 @@ class _StylistBookingRequestSheetState
             ],
           ),
         ),
-
-        // ── Floating ✕ button ──
         Positioned(
-          top: -20.h, // ← sits above the sheet
+          top: -20.h, 
           right: 8.w,
           child: GestureDetector(
             onTap: () => Navigator.pop(context),
