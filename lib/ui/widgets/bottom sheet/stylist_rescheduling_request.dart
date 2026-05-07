@@ -8,6 +8,8 @@ import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 import '../../../constants/assets.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_fonts.dart';
+import 'cancel_booking_sheet.dart';
+import 'rescheluling_request_sheet.dart';
 
 class StylistReschdulingRequestSheet extends StatefulWidget {
   const StylistReschdulingRequestSheet({super.key});
@@ -105,7 +107,15 @@ class _StylistReschdulingRequestSheetState
                     Expanded(
                       child: ElevatedButton.icon(
                         iconAlignment: IconAlignment.end,
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            barrierColor: Colors.white.withValues(alpha: 0.5),
+                            builder: (_) => const ReschelulingRequestSheet(),
+                          );
+                        },
                         icon: Icon(
                           TablerIcons.history,
                           size: 24.sp,
@@ -117,7 +127,15 @@ class _StylistReschdulingRequestSheetState
                     SizedBox(width: 16.w),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            barrierColor: Colors.white.withValues(alpha: 0.5),
+                            builder: (_) => const CancelBookingSheet(),
+                          );
+                        },
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 12.w),
                           decoration: BoxDecoration(

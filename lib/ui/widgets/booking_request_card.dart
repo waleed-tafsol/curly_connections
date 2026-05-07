@@ -8,6 +8,7 @@ import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import 'bottom sheet/cancel_booking_sheet.dart';
 import 'bottom sheet/rescheluling_request_sheet.dart';
+import 'bottom sheet/stylist_rescheduling_request.dart';
 
 class BookingRequestCard extends StatelessWidget {
   Status status = Status.booked;
@@ -19,6 +20,14 @@ class BookingRequestCard extends StatelessWidget {
       onTap: () {
         if (status == Status.completed) {
           Navigator.pushNamed(context, ReviewDetailScreen.routeName);
+        } else {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            barrierColor: Colors.white.withValues(alpha: 0.5),
+            builder: (_) => const StylistReschdulingRequestSheet(),
+          );
         }
       },
       child: Container(
@@ -43,7 +52,6 @@ class BookingRequestCard extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(text: '17:30', style: AppFonts.black14w500),
-                   
                     ],
                   ),
                 ),
@@ -55,7 +63,6 @@ class BookingRequestCard extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(text: '18:30', style: AppFonts.black14w500),
-                  
                     ],
                   ),
                 ),
@@ -94,7 +101,7 @@ class BookingRequestCard extends StatelessWidget {
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.white.withValues(alpha: 0.5),
-                          builder: (_) => const CancelBookingSheet(),
+                          builder: (_) => const ReschelulingRequestSheet(),
                         );
                       },
                       label: Text("Reschedule", style: AppFonts.white14w500),
@@ -115,7 +122,7 @@ class BookingRequestCard extends StatelessWidget {
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.white.withValues(alpha: 0.5),
-                          builder: (_) => const ReschelulingRequestSheet(),
+                          builder: (_) => const CancelBookingSheet(),
                         );
                       },
                       child: Container(
@@ -137,9 +144,13 @@ class BookingRequestCard extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: .center,
                           children: [
-                            Text("Reject Request", style: AppFonts.black14w500),
+                            Text("Cancel Booking", style: AppFonts.black14w500),
                             SizedBox(width: 5.w),
-                            Icon(TablerIcons.thumbDown, size: 24.sp),
+                            Icon(
+                              TablerIcons.playstationX,
+                              size: 24.sp,
+                              color: AppColors.black,
+                            ),
                           ],
                         ),
                       ),

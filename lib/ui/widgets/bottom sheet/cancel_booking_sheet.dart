@@ -53,7 +53,9 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                   SizedBox(height: 100.h),
 
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
                     child: Container(
                       height: 50.h,
                       padding: EdgeInsets.symmetric(
