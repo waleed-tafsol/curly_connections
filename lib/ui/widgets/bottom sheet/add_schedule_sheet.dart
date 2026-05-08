@@ -41,7 +41,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.white.withValues(alpha: 0.5),
+      barrierColor: Colors.white.withValues(alpha: 0.9),
       builder: (_) =>
           SetTimeBottomSheet(initialStart: _startTime, initialEnd: _endTime),
     );
@@ -58,7 +58,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.white.withValues(alpha: 0.5),
+      barrierColor: Colors.white.withValues(alpha: 0.9),
       builder: (_) => const GuidanceNoteBottomSheet(),
     );
   }
@@ -125,8 +125,10 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                         child: Text(
                           _days[i],
                           style: (AppFonts.black20w500).copyWith(
+                            height: 1.sp,
                             color: isSelected ? AppColors.orange : null,
                           ),
+                          textAlign: .end,
                         ),
                       ),
                     );
@@ -215,7 +217,12 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                     ),
                   ),
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: 24.h),
+                Divider(
+                  height: 0.h,
+                  color: AppColors.textGrey.withValues(alpha: 0.1),
+                ),
+                SizedBox(height: 24.h),
 
                 Row(
                   children: [
@@ -254,7 +261,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                         ),
                         child: Row(
                           children: [
-                            Text('Cancel', style: AppFonts.black14w400),
+                            Text('Cancel', style: AppFonts.black14w500),
                             SizedBox(width: 4.w),
                             Icon(
                               TablerIcons.trash,
@@ -267,8 +274,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.h),
-
+                SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
               ],
             ),
           ),

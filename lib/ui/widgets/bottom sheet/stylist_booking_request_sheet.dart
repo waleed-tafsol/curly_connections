@@ -11,7 +11,7 @@ import '../../resources/app_fonts.dart';
 
 class StylistBookingRequestSheet extends StatefulWidget {
   final bool showButton;
-  
+
   const StylistBookingRequestSheet({super.key, this.showButton = true});
 
   @override
@@ -40,7 +40,7 @@ class _StylistBookingRequestSheetState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 12.h), // ← space for ✕ button
-              Text("Booking request", style: AppFonts.grey20w400),
+              Text("Booking request", style: AppFonts.grey20w500),
               SizedBox(height: 24.h),
               Divider(height: 0.h, color: AppColors.dividerColor),
               SizedBox(height: 16.h),
@@ -62,7 +62,7 @@ class _StylistBookingRequestSheetState
               ),
               SizedBox(height: 16.h),
               Divider(height: 0.h, color: AppColors.dividerColor),
-              SizedBox(height: 12.h),
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   ClipOval(

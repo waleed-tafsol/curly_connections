@@ -1,6 +1,8 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
@@ -52,58 +54,76 @@ class PortfolioScreen extends StatelessWidget {
                 //   ],
                 // ),
                 // SizedBox(height: 25.h),
-
-                // Upload Section Card
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(16.w),
-                  decoration: BoxDecoration(
-                    color: AppColors.white.withValues(alpha: 0.4),
-                    borderRadius: BorderRadius.circular(20.r),
-                    border: Border.all(
-                      color: AppColors.textFeildStroke,
-                      width: 2,
-                    ),
+                DottedBorder(
+                  options: RoundedRectDottedBorderOptions(
+                    color: AppColors.fillColor,
+                    radius: Radius.circular(20.r),
+                    dashPattern: [4, 5],
+                    strokeWidth: 2.w,
+                    padding: EdgeInsets.zero,
                   ),
-                  child: Column(
-                    children: [
-                      SvgPicture.asset(SvgAssets.photo, height: 48.sp),
-                      SizedBox(height: 8.h),
-                      Text(
-                        'Upload Portfolio Images',
-                        style: AppFonts.black16w500,
-                      ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        'Upload photos of your past works to showcase the clients looking for stylists',
-                        textAlign: TextAlign.center,
-                        style: AppFonts.grey14w400.copyWith(height: 1.36),
-                      ),
-                      SizedBox(height: 12.h),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.file_copy_outlined,
-                              color: AppColors.white,
-                              size: 18.sp,
-                            ),
-                            SizedBox(width: 5.w),
-                            Text('Choose Files', style: AppFonts.white15w500),
-                          ],
+
+                  // [dashWidth, gapWidth]
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(16.w),
+                    decoration: BoxDecoration(
+                      color: AppColors.white.withValues(alpha: 0.4),
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: Column(
+                      children: [
+                        SvgPicture.asset(SvgAssets.photo, height: 48.sp),
+                        SizedBox(height: 8.h),
+                        Text(
+                          'Upload Portfolio Images',
+                          style: AppFonts.black16w500,
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 8.h),
+                        Text(
+                          'Upload photos of your past works to showcase the clients looking for stylists',
+                          textAlign: TextAlign.center,
+                          style: AppFonts.grey14w400.copyWith(
+                            height: 1.36,
+                            color: const Color(0xFF0B0B0B),
+                          ),
+                        ),
+                        SizedBox(height: 12.h),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                TablerIcons.upload,
+                                color: AppColors.white,
+                                size: 20.sp,
+                              ),
+                              SizedBox(width: 5.w),
+                              Text('Choose Files', style: AppFonts.white15w500),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 25.h),
                 Row(
                   children: [
-                    Text('PHOTOS GALLERY', style: AppFonts.grey12w400),
+                    Text(
+                      'PHOTOS GALLERY',
+                      style: AppFonts.grey12w400.copyWith(
+                        color: const Color(0xFF0B0B0B),
+                      ),
+                    ),
                     SizedBox(width: 4.w),
-                    Text('(48)', style: AppFonts.grey12w400),
+                    Text(
+                      '(48)',
+                      style: AppFonts.grey12w400.copyWith(
+                        color: const Color(0xFF0B0B0B),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 12.h),

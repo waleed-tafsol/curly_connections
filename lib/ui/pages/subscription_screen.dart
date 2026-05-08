@@ -48,7 +48,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               SizedBox(height: 10.h),
               Text(
                 "Choose the plan that suits you!",
-                style: AppFonts.grey12w400,
+                style: AppFonts.black12w400,
               ),
               SizedBox(height: 20.h),
               Container(

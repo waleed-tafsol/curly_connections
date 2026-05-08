@@ -19,7 +19,7 @@ class CalendarBookingPage extends StatelessWidget {
         crossAxisAlignment: .start,
         children: [
           ListTile(
-            title: Text('Calendar', style: AppFonts.black20w400),
+            title: Text('Calendar', style: AppFonts.black20w500),
             trailing: IconButton(
               onPressed: () {},
               icon: Icon(TablerIcons.bell, size: 32.sp, color: AppColors.black),
@@ -41,7 +41,9 @@ class CalendarBookingPage extends StatelessWidget {
           SizedBox(height: 20.h),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom ),
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.paddingOf(context).bottom,
+              ),
               child: Column(
                 spacing: 17.5.h,
                 children: List.generate(10, (_) => const BookingContainer()),

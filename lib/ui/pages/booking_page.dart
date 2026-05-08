@@ -75,7 +75,7 @@ class BookingPage extends StatelessWidget {
                     context: context,
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
-                    barrierColor: Colors.white.withValues(alpha: 0.5),
+                    barrierColor: Colors.white.withValues(alpha: 0.9),
                     builder: (_) => const BookingConfirmedSheet(),
                   );
                 },

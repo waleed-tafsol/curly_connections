@@ -77,12 +77,18 @@ class UpcomingAgenda extends StatelessWidget {
               ],
             ),
             SizedBox(height: 12.h),
-            Text("Elena K.", style: AppFonts.black22w400),
-            SizedBox(height: 4.h),
+            Text(
+              "Elena K.",
+              style: AppFonts.black22w400.copyWith(height: 1.sp),
+            ),
+            SizedBox(height: 5.h),
             Row(
               mainAxisAlignment: .center,
               children: [
-                Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
+                Text(
+                  "FULL COLOR + TREATMENT",
+                  style: AppFonts.grey14w400.copyWith(height: 1.sp),
+                ),
                 const Spacer(),
                 if (!showAsSaloon)
                   Text(

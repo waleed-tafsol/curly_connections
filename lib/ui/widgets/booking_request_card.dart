@@ -25,7 +25,7 @@ class BookingRequestCard extends StatelessWidget {
             context: context,
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
-            barrierColor: Colors.white.withValues(alpha: 0.5),
+            barrierColor: Colors.white.withValues(alpha: 0.9),
             builder: (_) => const StylistReschdulingRequestSheet(),
           );
         }
@@ -70,7 +70,7 @@ class BookingRequestCard extends StatelessWidget {
             ),
             SizedBox(height: 12.h),
             Text("Elena K.", style: AppFonts.black22w400),
-            SizedBox(height: 4.h),
+            SizedBox(height: 5.h),
             Row(
               mainAxisAlignment: .center,
               children: [
@@ -100,7 +100,7 @@ class BookingRequestCard extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          barrierColor: Colors.white.withValues(alpha: 0.5),
+                          barrierColor: Colors.white.withValues(alpha: 0.9),
                           builder: (_) => const ReschelulingRequestSheet(),
                         );
                       },
@@ -121,7 +121,7 @@ class BookingRequestCard extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          barrierColor: Colors.white.withValues(alpha: 0.5),
+                          barrierColor: Colors.white.withValues(alpha: 0.9),
                           builder: (_) => const CancelBookingSheet(),
                         );
                       },

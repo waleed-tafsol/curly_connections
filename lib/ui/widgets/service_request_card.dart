@@ -20,7 +20,7 @@ class ServiceRequestCard extends StatelessWidget {
           context: context,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
-          barrierColor: Colors.white.withValues(alpha: 0.5),
+          barrierColor: Colors.white.withValues(alpha: 0.9),
           builder: (_) => index != 1
               ? StylistBookingRequestSheet(
                   showButton: index == 2 ? false : true,
@@ -33,7 +33,7 @@ class ServiceRequestCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.fillColor.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(12.r),
-          border: .all(color: AppColors.fillColor),
+          border: .all(color: AppColors.fillColor, width: 2.w),
         ),
         child: Column(
           crossAxisAlignment: .start,
@@ -67,12 +67,17 @@ class ServiceRequestCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 12.h),
-            Text("Elena K.", style: AppFonts.black22w400),
-            SizedBox(height: 4.h),
+            Text(
+              "Elena K.",
+              style: AppFonts.black22w400.copyWith(height: 1.sp),
+            ),
+            SizedBox(height: 5.h),
             Row(
-              mainAxisAlignment: .center,
               children: [
-                Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
+                Text(
+                  "FULL COLOR + TREATMENT",
+                  style: AppFonts.grey14w400.copyWith(height: 1.sp),
+                ),
                 const Spacer(),
                 Text(
                   index == 2 ? Status.canceled.label : Status.pending.label,
@@ -89,26 +94,56 @@ class ServiceRequestCard extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: ElevatedButton.icon(
-                      iconAlignment: IconAlignment.end,
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 8.w,
-                          vertical: 8.h,
-                        ),
+                    child: Container(
+                      height: 50.h,
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withValues(alpha: 0.5),
+                            blurRadius: 10.r,
+                          ),
+                        ],
+                        color: AppColors.brown,
+                        borderRadius: BorderRadius.circular(12.r),
+                        border: .all(color: AppColors.white),
                       ),
-                      onPressed: () {},
-                      label: Text(
-                        "Approve Request",
-                        style: AppFonts.white14w500,
-                      ),
-                      icon: Icon(
-                        TablerIcons.circleCheck,
-                        color: AppColors.white,
-                        size: 24.sp,
+                      child: Row(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Text("Approve", style: AppFonts.white14w500),
+                          SizedBox(width: 4.w),
+                          Icon(
+                            TablerIcons.circleCheck,
+                            color: AppColors.white,
+                            size: 24.sp,
+                          ),
+                        ],
                       ),
                     ),
                   ),
+
+                  // Expanded(
+                  //   child: ElevatedButton.icon(
+                  //     iconAlignment: IconAlignment.end,
+                  //     style: ElevatedButton.styleFrom(
+                  //       padding: EdgeInsets.symmetric(
+                  //         horizontal: 8.w,
+                  //         vertical: 8.h,
+                  //       ),
+                  //     ),
+                  //     onPressed: () {},
+                  //     label: Text(
+                  //       "Approve Request",
+                  //       style: AppFonts.white14w500,
+                  //     ),
+                  //     icon: Icon(
+                  //       TablerIcons.circleCheck,
+                  //       color: AppColors.white,
+                  //       size: 23.sp,
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(width: 16.w),
 
                   Expanded(
@@ -133,7 +168,7 @@ class ServiceRequestCard extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: .center,
                           children: [
-                            Text("Reject Request", style: AppFonts.black14w500),
+                            Text("Reject", style: AppFonts.black14w500),
                             SizedBox(width: 5.w),
                             Icon(TablerIcons.thumbDown, size: 24.sp),
                           ],

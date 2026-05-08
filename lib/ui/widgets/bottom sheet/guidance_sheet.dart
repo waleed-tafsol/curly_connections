@@ -42,22 +42,22 @@ class _GuidanceNoteBottomSheetState extends State<GuidanceNoteBottomSheet> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      TablerIcons.chevronLeft,
-                      size: 24.sp,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(width: 5.w),
-                    Text('Back', style: AppFonts.black14w500),
-                  ],
-                ),
-              ),
-              SizedBox(height: 24.h),
+              // GestureDetector(
+              //   onTap: () => Navigator.pop(context),
+              //   child: Row(
+              //     mainAxisSize: MainAxisSize.min,
+              //     children: [
+              //       Icon(
+              //         TablerIcons.chevronLeft,
+              //         size: 24.sp,
+              //         color: AppColors.black,
+              //       ),
+              //       SizedBox(width: 5.w),
+              //       Text('Back', style: AppFonts.black14w500),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(height: 24.h),
               Text('Guidance Note', style: AppFonts.black20w400),
               SizedBox(height: 12.h),
 
@@ -153,7 +153,7 @@ class _GuidanceNoteBottomSheetState extends State<GuidanceNoteBottomSheet> {
                 ],
               ),
 
-              SizedBox(height: MediaQuery.paddingOf(context).bottom + 20.h),
+              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),

@@ -40,22 +40,22 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          TablerIcons.chevronLeft,
-                          size: 24.sp,
-                          color: AppColors.black,
-                        ),
-                        SizedBox(width: 5.w),
-                        Text('Back', style: AppFonts.black14w500),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 24.h),
+                  // GestureDetector(
+                  //   onTap: () => Navigator.pop(context),
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(
+                  //         TablerIcons.chevronLeft,
+                  //         size: 24.sp,
+                  //         color: AppColors.black,
+                  //       ),
+                  //       SizedBox(width: 5.w),
+                  //       Text('Back', style: AppFonts.black14w500),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(height: 24.h),
                   Text("Rescheduling request", style: AppFonts.black20w400),
                   SizedBox(height: 12.h),
                   Divider(height: 0.h, color: AppColors.dividerColor),
@@ -115,7 +115,7 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                     ),
                   ),
 
-                  SizedBox(height: 24.h),
+                SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
                 ],
               ),
             ),

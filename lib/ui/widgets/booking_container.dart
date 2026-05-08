@@ -55,9 +55,9 @@ class BookingContainer extends StatelessWidget {
                         Text('16:30  ', style: AppFonts.black14w500),
                       ],
                     ),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 5.h),
                     Text("Crystal Rempel", style: AppFonts.grey12w400),
-                    SizedBox(height: 12.h),
+                    SizedBox(height: 11.h),
                     Row(
                       mainAxisAlignment: .center,
                       children: [

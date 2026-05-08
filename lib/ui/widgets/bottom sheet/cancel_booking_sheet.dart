@@ -86,7 +86,7 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 24.h),
+                 SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
                 ],
               ),
             ),

@@ -15,11 +15,11 @@ class TermsConditionsScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(
         title: 'Terms & Privacy Policy',
-      ),  // appBar: const CustomAppBarBackButton(title: "Terms & Conditions"),
+      ), // appBar: const CustomAppBarBackButton(title: "Terms & Conditions"),
       body: Container(
-    decoration: const BoxDecoration(
-    gradient: AppColors.gradientScafoldBackground,
-    ),
+        decoration: const BoxDecoration(
+          gradient: AppColors.gradientScafoldBackground,
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -197,7 +197,7 @@ class TermsConditionsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: AppFonts.black14w600),
+          Text(title, style: AppFonts.black14w500),
           SizedBox(height: 4.h),
           ...bullets.map((b) => _buildBullet(b)),
         ],
@@ -212,11 +212,20 @@ class TermsConditionsScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '•  ',
-            style: AppFonts.purple15w400,
+          Text('•  ', style: AppFonts.purple15w400),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textGrey,
+                fontFamily: 'HelveticaNeue',
+                height: 1.4.h,
+              ),
+              //AppFonts.grey14w400.copyWith(height: 1.1.h),
+            ),
           ),
-          Expanded(child: Text(text, style: AppFonts.grey13w400)),
         ],
       ),
     );

@@ -26,7 +26,7 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.white.withValues(alpha: 0.5),
+      barrierColor: Colors.white.withValues(alpha: 0.9),
       builder: (_) => const AddScheduleBottomSheet(),
     );
   }
@@ -55,9 +55,15 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 132.h),
-              Text('Set your schedule', style: AppFonts.black20w400.copyWith(height: 1.5)),
+              Text(
+                'Set your schedule',
+                style: AppFonts.black20w400.copyWith(height: 1.5),
+              ),
               SizedBox(height: 4.h),
-              Text('You can update it later', style: AppFonts.grey12w400..copyWith(height: 1.5)),
+              Text(
+                'You can update it later',
+                style: AppFonts.grey12w400..copyWith(height: 1.5),
+              ),
               SizedBox(height: 41.h),
               Text('Schedule List', style: AppFonts.black16w500),
               SizedBox(height: 12.h),
@@ -78,7 +84,11 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(item, style: AppFonts.black14w400),
-                        Icon(Icons.chevron_right, size: 25.sp, color: AppColors.black,),
+                        Icon(
+                          Icons.chevron_right,
+                          size: 25.sp,
+                          color: AppColors.black,
+                        ),
                       ],
                     ),
                   ),

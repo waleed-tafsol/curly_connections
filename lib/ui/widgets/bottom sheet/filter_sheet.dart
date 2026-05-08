@@ -174,7 +174,7 @@ class _FilterSheetState extends State<FilterSheet> {
                   ],
                 ),
               ),
-              SizedBox(height: 24.h),
+             SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),

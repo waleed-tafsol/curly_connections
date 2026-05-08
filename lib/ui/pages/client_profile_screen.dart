@@ -104,9 +104,8 @@ class ClientProfileScreen extends StatelessWidget {
                     icon: TablerIcons.headset,
                     title: 'Contact Support',
                     onTap: () {
-                        Navigator.pushNamed(context, ContactUsScreen.routeName);
-                    }
-
+                      Navigator.pushNamed(context, ContactUsScreen.routeName);
+                    },
                   ),
 
                   SizedBox(height: 15.h),
@@ -144,16 +143,12 @@ class ClientProfileScreen extends StatelessWidget {
                       Navigator.pushNamedAndRemoveUntil(
                         context,
                         SelectRoleScreen.routeName,
-                            (route) => false,
+                        (route) => false,
                       );
                     },
                     style: ButtonStyle(
-                      foregroundColor: WidgetStateProperty.all(
-                        AppColors.white,
-                      ),
-                      backgroundColor: WidgetStateProperty.all(
-                        AppColors.white,
-                      ),
+                      foregroundColor: WidgetStateProperty.all(AppColors.white),
+                      backgroundColor: WidgetStateProperty.all(AppColors.white),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -189,7 +184,7 @@ class ClientProfileScreen extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha:0.80),
+        color: Colors.white.withValues(alpha: 0.80),
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.white, width: 2),
       ),
@@ -311,7 +306,7 @@ class ClientProfileScreen extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha:0.5),
+              color: Colors.white.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(40.r),
             ),
             child: Row(
@@ -356,18 +351,17 @@ class ClientProfileScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    height: 32.h,
                     padding: EdgeInsets.symmetric(
                       horizontal: 12.w,
                       vertical: 8.h,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha:0.66),
+                      color: Colors.white.withValues(alpha: 0.66),
                       borderRadius: BorderRadius.circular(52.r),
                       border: Border.all(color: Colors.white, width: 2),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha:0.10),
+                          color: Colors.black.withValues(alpha: 0.10),
                           blurRadius: 5,
                           offset: const Offset(0, 1),
                         ),
@@ -472,7 +466,7 @@ class ClientProfileScreen extends StatelessWidget {
           Shadow(
             offset: const Offset(0, 1),
             blurRadius: 3,
-            color: AppColors.black.withValues(alpha:0.25),
+            color: AppColors.black.withValues(alpha: 0.25),
           ),
         ],
       ),

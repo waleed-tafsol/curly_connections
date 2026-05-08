@@ -30,7 +30,12 @@ class _RequestScreenState extends State<RequestScreen> {
         crossAxisAlignment: .start,
         children: [
           ListTile(
-            title: Text("Service requests", style: AppFonts.black20w400),
+            title: Text(
+              userType == UserType.client
+                  ? "Booking Request"
+                  : "Service requests",
+              style: AppFonts.black20w500,
+            ),
             trailing: IconButton(
               onPressed: () {},
               icon: Icon(TablerIcons.bell, size: 32.sp, color: AppColors.black),
@@ -84,8 +89,12 @@ class _RequestScreenState extends State<RequestScreen> {
           SizedBox(height: 18.h),
           TextField(
             decoration: InputDecoration(
-              hintText: "Search for requests",
+              hintText: userType == UserType.client
+                  ? "Search by name..."
+                  : "Search for requests",
               hintStyle: AppFonts.grey14w400,
+              fillColor: AppColors.white.withValues(alpha: 0.6),
+              filled: true,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50.r),
                 borderSide: const BorderSide(color: AppColors.white),
@@ -112,18 +121,18 @@ class _RequestScreenState extends State<RequestScreen> {
                 context: context,
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
-                barrierColor: Colors.white.withValues(alpha: 0.5),
+                barrierColor: Colors.white.withValues(alpha: 0.9),
                 builder: (_) => const FilterSheet(),
               );
             },
             child: Row(
               mainAxisAlignment: .end,
               children: [
-                Text("Filter", style: AppFonts.black14w500),
+                Text("FILTER", style: AppFonts.black14w500),
                 SizedBox(width: 5.w),
                 Icon(TablerIcons.filter, color: AppColors.black, size: 23.sp),
                 SizedBox(width: 20.w),
-                Text("Sort By", style: AppFonts.black14w500),
+                Text("SORT BY", style: AppFonts.black14w500),
                 SizedBox(width: 5.w),
                 Icon(
                   TablerIcons.sortDescending,

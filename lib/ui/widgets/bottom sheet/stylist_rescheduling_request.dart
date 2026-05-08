@@ -40,7 +40,7 @@ class _StylistReschdulingRequestSheetState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 12.h),
-              Text("Rescheduling request", style: AppFonts.grey20w400),
+              Text("Rescheduling request", style: AppFonts.grey20w500),
               SizedBox(height: 24.h),
               Divider(height: 0.h, color: AppColors.dividerColor),
               SizedBox(height: 16.h),
@@ -112,7 +112,7 @@ class _StylistReschdulingRequestSheetState
                             context: context,
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
-                            barrierColor: Colors.white.withValues(alpha: 0.5),
+                            barrierColor: Colors.white.withValues(alpha: 0.9),
                             builder: (_) => const ReschelulingRequestSheet(),
                           );
                         },
@@ -132,7 +132,7 @@ class _StylistReschdulingRequestSheetState
                             context: context,
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
-                            barrierColor: Colors.white.withValues(alpha: 0.5),
+                            barrierColor: Colors.white.withValues(alpha: 0.9),
                             builder: (_) => const CancelBookingSheet(),
                           );
                         },
@@ -153,7 +153,7 @@ class _StylistReschdulingRequestSheetState
                             children: [
                               Text(
                                 'Cancel Booking',
-                                style: AppFonts.black14w400,
+                                style: AppFonts.black14w500,
                               ),
                               SizedBox(width: 4.w),
                               Icon(
@@ -169,7 +169,7 @@ class _StylistReschdulingRequestSheetState
                   ],
                 ),
               ),
-              SizedBox(height: 24.h),
+              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),

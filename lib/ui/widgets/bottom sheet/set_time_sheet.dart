@@ -125,7 +125,7 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
             ),
           ),
           SizedBox(height: 7.h),
-          Text(label, style: AppFonts.grey12w400),
+          Text(label, style: AppFonts.black12w400),
         ],
       ),
     );
@@ -149,29 +149,29 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Back button
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      TablerIcons.chevronLeft,
-                      size: 24.sp,
-                      color: AppColors.black,
-                    ),
-                    SizedBox(width: 5.w),
-                    Text('Back', style: AppFonts.black14w500),
-                  ],
-                ),
-              ),
-              SizedBox(height: 24.h),
+              // // Back button
+              // GestureDetector(
+              //   onTap: () => Navigator.pop(context),
+              //   child: Row(
+              //     mainAxisSize: MainAxisSize.min,
+              //     children: [
+              //       Icon(
+              //         TablerIcons.chevronLeft,
+              //         size: 24.sp,
+              //         color: AppColors.black,
+              //       ),
+              //       SizedBox(width: 5.w),
+              //       Text('Back', style: AppFonts.black14w500),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(height: 24.h),
               Text('Set start and end time', style: AppFonts.black20w400),
               SizedBox(height: 4.h),
 
               // ── Starts from ──
               Text('Starts from', style: AppFonts.grey12w400),
-              SizedBox(height: 24.h),
+              SizedBox(height: 12.h),
               Row(
                 children: [
                   Expanded(
@@ -322,7 +322,7 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
                 ],
               ),
 
-              SizedBox(height: MediaQuery.paddingOf(context).bottom + 20.h),
+              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
             ],
           ),
         ),

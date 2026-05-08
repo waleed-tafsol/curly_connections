@@ -135,6 +135,7 @@ class _SalonPageState extends State<SalonPage> {
           spacing: 2.h,
           children: [
             Text('Sarah Mendoza', style: AppFonts.black16w400),
+            SizedBox(height: 2.w),
             Text('Member since 2020', style: AppFonts.grey10w400),
           ],
         ),
@@ -142,7 +143,7 @@ class _SalonPageState extends State<SalonPage> {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40.r),
-            color: AppColors.white,
+            color: AppColors.white.withValues(alpha: 0.5),
           ),
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
           child: Row(

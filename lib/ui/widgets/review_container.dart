@@ -32,11 +32,8 @@ class ReviewContainer extends StatelessWidget {
                 crossAxisAlignment: .start,
                 children: [
                   Text("Olivia Bennett", style: AppFonts.black16w500),
-                  SizedBox(height: 4.h),
-                  Text(
-                    "Mon, sep 2, 2024 at 18:41",
-                    style: AppFonts.grey16w400,
-                  ),
+                  SizedBox(height: 5.h),
+                  Text("Mon, sep 2, 2024 at 18:41", style: AppFonts.grey16w400),
                 ],
               ),
               const Spacer(),
@@ -52,7 +49,14 @@ class ReviewContainer extends StatelessWidget {
           SizedBox(height: 16.h),
           Text(
             "Incredible! Terrell Haag provided the best therapy I've had ever. Also, the salon has a really pleasant atmosphere.",
-            style: AppFonts.black16w400,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'HelveticaNeue',
+              height: 1.3,
+              color: AppColors.black,
+            ),
+            //AppFonts.black16w400.copyWith(height: 2.3.h),
           ),
         ],
       ),

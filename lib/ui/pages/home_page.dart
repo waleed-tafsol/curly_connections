@@ -96,7 +96,7 @@ class HomePage extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Text('See All', style: AppFonts.black12w500),
+                            Text('SEE ALL', style: AppFonts.black12w500),
                             Icon(TablerIcons.chevronRight, size: 25.sp),
                           ],
                         ),
@@ -216,34 +216,96 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildAppBar({required String name, required String plan}) {
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 25.w,
-        backgroundColor: AppColors.white,
-        child: const Center(),
-      ),
-      contentPadding: EdgeInsets.zero,
-      visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
-      minVerticalPadding: 0,
-      title: Text(name, style: AppFonts.black16w500),
-      subtitle: Container(
-        padding: EdgeInsets.only(top: 2.h),
-        alignment: Alignment.centerLeft,
-        child: Chip(
-          backgroundColor: AppColors.peach,
-          side: const BorderSide(color: AppColors.orange),
-          label: Text(plan, style: AppFonts.black10w500),
-          visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 25.w,
+          backgroundColor: AppColors.white,
+          child: const Center(),
         ),
-      ),
-      trailing: Row(
-        mainAxisSize: .min,
-        children: [
-          IconButton(onPressed: () {}, icon: const Icon(TablerIcons.bell)),
-          IconButton(onPressed: () {}, icon: const Icon(TablerIcons.language)),
-        ],
-      ),
+        SizedBox(width: 4.w),
+        Column(
+          crossAxisAlignment: .start,
+          children: [
+            Text(name, style: AppFonts.black16w500),
+            SizedBox(height: 2.h),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFEE1D6),
+                borderRadius: BorderRadius.circular(50.r),
+                border: .all(color: AppColors.orange),
+              ),
+              child: Text("Free Plan", style: AppFonts.black10w400),
+            ),
+          ],
+        ),
+        const Spacer(),
+
+        const Icon(TablerIcons.bell),
+        SizedBox(width: 4.w),
+        const Icon(TablerIcons.language),
+        // IconButton(
+        //   padding: EdgeInsets.zero,
+        //   onPressed: () {},
+        //   icon: const Icon(TablerIcons.bell),
+        // ),
+        // IconButton(
+        //   padding: EdgeInsets.zero,
+        //   onPressed: () {},
+        //   icon: const ,
+        // ),
+      ],
     );
+    // return ListTile(
+    //   leading: CircleAvatar(
+    //     radius: 25.w,
+    //     backgroundColor: AppColors.white,
+    //     child: const Center(),
+    //   ),
+    //   contentPadding: EdgeInsets.zero,
+    //   visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
+    //   minVerticalPadding: 0,
+    //   title: Column(
+    //     crossAxisAlignment: .start,
+    //     children: [
+    //       Text(name, style: AppFonts.black16w500),
+    //       SizedBox(height: 2.h),
+    //       Container(
+    //         padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+    //         decoration: BoxDecoration(
+    //           color: const Color(0xFFFEE1D6),
+    //           borderRadius: BorderRadius.circular(50.r),
+    //           border: .all(color: AppColors.orange),
+    //         ),
+    //         child: Text("Free Plan", style: AppFonts.black10w400),
+    //       ),
+    //     ],
+    //   ),
+
+    //   // subtitle: Container(
+    //   //   padding: EdgeInsets.only(top: 0.h),
+    //   //   alignment: Alignment.centerLeft,
+    //   //   child:
+
+    //   // ),
+    //   trailing: Row(
+    //     mainAxisSize: .min,
+    //     mainAxisAlignment: .end,
+    //     children: [
+    //       IconButton(
+    //         padding: EdgeInsets.zero,
+    //         onPressed: () {},
+    //         icon: const Icon(TablerIcons.bell),
+    //       ),
+    //       IconButton(
+    //         padding: EdgeInsets.zero,
+    //         onPressed: () {},
+    //         icon: const Icon(TablerIcons.language),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 
   Widget _buildUpcomingAgenda({required BuildContext context}) {
@@ -274,7 +336,7 @@ class HomePage extends StatelessWidget {
                     context: context,
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
-                    barrierColor: Colors.white.withValues(alpha: 0.5),
+                    barrierColor: Colors.white.withValues(alpha: 0.9),
                     builder: (_) => index % 2 == 0
                         ? const StylistBookingRequestSheet(showButton: false)
                         : const StylistReschdulingRequestSheet(),

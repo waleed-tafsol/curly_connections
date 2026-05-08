@@ -125,7 +125,7 @@ class _AppCalendarState extends State<AppCalendar> {
       height: 36.w,
       width: 36.w,
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.lightGreen),
+        border: Border.all(color: AppColors.white),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Icon(icon, size: 32.sp),
