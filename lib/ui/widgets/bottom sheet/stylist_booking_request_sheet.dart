@@ -121,18 +121,35 @@ class _StylistBookingRequestSheetState
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          iconAlignment: IconAlignment.end,
-                          onPressed: () => Navigator.pop(context),
-                          icon: Icon(
-                            TablerIcons.circleCheck,
-                            size: 24.sp,
-                            color: AppColors.white,
+                     Expanded(
+                    child: Container(
+                      height: 50.h,
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withValues(alpha: 0.5),
+                            blurRadius: 10.r,
                           ),
-                          label: const Text('Approve Request'),
-                        ),
+                        ],
+                        color: AppColors.brown,
+                        borderRadius: BorderRadius.circular(12.r),
+                        border: .all(color: AppColors.white),
                       ),
+                      child: Row(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Text("Approve", style: AppFonts.white14w500),
+                          SizedBox(width: 4.w),
+                          Icon(
+                            TablerIcons.circleCheck,
+                            color: AppColors.white,
+                            size: 24.sp,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                       SizedBox(width: 16.w),
                       Expanded(
                         child: GestureDetector(
@@ -153,7 +170,7 @@ class _StylistBookingRequestSheetState
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Reject Request',
+                                  'Reject',
                                   style: AppFonts.black14w400,
                                 ),
                                 SizedBox(width: 4.w),
