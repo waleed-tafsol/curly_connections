@@ -66,15 +66,6 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     padding: EdgeInsets.zero,
                   ),
-
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.translate_rounded),
-                    color: AppColors.black,
-                    iconSize: 24.w,
-                    visualDensity: VisualDensity.compact,
-                    padding: EdgeInsets.zero,
-                  ),
                 ],
               ),
             ],

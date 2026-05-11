@@ -243,18 +243,6 @@ class HomePage extends StatelessWidget {
         const Spacer(),
 
         const Icon(TablerIcons.bell),
-        SizedBox(width: 4.w),
-        const Icon(TablerIcons.language),
-        // IconButton(
-        //   padding: EdgeInsets.zero,
-        //   onPressed: () {},
-        //   icon: const Icon(TablerIcons.bell),
-        // ),
-        // IconButton(
-        //   padding: EdgeInsets.zero,
-        //   onPressed: () {},
-        //   icon: const ,
-        // ),
       ],
     );
     // return ListTile(
@@ -289,21 +277,10 @@ class HomePage extends StatelessWidget {
     //   //   child:
 
     //   // ),
-    //   trailing: Row(
-    //     mainAxisSize: .min,
-    //     mainAxisAlignment: .end,
-    //     children: [
-    //       IconButton(
-    //         padding: EdgeInsets.zero,
-    //         onPressed: () {},
-    //         icon: const Icon(TablerIcons.bell),
-    //       ),
-    //       IconButton(
-    //         padding: EdgeInsets.zero,
-    //         onPressed: () {},
-    //         icon: const Icon(TablerIcons.language),
-    //       ),
-    //     ],
+    //   trailing: IconButton(
+    //     padding: EdgeInsets.zero,
+    //     onPressed: () {},
+    //     icon: const Icon(TablerIcons.bell),
     //   ),
     // );
   }
