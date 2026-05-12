@@ -22,7 +22,7 @@ class PortfolioScreen extends StatefulWidget {
 
 class _PortfolioScreenState extends State<PortfolioScreen> {
   final _tabNotifier = ValueNotifier(0);
-  static const _tabItems = ['Previous Works', 'Reviews', 'About'];
+  static const _tabItems = ['Services', 'Previous Works', 'Reviews', 'About'];
 
   @override
   void dispose() {
@@ -103,9 +103,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                   SizedBox(height: 10.h),
                   Expanded(
                     child: switch (selectedIndex) {
-                      0 => _buildPreviousWorks(),
-                      1 => _buildReviews(),
-                      2 => _buildAbout(),
+                      0 => _buildServices(),
+                      1 => _buildPreviousWorks(),
+                      2 => _buildReviews(),
+                      3 => _buildAbout(),
                       int() => throw UnimplementedError(),
                     },
                   ),
@@ -170,6 +171,48 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildServices() {
+    return ListView.builder(
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.only(bottom: 16.w),
+          child: Container(
+            padding: EdgeInsets.all(16.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              color: AppColors.white,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
+                    Text("Monday", style: AppFonts.black12w400),
+                  ],
+                ),
+                SizedBox(height: 4.h),
+                Row(
+                  mainAxisAlignment: .start,
+                  children: [
+                    Icon(TablerIcons.hourglassEmpty, size: 16.sp),
+                    SizedBox(width: 10.w),
+                    Text('15:30  ', style: AppFonts.black14w500),
+                    SizedBox(width: 12.w),
+                    Icon(TablerIcons.arrowRight, size: 16.sp),
+                    SizedBox(width: 12.w),
+                    Text('16:30  ', style: AppFonts.black14w500),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
