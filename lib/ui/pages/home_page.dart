@@ -14,6 +14,7 @@ import '../widgets/booking_summary.dart';
 import '../widgets/bottom sheet/stylist_booking_request_sheet.dart';
 import '../widgets/bottom sheet/stylist_rescheduling_request.dart';
 import '../widgets/upcoming_agenda.dart';
+import 'map_explore_page.dart';
 import 'salon_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,6 +42,7 @@ class HomePage extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: _buildAppBar(
+            context: context,
             name: 'Sarah Mendoza',
             plan: 'Free Plan',
             user: userType,
@@ -73,126 +75,61 @@ class HomePage extends StatelessWidget {
 
   Widget _buildClientView(BuildContext context) {
     final userType = context.read<AuthViewModel>().userType;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: Column(
-          crossAxisAlignment: .start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: _buildAppBar(
-                name: 'Sarah Mendoza',
-                plan: 'Free Plan',
-                user: userType,
-              ),
-            ),
-            SizedBox(height: 21.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Search for requests",
-                  hintStyle: AppFonts.grey14w400,
-                  fillColor: AppColors.white.withValues(alpha: 0.6),
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.r),
-                    borderSide: const BorderSide(color: AppColors.white),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.r),
-                    borderSide: const BorderSide(color: AppColors.white),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.r),
-                    borderSide: const BorderSide(color: AppColors.white),
-                  ),
-                  suffixIcon: Icon(
-                    TablerIcons.filter,
-                    color: AppColors.black,
-                    size: 24.sp,
+    return Column(
+      crossAxisAlignment: .start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: _buildAppBar(
+            context: context,
+            name: 'Sarah Mendoza',
+            plan: 'Free Plan',
+            user: userType,
+          ),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 21.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Search for requests",
+                      hintStyle: AppFonts.grey14w400,
+                      fillColor: AppColors.white.withValues(alpha: 0.6),
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50.r),
+                        borderSide: const BorderSide(color: AppColors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50.r),
+                        borderSide: const BorderSide(color: AppColors.white),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50.r),
+                        borderSide: const BorderSide(color: AppColors.white),
+                      ),
+                      suffixIcon: Icon(
+                        TablerIcons.filter,
+                        color: AppColors.black,
+                        size: 24.sp,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(height: 24.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text('Stylist Trending', style: AppFonts.black24w300),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {},
-
-                    child: Row(
-                      children: [
-                        Text('SEE ALL', style: AppFonts.black12w500),
-                        Icon(TablerIcons.chevronRight, size: 25.sp),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 12.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(4, (index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      left: index == 0 ? 20.w : 0,
-                      right: index == 3 ? 20.w : 11.w,
-                    ),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 18.w,
-                        vertical: 13.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(7.r),
-                      ),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            ClipOval(
-                              child: Image.asset(
-                                DummyAssets.profile,
-                                height: 85.w,
-                                width: 85.w,
-                              ),
-                            ),
-                            SizedBox(height: 12.h),
-                            Text("Chatsuda Sucha", style: AppFonts.black12w400),
-                            SizedBox(height: 2.h),
-                            Text("Hair Coloring", style: AppFonts.grey10w400),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-              ),
-            ),
-
-            SizedBox(height: 20.h),
-
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                crossAxisAlignment: .start,
-                children: [
-                  Text('FOR YOU', style: AppFonts.grey12w400),
-                  SizedBox(height: 12.h),
-                  Row(
+                SizedBox(height: 24.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Row(
                     children: [
-                      Text('Top Rated Near You', style: AppFonts.black24w300),
+                      Text('Stylist Trending', style: AppFonts.black24w300),
                       const Spacer(),
                       InkWell(
                         onTap: () {},
+
                         child: Row(
                           children: [
                             Text('SEE ALL', style: AppFonts.black12w500),
@@ -202,25 +139,105 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.h),
-                  // _buildClientMap(),
-                  // SizedBox(height: 8.h),
-                  for (int i = 0; i < 10; i++)
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      child: UpcomingAgenda(
-                        showAsSaloon: true,
-                        onTap: () =>
-                            Navigator.pushNamed(context, SalonPage.routeName),
+                ),
+                SizedBox(height: 12.h),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(4, (index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: index == 0 ? 20.w : 0,
+                          right: index == 3 ? 20.w : 11.w,
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 18.w,
+                            vertical: 13.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(7.r),
+                          ),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    DummyAssets.profile,
+                                    height: 85.w,
+                                    width: 85.w,
+                                  ),
+                                ),
+                                SizedBox(height: 12.h),
+                                Text(
+                                  "Chatsuda Sucha",
+                                  style: AppFonts.black12w400,
+                                ),
+                                SizedBox(height: 2.h),
+                                Text(
+                                  "Hair Coloring",
+                                  style: AppFonts.grey10w400,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    crossAxisAlignment: .start,
+                    children: [
+                      Text('FOR YOU', style: AppFonts.grey12w400),
+                      SizedBox(height: 12.h),
+                      Row(
+                        children: [
+                          Text(
+                            'Top Rated Near You',
+                            style: AppFonts.black24w300,
+                          ),
+                          const Spacer(),
+                          InkWell(
+                            onTap: () {},
+                            child: Row(
+                              children: [
+                                Text('SEE ALL', style: AppFonts.black12w500),
+                                Icon(TablerIcons.chevronRight, size: 25.sp),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 30.h),
-                ],
-              ),
+                      SizedBox(height: 16.h),
+                      // _buildClientMap(),
+                      // SizedBox(height: 8.h),
+                      for (int i = 0; i < 10; i++)
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.h),
+                          child: UpcomingAgenda(
+                            showAsSaloon: true,
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              SalonPage.routeName,
+                            ),
+                          ),
+                        ),
+                      SizedBox(
+                        height: MediaQuery.paddingOf(context).bottom + 30.h,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -315,6 +332,7 @@ class HomePage extends StatelessWidget {
   // }
 
   Widget _buildAppBar({
+    required BuildContext context,
     required String name,
     required String plan,
     required UserType user,
@@ -344,51 +362,18 @@ class HomePage extends StatelessWidget {
           ],
         ),
         const Spacer(),
-
-        Icon(TablerIcons.bell, color: AppColors.black, size: 24.sp),
-        SizedBox(width: 16.w),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(TablerIcons.bell, color: AppColors.black, size: 24.sp),
+        ),
         if (user == UserType.client)
-          Icon(TablerIcons.map, color: AppColors.black, size: 24.sp),
+          IconButton(
+            onPressed: () =>
+                Navigator.pushNamed(context, MapExplorePage.routeName),
+            icon: Icon(TablerIcons.map, color: AppColors.black, size: 24.sp),
+          ),
       ],
     );
-    // return ListTile(
-    //   leading: CircleAvatar(
-    //     radius: 25.w,
-    //     backgroundColor: AppColors.white,
-    //     child: const Center(),
-    //   ),
-    //   contentPadding: EdgeInsets.zero,
-    //   visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
-    //   minVerticalPadding: 0,
-    //   title: Column(
-    //     crossAxisAlignment: .start,
-    //     children: [
-    //       Text(name, style: AppFonts.black16w500),
-    //       SizedBox(height: 2.h),
-    //       Container(
-    //         padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-    //         decoration: BoxDecoration(
-    //           color: const Color(0xFFFEE1D6),
-    //           borderRadius: BorderRadius.circular(50.r),
-    //           border: .all(color: AppColors.orange),
-    //         ),
-    //         child: Text("Free Plan", style: AppFonts.black10w400),
-    //       ),
-    //     ],
-    //   ),
-
-    //   // subtitle: Container(
-    //   //   padding: EdgeInsets.only(top: 0.h),
-    //   //   alignment: Alignment.centerLeft,
-    //   //   child:
-
-    //   // ),
-    //   trailing: IconButton(
-    //     padding: EdgeInsets.zero,
-    //     onPressed: () {},
-    //     icon: const Icon(TablerIcons.bell),
-    //   ),
-    // );
   }
 
   Widget _buildUpcomingAgenda({required BuildContext context}) {
