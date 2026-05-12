@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../constants/assets.dart';
-import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
-import '../view_models/auth_view_model.dart';
 import '../widgets/custom_appbar_back_button.dart';
-import 'bottom_nav_page.dart';
-import 'select_categories_screen.dart';
 import 'turn_notification_page.dart';
 
 class SubscriptionScreen extends StatefulWidget {
@@ -21,17 +16,19 @@ class SubscriptionScreen extends StatefulWidget {
   State<SubscriptionScreen> createState() => _SubscriptionScreenState();
 }
 
+
+
 class _SubscriptionScreenState extends State<SubscriptionScreen> {
   @override
   Widget build(BuildContext context) {
+    void onNextPressed() {
+      Navigator.pushNamed(context, TurnNotificationPage.routeName);
+    }
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarBackButton(
         onNext: () {
-          Navigator.pushReplacementNamed(
-            context,
-            TurnNotificationPage.routeName,
-          );
+          onNextPressed();
         },
       ),
       body: Container(
@@ -152,21 +149,22 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                               textStyle: AppFonts.white20w500,
                             ),
                             onPressed: () {
-                              final role =
-                                  context.read<AuthViewModel>().userType ==
-                                  UserType.stylist;
-                              if (role) {
-                                Navigator.pushNamed(
-                                  context,
-                                  SelectCategoriesScreen.routeName,
-                                );
-                              } else {
-                                Navigator.pushNamedAndRemoveUntil(
-                                  context,
-                                  BottomNavPage.routeName,
-                                  (route) => false,
-                                );
-                              }
+                              onNextPressed();
+                              // final role =
+                              //     context.read<AuthViewModel>().userType ==
+                              //     UserType.stylist;
+                              // if (role) {
+                              //   Navigator.pushNamed(
+                              //     context,
+                              //     SelectCategoriesScreen.routeName,
+                              //   );
+                              // } else {
+                              //   Navigator.pushNamedAndRemoveUntil(
+                              //     context,
+                              //     BottomNavPage.routeName,
+                              //     (route) => false,
+                              //   );
+                              // }
                             },
                             child: const Text("Get Started"),
                           ),
@@ -221,21 +219,22 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 padding: EdgeInsetsGeometry.symmetric(horizontal: 24.w),
                 child: ElevatedButton(
                   onPressed: () {
-                    final role =
-                        context.read<AuthViewModel>().userType ==
-                        UserType.stylist;
-                    if (role) {
-                      Navigator.pushNamed(
-                        context,
-                        SelectCategoriesScreen.routeName,
-                      );
-                    } else {
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        BottomNavPage.routeName,
-                        (route) => false,
-                      );
-                    }
+                    onNextPressed();
+                    // final role =
+                    //     context.read<AuthViewModel>().userType ==
+                    //     UserType.stylist;
+                    // if (role) {
+                    //   Navigator.pushNamed(
+                    //     context,
+                    //     SelectCategoriesScreen.routeName,
+                    //   );
+                    // } else {
+                    //   Navigator.pushNamedAndRemoveUntil(
+                    //     context,
+                    //     BottomNavPage.routeName,
+                    //     (route) => false,
+                    //   );
+                    // }
                   },
                   child: const Text("Start Now"),
                 ),

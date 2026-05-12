@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
+import '../view_models/auth_view_model.dart';
 import '../widgets/custom_appbar_back_button.dart';
+import 'bottom_nav_page.dart';
 import 'select_categories_screen.dart';
 
 class TurnNotificationPage extends StatelessWidget {
   static const String routeName = '/turn_notification';
+
   const TurnNotificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    void onNextPressed() {
+      final role = context.read<AuthViewModel>().userType == UserType.stylist;
+      if (role) {
+        Navigator.pushNamed(context, SelectCategoriesScreen.routeName);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          BottomNavPage.routeName,
+          (route) => false,
+        );
+      }
+    }
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarBackButton(
         onNext: () {
-          Navigator.pushReplacementNamed(
-            context,
-            SelectCategoriesScreen.routeName,
-          );
+          onNextPressed();
         },
       ),
       body: Container(
@@ -87,10 +102,7 @@ class TurnNotificationPage extends StatelessWidget {
               const Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    SelectCategoriesScreen.routeName,
-                  );
+                  onNextPressed();
                 },
                 child: const Text("Yes, notify me"),
               ),
