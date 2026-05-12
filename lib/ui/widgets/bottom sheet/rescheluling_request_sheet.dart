@@ -115,7 +115,7 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
                     ),
                   ),
 
-                SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
                 ],
               ),
             ),
@@ -161,7 +161,7 @@ class _ReschelulingRequestSheetState extends State<ReschelulingRequestSheet> {
               decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.circular(12.r),
-                border: Border.all(color: AppColors.lightGreen),
+                border: Border.all(color: AppColors.lightPeach),
               ),
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               child: Text(

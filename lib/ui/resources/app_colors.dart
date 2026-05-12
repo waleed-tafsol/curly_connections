@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppColors {
-  static const primary = Color(0xFFF6E6FF);
-  static const primaryLight = Color(0xFFFCF0FC);
+  static final primary = const Color(0xFFFF8202).withValues(alpha: 0.4);
+  static const primaryLight = Color(0xFFFEE1D6);
   static const secondary = Color(0xFFA15605);
   static const textFeildStroke = Color(0xFFE5E7EB);
   static const white = Colors.white;
   static const black = Color(0xFF0B0B0B);
-  static const purple = Color(0xFFF6E6FF);
-  static const lightPurple = Color(0xFFF6E5FD);
+  static const lightPeach = Color(0xFFFEE1D6);
+  static const darkPeach = Color(0xFFF4A04A);
+  static const fillpeach = Color(0xFFFEE1D6);
   static const peach = Color(0xFFFEE1D6);
-  static const pink = Color(0xFFEAC3FF);
   static const borderPurple = Color(0xFFD9730A);
   static const dividerColor = Color(0xFFE0E0E1);
   static const orange = Color(0xFFFF8202);
@@ -26,7 +26,6 @@ abstract final class AppColors {
   static const darkPurple = Color(0xFF4F378A);
   static const darkPurple1 = Color(0xFFA300FF);
   static const lightGreen = Color(0xFFB4E6DB);
-  static const lightPeach = Color(0xFFFEE1D6);
 
   static LinearGradient gradientPurpleToPeach = LinearGradient(
     begin: Alignment.topCenter,
@@ -39,11 +38,11 @@ abstract final class AppColors {
     ],
   );
 
-  static const LinearGradient gradientPeachToPurple = LinearGradient(
+  static const LinearGradient gradientPrimaryToPeach = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
     stops: [0.57, 1.0],
-    colors: [peach, lightPurple],
+    colors: [primaryLight, darkPeach],
   );
   static LinearGradient gradientScafoldBackground = LinearGradient(
     begin: Alignment.topLeft,

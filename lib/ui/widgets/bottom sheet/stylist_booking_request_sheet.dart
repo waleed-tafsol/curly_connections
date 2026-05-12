@@ -78,7 +78,7 @@ class _StylistBookingRequestSheetState
                     children: [
                       Text("Elena K.", style: AppFonts.black22w400),
                       Chip(
-                        backgroundColor: AppColors.peach,
+                        backgroundColor: AppColors.fillpeach,
                         side: const BorderSide(color: AppColors.orange),
                         label: Text("Free Plan", style: AppFonts.black10w500),
                         visualDensity: const VisualDensity(
@@ -121,35 +121,35 @@ class _StylistBookingRequestSheetState
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                     Expanded(
-                    child: Container(
-                      height: 50.h,
-                      padding: EdgeInsets.symmetric(horizontal: 8.w),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            blurRadius: 10.r,
+                      Expanded(
+                        child: Container(
+                          height: 50.h,
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withValues(alpha: 0.5),
+                                blurRadius: 10.r,
+                              ),
+                            ],
+                            color: AppColors.brown,
+                            borderRadius: BorderRadius.circular(12.r),
+                            border: .all(color: AppColors.white),
                           ),
-                        ],
-                        color: AppColors.brown,
-                        borderRadius: BorderRadius.circular(12.r),
-                        border: .all(color: AppColors.white),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: .center,
-                        children: [
-                          Text("Approve", style: AppFonts.white14w500),
-                          SizedBox(width: 4.w),
-                          Icon(
-                            TablerIcons.circleCheck,
-                            color: AppColors.white,
-                            size: 24.sp,
+                          child: Row(
+                            mainAxisAlignment: .center,
+                            children: [
+                              Text("Approve", style: AppFonts.white14w500),
+                              SizedBox(width: 4.w),
+                              Icon(
+                                TablerIcons.circleCheck,
+                                color: AppColors.white,
+                                size: 24.sp,
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
                       SizedBox(width: 16.w),
                       Expanded(
                         child: GestureDetector(
@@ -169,10 +169,7 @@ class _StylistBookingRequestSheetState
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  'Reject',
-                                  style: AppFonts.black14w400,
-                                ),
+                                Text('Reject', style: AppFonts.black14w400),
                                 SizedBox(width: 4.w),
                                 Icon(
                                   TablerIcons.thumbDown,

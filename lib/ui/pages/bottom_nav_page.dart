@@ -27,7 +27,7 @@ class BottomNavPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       body: Container(
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         alignment: Alignment.center,
@@ -47,7 +47,10 @@ class BottomNavPage extends StatelessWidget {
                 0 => const HomePage(),
                 1 => const RequestScreen(),
                 2 => const CalendarBookingPage(),
-                3 => userType ==UserType.client ? const ClientProfileScreen() : const ProfileScreen(),
+                3 =>
+                  userType == UserType.client
+                      ? const ClientProfileScreen()
+                      : const ProfileScreen(),
                 int() => throw UnimplementedError(),
               },
             ),
@@ -60,7 +63,7 @@ class BottomNavPage extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(100.r),
-            border: Border.all(color: AppColors.pink, width: 2.sp),
+            border: Border.all(color: AppColors.lightPeach, width: 2.sp),
           ),
           clipBehavior: Clip.antiAlias,
           margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
@@ -71,7 +74,7 @@ class BottomNavPage extends StatelessWidget {
             selectedItemColor: AppColors.primaryLight,
             itemShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(99.r),
-              side: const BorderSide(color: AppColors.primary),
+              side: BorderSide(color: AppColors.primary),
             ),
             items: items
                 .map(

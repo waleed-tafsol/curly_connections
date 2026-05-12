@@ -67,10 +67,7 @@ class _AppCalendarState extends State<AppCalendar> {
                   height: 5.w,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColors.darkPurple1,
-                      width: 1.26.w,
-                    ),
+                    border: Border.all(color: AppColors.orange, width: 1.26.w),
                   ),
                 );
               }),
@@ -107,7 +104,7 @@ class _AppCalendarState extends State<AppCalendar> {
                 height: 32.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
-                  color: AppColors.darkPurple1,
+                  color: AppColors.orange,
                 ),
                 child: Center(
                   child: Text('${dateTime.day}', style: AppFonts.white15w500),

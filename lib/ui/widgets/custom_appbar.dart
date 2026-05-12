@@ -4,16 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? onBack;
 
-  const CustomAppBar({
-    super.key,
-    required this.title,
-    this.onBack,
-  });
+  const CustomAppBar({super.key, required this.title, this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +24,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Container(
               padding: EdgeInsets.all(7.w),
               decoration: BoxDecoration(
-                color: AppColors.primary,
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(12.r),
-                border: Border.all(
-                  color: AppColors.white,
-                ),
+                border: Border.all(color: AppColors.white),
               ),
               child: Icon(CupertinoIcons.chevron_left, size: 20.sp),
             ),
@@ -54,11 +47,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           //     ),
           //   ),
           // ),
-           SizedBox(width: 12.w),
-          Text(
-            title,
-            style: AppFonts.black20w400,
-          ),
+          SizedBox(width: 12.w),
+          Text(title, style: AppFonts.black20w400),
         ],
       ),
     );

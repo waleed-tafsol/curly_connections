@@ -8,15 +8,12 @@ import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
-import '../widgets/app_current_location_card.dart';
 import '../widgets/app_divider.dart';
-import '../widgets/app_drop_down.dart';
 import '../widgets/app_items_list_view.dart';
 import '../widgets/booking_summary.dart';
 import '../widgets/bottom sheet/stylist_booking_request_sheet.dart';
 import '../widgets/bottom sheet/stylist_rescheduling_request.dart';
 import '../widgets/upcoming_agenda.dart';
-import 'map_explore_page.dart';
 import 'salon_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,12 +34,17 @@ class HomePage extends StatelessWidget {
   }
 
   Column _buildStylistView(BuildContext context) {
+    final userType = context.read<AuthViewModel>().userType;
     return Column(
       crossAxisAlignment: .start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: _buildAppBar(name: 'Sarah Mendoza', plan: 'Free Plan'),
+          child: _buildAppBar(
+            name: 'Sarah Mendoza',
+            plan: 'Free Plan',
+            user: userType,
+          ),
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -70,14 +72,114 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildClientView(BuildContext context) {
+    final userType = context.read<AuthViewModel>().userType;
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Column(
           crossAxisAlignment: .start,
           children: [
-            _buildClientTopView(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: _buildAppBar(
+                name: 'Sarah Mendoza',
+                plan: 'Free Plan',
+                user: userType,
+              ),
+            ),
+            SizedBox(height: 21.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Search for requests",
+                  hintStyle: AppFonts.grey14w400,
+                  fillColor: AppColors.white.withValues(alpha: 0.6),
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50.r),
+                    borderSide: const BorderSide(color: AppColors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50.r),
+                    borderSide: const BorderSide(color: AppColors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50.r),
+                    borderSide: const BorderSide(color: AppColors.white),
+                  ),
+                  suffixIcon: Icon(
+                    TablerIcons.filter,
+                    color: AppColors.black,
+                    size: 24.sp,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 24.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                children: [
+                  Text('Stylist Trending', style: AppFonts.black24w300),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {},
+
+                    child: Row(
+                      children: [
+                        Text('SEE ALL', style: AppFonts.black12w500),
+                        Icon(TablerIcons.chevronRight, size: 25.sp),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 12.h),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(4, (index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: index == 0 ? 20.w : 0,
+                      right: index == 3 ? 20.w : 11.w,
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 18.w,
+                        vertical: 13.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(7.r),
+                      ),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            ClipOval(
+                              child: Image.asset(
+                                DummyAssets.profile,
+                                height: 85.w,
+                                width: 85.w,
+                              ),
+                            ),
+                            SizedBox(height: 12.h),
+                            Text("Chatsuda Sucha", style: AppFonts.black12w400),
+                            SizedBox(height: 2.h),
+                            Text("Hair Coloring", style: AppFonts.grey10w400),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+
             SizedBox(height: 20.h),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
@@ -90,10 +192,7 @@ class HomePage extends StatelessWidget {
                       Text('Top Rated Near You', style: AppFonts.black24w300),
                       const Spacer(),
                       InkWell(
-                        onTap: () => Navigator.pushNamed(
-                          context,
-                          MapExplorePage.routeName,
-                        ),
+                        onTap: () {},
                         child: Row(
                           children: [
                             Text('SEE ALL', style: AppFonts.black12w500),
@@ -104,8 +203,8 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 16.h),
-                  _buildClientMap(),
-                  SizedBox(height: 8.h),
+                  // _buildClientMap(),
+                  // SizedBox(height: 8.h),
                   for (int i = 0; i < 10; i++)
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.h),
@@ -125,97 +224,101 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _buildClientMap() {
-    return Container(
-      height: 180.h,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        image: const DecorationImage(
-          image: AssetImage(DummyAssets.smallMap),
-          fit: BoxFit.fill,
-        ),
-        borderRadius: BorderRadius.circular(24.r),
-        border: Border.all(color: AppColors.white),
-      ),
-      child: Column(
-        crossAxisAlignment: .stretch,
-        children: [
-          const AppCurrentLocationCard(),
-          // const Spacer(),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Material(
-              type: MaterialType.transparency,
-              child: Padding(
-                padding: EdgeInsets.all(16.w),
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(15.r),
-                  child: Ink(
-                    width: 40.w,
-                    height: 40.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      border: Border.all(color: AppColors.lightOrange),
-                      color: AppColors.white,
-                    ),
-                    child: Icon(TablerIcons.currentLocation, size: 20.sp),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Container _buildClientMap() {
+  //   return Container(
+  //     height: 180.h,
+  //     decoration: BoxDecoration(
+  //       color: AppColors.white,
+  //       image: const DecorationImage(
+  //         image: AssetImage(DummyAssets.smallMap),
+  //         fit: BoxFit.fill,
+  //       ),
+  //       borderRadius: BorderRadius.circular(24.r),
+  //       border: Border.all(color: AppColors.white),
+  //     ),
+  //     child: Column(
+  //       crossAxisAlignment: .stretch,
+  //       children: [
+  //         const AppCurrentLocationCard(),
+  //         // const Spacer(),
+  //         Align(
+  //           alignment: Alignment.bottomRight,
+  //           child: Material(
+  //             type: MaterialType.transparency,
+  //             child: Padding(
+  //               padding: EdgeInsets.all(16.w),
+  //               child: InkWell(
+  //                 onTap: () {},
+  //                 borderRadius: BorderRadius.circular(15.r),
+  //                 child: Ink(
+  //                   width: 40.w,
+  //                   height: 40.w,
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(15.r),
+  //                     border: Border.all(color: AppColors.lightOrange),
+  //                     color: AppColors.white,
+  //                   ),
+  //                   child: Icon(TablerIcons.currentLocation, size: 20.sp),
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Container _buildClientTopView() {
-    return Container(
-      padding: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: AppColors.white),
-        gradient: AppColors.gradientPeachToPurple,
-      ),
-      child: Column(
-        crossAxisAlignment: .start,
-        children: [
-          _buildAppBar(name: 'Olivia Bennett', plan: 'Starter Plan'),
-          AppDivider(margin: EdgeInsets.symmetric(vertical: 24.h)),
-          Text('Find Your Perfect Stylist', style: AppFonts.grey12w400),
-          SizedBox(height: 14.h),
-          AppDropdown<String>(
-            prefixIcon: TablerIcons.cut,
-            items: const ['Option 1', 'Option 2'],
-            builder: (item) => Text(item),
-            onChanged: (_) {},
-            hint: 'Service Type',
-          ),
-          SizedBox(height: 14.h),
-          AppDropdown<String>(
-            prefixIcon: TablerIcons.mapPin,
-            items: const ['Option 1', 'Option 2'],
-            builder: (item) => Text(item),
-            onChanged: (_) {},
-            hint: 'Location',
-          ),
-          SizedBox(height: 14.h),
-          AppDropdown<String>(
-            prefixIcon: TablerIcons.calendarDue,
-            items: const ['Option 1', 'Option 2'],
-            builder: (item) => Text(item),
-            onChanged: (_) {},
-            hint: 'Schedule',
-          ),
-          SizedBox(height: 14.h),
-          ElevatedButton(onPressed: () {}, child: const Text('Find a Match')),
-        ],
-      ),
-    );
-  }
+  // Container _buildClientTopView() {
+  //   return Container(
+  //     padding: EdgeInsets.all(24.w),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(12.r),
+  //       border: Border.all(color: AppColors.white),
+  //       gradient: AppColors.gradientPrimaryToPeach,
+  //     ),
+  //     child: Column(
+  //       crossAxisAlignment: .start,
+  //       children: [
+  //         _buildAppBar(name: 'Olivia Bennett', plan: 'Starter Plan'),
+  //         AppDivider(margin: EdgeInsets.symmetric(vertical: 24.h)),
+  //         Text('Find Your Perfect Stylist', style: AppFonts.grey12w400),
+  //         SizedBox(height: 14.h),
+  //         AppDropdown<String>(
+  //           prefixIcon: TablerIcons.cut,
+  //           items: const ['Option 1', 'Option 2'],
+  //           builder: (item) => Text(item),
+  //           onChanged: (_) {},
+  //           hint: 'Service Type',
+  //         ),
+  //         SizedBox(height: 14.h),
+  //         AppDropdown<String>(
+  //           prefixIcon: TablerIcons.mapPin,
+  //           items: const ['Option 1', 'Option 2'],
+  //           builder: (item) => Text(item),
+  //           onChanged: (_) {},
+  //           hint: 'Location',
+  //         ),
+  //         SizedBox(height: 14.h),
+  //         AppDropdown<String>(
+  //           prefixIcon: TablerIcons.calendarDue,
+  //           items: const ['Option 1', 'Option 2'],
+  //           builder: (item) => Text(item),
+  //           onChanged: (_) {},
+  //           hint: 'Schedule',
+  //         ),
+  //         SizedBox(height: 14.h),
+  //         ElevatedButton(onPressed: () {}, child: const Text('Find a Match')),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Widget _buildAppBar({required String name, required String plan}) {
+  Widget _buildAppBar({
+    required String name,
+    required String plan,
+    required UserType user,
+  }) {
     return Row(
       children: [
         CircleAvatar(
@@ -242,7 +345,10 @@ class HomePage extends StatelessWidget {
         ),
         const Spacer(),
 
-        const Icon(TablerIcons.bell),
+        Icon(TablerIcons.bell, color: AppColors.black, size: 24.sp),
+        SizedBox(width: 16.w),
+        if (user == UserType.client)
+          Icon(TablerIcons.map, color: AppColors.black, size: 24.sp),
       ],
     );
     // return ListTile(

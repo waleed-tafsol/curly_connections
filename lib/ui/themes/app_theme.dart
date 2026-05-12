@@ -10,7 +10,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData.from(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.purple,
+        seedColor: AppColors.lightPeach,
         brightness: Brightness.light,
       ),
     ).copyWith(
@@ -19,8 +19,8 @@ class AppTheme {
         visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
         minLeadingWidth: 50.r,
       ),
-         splashColor: AppColors.purple,
-      highlightColor: AppColors.purple,
+      splashColor: AppColors.lightPeach,
+      highlightColor: AppColors.lightPeach,
       brightness: Brightness.light,
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: AppBarTheme(
