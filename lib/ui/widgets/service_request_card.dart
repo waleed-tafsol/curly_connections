@@ -29,7 +29,7 @@ class ServiceRequestCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(15.w),
         decoration: BoxDecoration(
           color: AppColors.fillColor.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(12.r),

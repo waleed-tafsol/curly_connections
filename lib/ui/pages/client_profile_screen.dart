@@ -407,25 +407,25 @@ class ClientProfileScreen extends StatelessWidget {
   Widget _socialSectionWidget() {
     return Column(
       children: [
-        Text('Follow us', style: AppFonts.black12w400),
-        SizedBox(height: 8.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _socialIconWidget(
-              icon: TablerIcons.brandTiktokFilled,
-              onTap: () {},
-            ),
-            SizedBox(width: 24.w),
-            _socialIconWidget(icon: TablerIcons.brandInstagram, onTap: () {}),
-            SizedBox(width: 24.w),
-            _socialIconWidget(
-              icon: TablerIcons.brandFacebookFilled,
-              onTap: () {},
-            ),
-          ],
-        ),
-        SizedBox(height: 16.h),
+        //Text('Follow us', style: AppFonts.black12w400),
+        // SizedBox(height: 8.h),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     _socialIconWidget(
+        //       icon: TablerIcons.brandTiktokFilled,
+        //       onTap: () {},
+        //     ),
+        //     SizedBox(width: 24.w),
+        //     _socialIconWidget(icon: TablerIcons.brandInstagram, onTap: () {}),
+        //     SizedBox(width: 24.w),
+        //     _socialIconWidget(
+        //       icon: TablerIcons.brandFacebookFilled,
+        //       onTap: () {},
+        //     ),
+        //   ],
+        // ),
+        // SizedBox(height: 16.h),
         // Version
         Opacity(
           opacity: 0.5,
