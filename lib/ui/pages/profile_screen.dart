@@ -512,24 +512,24 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _socialIconWidget({
-    required IconData icon,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Icon(
-        icon,
-        size: 24.w,
-        color: AppColors.black,
-        shadows: [
-          Shadow(
-            offset: const Offset(0, 1),
-            blurRadius: 3,
-            color: AppColors.black.withValues(alpha: 0.25),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _socialIconWidget({
+  //   required IconData icon,
+  //   required VoidCallback onTap,
+  // }) {
+  //   return GestureDetector(
+  //     onTap: onTap,
+  //     child: Icon(
+  //       icon,
+  //       size: 24.w,
+  //       color: AppColors.black,
+  //       shadows: [
+  //         Shadow(
+  //           offset: const Offset(0, 1),
+  //           blurRadius: 3,
+  //           color: AppColors.black.withValues(alpha: 0.25),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
