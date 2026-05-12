@@ -46,7 +46,7 @@ class _SetScheduleScreenState extends State<SetScheduleScreen> {
       ),
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: Padding(

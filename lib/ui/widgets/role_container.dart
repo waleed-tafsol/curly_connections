@@ -30,7 +30,7 @@ class RoleContainer extends StatelessWidget {
           child: Ink(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
             decoration: BoxDecoration(
-              gradient: AppColors.gradientPurpleToPeach,
+              color: AppColors.lightPeach,
               borderRadius: BorderRadius.circular(22.r),
               border: .all(
                 color: isSelected ? AppColors.borderPurple : Colors.white,

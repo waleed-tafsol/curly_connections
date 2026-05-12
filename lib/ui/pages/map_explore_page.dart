@@ -24,7 +24,7 @@ class MapExplorePage extends StatelessWidget {
         titleSpacing: 0,
       ),
       body: DecoratedBox(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: Center(

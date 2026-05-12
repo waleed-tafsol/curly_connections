@@ -32,7 +32,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
       body: Container(
         alignment: Alignment.topCenter,
         padding: EdgeInsets.symmetric(horizontal: 18.w),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: SafeArea(

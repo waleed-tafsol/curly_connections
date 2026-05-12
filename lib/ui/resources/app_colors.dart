@@ -11,7 +11,7 @@ abstract final class AppColors {
   static const lightPurple = Color(0xFFF6E5FD);
   static const peach = Color(0xFFFEE1D6);
   static const pink = Color(0xFFEAC3FF);
-  static const borderPurple = Color(0xFFA83BE6);
+  static const borderPurple = Color(0xFFD9730A);
   static const dividerColor = Color(0xFFE0E0E1);
   static const orange = Color(0xFFFF8202);
   static const lightOrange = Color(0xFFF6D2A5);
@@ -26,12 +26,17 @@ abstract final class AppColors {
   static const darkPurple = Color(0xFF4F378A);
   static const darkPurple1 = Color(0xFFA300FF);
   static const lightGreen = Color(0xFFB4E6DB);
+  static const lightPeach = Color(0xFFFEE1D6);
 
-  static const LinearGradient gradientPurpleToPeach = LinearGradient(
+  static LinearGradient gradientPurpleToPeach = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
 
-    colors: [purple, peach],
+    colors: [
+      const Color(0xFFCE9774).withValues(alpha: 0.1),
+
+      const Color(0xFFF2EBE5),
+    ],
   );
 
   static const LinearGradient gradientPeachToPurple = LinearGradient(
@@ -40,8 +45,15 @@ abstract final class AppColors {
     stops: [0.57, 1.0],
     colors: [peach, lightPurple],
   );
-  static const LinearGradient gradientScafoldBackground = LinearGradient(
-    stops: [0, 0.26, 1.0],
-    colors: [Color(0xFFF6E6FF), Color(0xFFF6E6FF), Color(0xFFFEE1D6)],
+  static LinearGradient gradientScafoldBackground = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: const [0.21, 0.44, 0.49, 0.75],
+    colors: [
+      const Color(0xFFF2EBE5),
+      const Color(0xFFCE9774).withValues(alpha: 0.8),
+      const Color(0xFFCE9774).withValues(alpha: 0.8),
+      const Color(0xFFF2EBE5),
+    ],
   );
 }

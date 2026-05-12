@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
             gradient: AppColors.gradientScafoldBackground
         ),
         child: Stack(

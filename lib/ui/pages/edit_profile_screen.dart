@@ -21,7 +21,7 @@ class EditProfileScreen extends StatelessWidget {
         title: 'Edit Profile',
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         alignment: Alignment.center,

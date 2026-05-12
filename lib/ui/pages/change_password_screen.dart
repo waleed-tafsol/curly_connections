@@ -17,7 +17,7 @@ class ChangePasswordScreen extends StatelessWidget {
         title: 'Change Password',
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         alignment: Alignment.center,

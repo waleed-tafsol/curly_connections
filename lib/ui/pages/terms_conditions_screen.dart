@@ -17,7 +17,7 @@ class TermsConditionsScreen extends StatelessWidget {
         title: 'Terms & Privacy Policy',
       ), // appBar: const CustomAppBarBackButton(title: "Terms & Conditions"),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: SafeArea(

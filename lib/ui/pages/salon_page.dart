@@ -43,7 +43,7 @@ class _SalonPageState extends State<SalonPage> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: SafeArea(child: _buildBody()),

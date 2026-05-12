@@ -20,7 +20,7 @@ class PortfolioScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(title: 'Portfolio'),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         alignment: Alignment.center,

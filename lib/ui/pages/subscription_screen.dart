@@ -35,7 +35,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
       ),
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: Padding(
@@ -54,11 +54,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               Container(
                 padding: EdgeInsets.only(top: 32.h),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xFFF6E6FF), Color(0xFFFEE1D6)],
-                  ),
+                  gradient: AppColors.gradientPurpleToPeach,
                   borderRadius: BorderRadius.circular(16.r),
                   border: .all(color: AppColors.black),
                 ),
@@ -84,7 +80,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                 value: true,
                                 onChanged: (_) {},
                                 activeThumbColor: AppColors.white,
-                                activeTrackColor: AppColors.mediumPurple,
+                                activeTrackColor: AppColors.lightPeach,
                                 inactiveThumbColor: AppColors.textGrey,
                                 inactiveTrackColor: AppColors.white,
                                 trackOutlineColor: WidgetStateProperty.all(
@@ -102,7 +98,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                   states,
                                 ) {
                                   if (states.contains(WidgetState.selected)) {
-                                    return AppColors.mediumPurple;
+                                    return const Color(0xFFCE9774);
                                   }
                                   return AppColors.white;
                                 }),

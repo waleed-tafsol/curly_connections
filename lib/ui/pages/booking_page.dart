@@ -27,8 +27,8 @@ class BookingPage extends StatelessWidget {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        decoration: const BoxDecoration(
-          gradient: AppColors.gradientScafoldBackground,
+        decoration:  BoxDecoration(
+          gradient:  AppColors.gradientScafoldBackground,
         ),
         child: SafeArea(
           child: Column(

@@ -99,7 +99,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
       ),
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: Padding(
@@ -108,7 +108,10 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 132.h),
-              Text('Select categories', style: AppFonts.black20w400.copyWith(height: 1.5)),
+              Text(
+                'Select categories',
+                style: AppFonts.black20w400.copyWith(height: 1.5),
+              ),
               SizedBox(height: 4.h),
               Text(
                 'Select the services categories you work in to let you set your schedules',
@@ -120,6 +123,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
                 decoration: BoxDecoration(
                   color: AppColors.white.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(16.r),
+                  border: .all(color: AppColors.white),
                 ),
                 child: ListView.separated(
                   shrinkWrap: true,
@@ -148,7 +152,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
                                     border: Border.all(
                                       color: section.isExpanded
                                           ? AppColors.secondary
-                                          : AppColors.textGrey,
+                                          : AppColors.white,
                                       width: 1.5.w,
                                     ),
                                     color: Colors.transparent,

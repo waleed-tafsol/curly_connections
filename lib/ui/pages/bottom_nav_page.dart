@@ -27,7 +27,7 @@ class BottomNavPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         alignment: Alignment.center,

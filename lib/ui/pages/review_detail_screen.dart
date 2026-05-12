@@ -42,7 +42,7 @@ class _ReviewDetailScreenState extends State<ReviewDetailScreen> {
       body: Container(
         alignment: Alignment.topCenter,
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: AppColors.gradientScafoldBackground,
         ),
         child: SafeArea(
