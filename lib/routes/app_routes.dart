@@ -22,6 +22,7 @@ import '../ui/pages/set_schedule_screen.dart';
 import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
 import '../ui/pages/terms_conditions_screen.dart';
+import '../ui/pages/turn_notification_page.dart';
 import '../ui/view_models/bottom_nav_view_model.dart';
 
 abstract final class AppRoutes {
@@ -116,6 +117,10 @@ abstract final class AppRoutes {
       ReviewDetailScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: ReviewDetailScreen.routeName),
         builder: (_) => const ReviewDetailScreen(),
+      ),
+      TurnNotificationPage.routeName => CupertinoPageRoute(
+        settings: const RouteSettings(name: TurnNotificationPage.routeName),
+        builder: (_) => const TurnNotificationPage(),
       ),
 
       null => throw UnimplementedError(),

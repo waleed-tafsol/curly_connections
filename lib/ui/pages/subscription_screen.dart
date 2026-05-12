@@ -10,6 +10,7 @@ import '../view_models/auth_view_model.dart';
 import '../widgets/custom_appbar_back_button.dart';
 import 'bottom_nav_page.dart';
 import 'select_categories_screen.dart';
+import 'turn_notification_page.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   static const String routeName = '/subscription';
@@ -29,7 +30,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         onNext: () {
           Navigator.pushReplacementNamed(
             context,
-            SelectCategoriesScreen.routeName,
+            TurnNotificationPage.routeName,
           );
         },
       ),
