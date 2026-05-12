@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
+
 import '../../constants/assets.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
@@ -512,24 +513,24 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _socialIconWidget({
-    required IconData icon,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Icon(
-        icon,
-        size: 24.w,
-        color: AppColors.black,
-        shadows: [
-          Shadow(
-            offset: const Offset(0, 1),
-            blurRadius: 3,
-            color: AppColors.black.withValues(alpha: 0.25),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _socialIconWidget({
+  //   required IconData icon,
+  //   required VoidCallback onTap,
+  // }) {
+  //   return GestureDetector(
+  //     onTap: onTap,
+  //     child: Icon(
+  //       icon,
+  //       size: 24.w,
+  //       color: AppColors.black,
+  //       shadows: [
+  //         Shadow(
+  //           offset: const Offset(0, 1),
+  //           blurRadius: 3,
+  //           color: AppColors.black.withValues(alpha: 0.25),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
