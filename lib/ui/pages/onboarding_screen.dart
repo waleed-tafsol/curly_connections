@@ -123,7 +123,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(page.image),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),

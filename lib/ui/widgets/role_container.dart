@@ -28,7 +28,7 @@ class RoleContainer extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(22.r),
           child: Ink(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
             decoration: BoxDecoration(
               color: AppColors.lightPeach,
               borderRadius: BorderRadius.circular(22.r),
@@ -40,9 +40,9 @@ class RoleContainer extends StatelessWidget {
               crossAxisAlignment: .center,
               children: [
                 Text(title, style: AppFonts.black20w400),
-                SizedBox(height: 10.h),
-                Image.asset(imagePath, height: 100.h, width: 100.h),
-                SizedBox(height: 10.h),
+                SizedBox(height: 10.sp),
+                Image.asset(imagePath, height: 100.sp, width: 100.sp),
+                SizedBox(height: 10.sp),
                 Text(
                   description,
                   style: AppFonts.black12w400.copyWith(height: 1.3),

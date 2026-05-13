@@ -39,7 +39,7 @@ class ServiceRequestCard extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Text("April 24, Friday", style: AppFonts.grey16w400),
-            SizedBox(height: 12.h),
+            SizedBox(height: 12.sp),
             Row(
               mainAxisAlignment: .start,
               children: [
@@ -66,12 +66,12 @@ class ServiceRequestCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 12.h),
+            SizedBox(height: 12.sp),
             Text(
               "Elena K.",
               style: AppFonts.black22w400.copyWith(height: 1.sp),
             ),
-            SizedBox(height: 5.h),
+            SizedBox(height: 5.sp),
             Row(
               children: [
                 Text(
@@ -89,7 +89,7 @@ class ServiceRequestCard extends StatelessWidget {
                 ),
               ],
             ),
-            if (index != 2) SizedBox(height: 28.h),
+            if (index != 2) const Spacer(),
             if (index != 2)
               Row(
                 children: [
