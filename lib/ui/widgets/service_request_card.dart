@@ -23,8 +23,8 @@ class ServiceRequestCard extends StatelessWidget {
           barrierColor: Colors.white.withValues(alpha: 0.9),
           builder: (_) => index != 1
               ? StylistBookingRequestSheet(
-                  showButton: index == 2 ? false : true,
-                )
+            showButton: index == 2 ? false : true,
+          )
               : const StylistReschdulingRequestSheet(),
         );
       },
@@ -33,20 +33,20 @@ class ServiceRequestCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.fillColor.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(12.r),
-          border: .all(color: AppColors.fillColor, width: 2.w),
+          border: Border.all(color: AppColors.fillColor, width: 2.w),
         ),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("April 24, Friday", style: AppFonts.grey16w400),
             SizedBox(height: 12.sp),
             Row(
-              mainAxisAlignment: .start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(TablerIcons.hourglassEmpty, size: 16.sp),
                 SizedBox(width: 10.w),
                 RichText(
-                  textAlign: .center,
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     children: [
                       TextSpan(text: '17:30', style: AppFonts.black14w500),
@@ -57,7 +57,7 @@ class ServiceRequestCard extends StatelessWidget {
                 Icon(TablerIcons.arrowRight, size: 16.sp),
                 SizedBox(width: 10.w),
                 RichText(
-                  textAlign: .center,
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     children: [
                       TextSpan(text: '18:30', style: AppFonts.black14w500),
@@ -89,7 +89,7 @@ class ServiceRequestCard extends StatelessWidget {
                 ),
               ],
             ),
-            if (index != 2) const Spacer(),
+            if (index != 2) SizedBox(height: 20.h),
             if (index != 2)
               Row(
                 children: [
@@ -106,10 +106,10 @@ class ServiceRequestCard extends StatelessWidget {
                         ],
                         color: AppColors.brown,
                         borderRadius: BorderRadius.circular(12.r),
-                        border: .all(color: AppColors.white),
+                        border: Border.all(color: AppColors.white),
                       ),
                       child: Row(
-                        mainAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Approve", style: AppFonts.white14w500),
                           SizedBox(width: 4.w),
@@ -122,30 +122,7 @@ class ServiceRequestCard extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  // Expanded(
-                  //   child: ElevatedButton.icon(
-                  //     iconAlignment: IconAlignment.end,
-                  //     style: ElevatedButton.styleFrom(
-                  //       padding: EdgeInsets.symmetric(
-                  //         horizontal: 8.w,
-                  //         vertical: 8.h,
-                  //       ),
-                  //     ),
-                  //     onPressed: () {},
-                  //     label: Text(
-                  //       "Approve Request",
-                  //       style: AppFonts.white14w500,
-                  //     ),
-                  //     icon: Icon(
-                  //       TablerIcons.circleCheck,
-                  //       color: AppColors.white,
-                  //       size: 23.sp,
-                  //     ),
-                  //   ),
-                  // ),
                   SizedBox(width: 16.w),
-
                   Expanded(
                     child: GestureDetector(
                       onTap: () {},
@@ -166,7 +143,7 @@ class ServiceRequestCard extends StatelessWidget {
                           ],
                         ),
                         child: Row(
-                          mainAxisAlignment: .center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Reject", style: AppFonts.black14w500),
                             SizedBox(width: 5.w),

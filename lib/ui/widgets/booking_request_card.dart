@@ -35,20 +35,20 @@ class BookingRequestCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.fillColor.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(12.r),
-          border: .all(color: AppColors.fillColor),
+          border: Border.all(color: AppColors.fillColor),
         ),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("April 24, Friday", style: AppFonts.grey16w400),
             SizedBox(height: 12.h),
             Row(
-              mainAxisAlignment: .start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(TablerIcons.hourglassEmpty, size: 16.sp),
                 SizedBox(width: 10.w),
                 RichText(
-                  textAlign: .center,
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     children: [
                       TextSpan(text: '17:30', style: AppFonts.black14w500),
@@ -59,7 +59,7 @@ class BookingRequestCard extends StatelessWidget {
                 Icon(TablerIcons.arrowRight, size: 16.sp),
                 SizedBox(width: 10.w),
                 RichText(
-                  textAlign: .center,
+                  textAlign: TextAlign.center,
                   text: TextSpan(
                     children: [
                       TextSpan(text: '18:30', style: AppFonts.black14w500),
@@ -72,7 +72,7 @@ class BookingRequestCard extends StatelessWidget {
             Text("Elena K.", style: AppFonts.black22w400),
             SizedBox(height: 5.h),
             Row(
-              mainAxisAlignment: .center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("FULL COLOR + TREATMENT", style: AppFonts.grey14w400),
                 const Spacer(),
@@ -142,7 +142,7 @@ class BookingRequestCard extends StatelessWidget {
                           ],
                         ),
                         child: Row(
-                          mainAxisAlignment: .center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Cancel Booking", style: AppFonts.black14w500),
                             SizedBox(width: 5.w),
