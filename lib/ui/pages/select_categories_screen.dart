@@ -121,7 +121,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 22.h),
                 decoration: BoxDecoration(
-                  color: AppColors.white.withOpacity(0.5),
+                  color: AppColors.white.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(16.r),
                   border: .all(color: AppColors.white),
                 ),
@@ -129,7 +129,7 @@ class _SelectCategoriesScreenState extends State<SelectCategoriesScreen> {
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
                   itemCount: _sections.length,
-                  separatorBuilder: (_, __) => SizedBox(height: 22.h),
+                  separatorBuilder: (_, _) => SizedBox(height: 22.h),
                   itemBuilder: (context, index) {
                     final section = _sections[index];
                     final selectedCount = section.selectedChips.length;

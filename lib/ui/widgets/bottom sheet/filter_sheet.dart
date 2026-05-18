@@ -17,7 +17,7 @@ class _FilterSheetState extends State<FilterSheet> {
   final ValueNotifier<int> _selectedType = ValueNotifier(
     0,
   ); // 0=Upcoming, 1=Completed
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   DateTime? _selectedDate;
 
   String get _formattedDate {

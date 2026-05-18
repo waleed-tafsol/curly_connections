@@ -67,7 +67,7 @@ class _AppItemsListViewState<T> extends State<AppItemsListView<T>> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (_, _) => Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: ServiceRequestCard(),
+              child: const ServiceRequestCard(),
             ),
           ),
         ),

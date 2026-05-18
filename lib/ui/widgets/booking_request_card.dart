@@ -11,8 +11,9 @@ import 'bottom sheet/rescheluling_request_sheet.dart';
 import 'bottom sheet/stylist_rescheduling_request.dart';
 
 class BookingRequestCard extends StatelessWidget {
-  Status status = Status.booked;
-  BookingRequestCard({super.key, required this.status});
+  final Status status;
+
+  const BookingRequestCard({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,7 @@ class AppCalendar extends StatefulWidget {
 }
 
 class _AppCalendarState extends State<AppCalendar> {
-  DateTime _focusedDay = DateTime.now();
+  final DateTime _focusedDay = DateTime.now();
   final now = DateTime.now().subtract(const Duration(days: 1));
 
   List<String> getEvents(int day) {

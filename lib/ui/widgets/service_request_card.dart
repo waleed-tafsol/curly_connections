@@ -9,8 +9,8 @@ import 'bottom sheet/stylist_booking_request_sheet.dart';
 import 'bottom sheet/stylist_rescheduling_request.dart';
 
 class ServiceRequestCard extends StatelessWidget {
-  int? index;
-  ServiceRequestCard({super.key, this.index = 0});
+  final int? index;
+  const ServiceRequestCard({super.key, this.index = 0});
 
   @override
   Widget build(BuildContext context) {

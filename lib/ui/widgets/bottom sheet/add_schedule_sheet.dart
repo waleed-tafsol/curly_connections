@@ -118,7 +118,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                           border: Border.all(
                             color: isSelected
                                 ? AppColors.orange
-                                : AppColors.textGrey.withOpacity(0.3),
+                                : AppColors.textGrey.withValues(alpha: 0.3),
                           ),
                         ),
                         alignment: .center,
@@ -163,7 +163,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                         Row(
                           children: [
                             Text(
-                              '${_startTime.time24Hours}',
+                              _startTime.time24Hours,
                               style: AppFonts.black16w500,
                             ),
                             // SizedBox(width: 4.w),
@@ -176,7 +176,7 @@ class _AddScheduleBottomSheetState extends State<AddScheduleBottomSheet> {
                             ),
                             SizedBox(width: 12.w),
                             Text(
-                              '${_endTime.time24Hours}',
+                              _endTime.time24Hours,
                               style: AppFonts.black16w500,
                             ),
                             // SizedBox(width: 4.w),

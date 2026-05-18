@@ -214,8 +214,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 16.h),
-                      // _buildClientMap(),
-                      // SizedBox(height: 8.h),
                       for (int i = 0; i < 10; i++)
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 8.h),

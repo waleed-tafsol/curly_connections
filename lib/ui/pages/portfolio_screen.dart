@@ -518,7 +518,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 //                             //     width: 20.w,
 //                             //     height: 20.w,
 //                             //     decoration: BoxDecoration(
-//                             //       color: Colors.black.withOpacity(0.24),
+//                             //       color: Colors.black.withValues(alpha:0.24),
 //                             //       shape: BoxShape.circle,
 //                             //     ),
 //                             //     child: Icon(Icons.close, size: 14.sp, color: AppColors.white),

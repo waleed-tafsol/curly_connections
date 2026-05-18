@@ -33,10 +33,11 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
+  late List<OnBoardingModel> _pages;
 
   @override
   void initState() {
-    _Pages = context.read<AuthViewModel>().userType == UserType.stylist
+    _pages = context.read<AuthViewModel>().userType == UserType.stylist
         ? [
             OnBoardingModel(
               image: PngAssets.onboardingSty1,
@@ -62,25 +63,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               image: PngAssets.onboardingClt1,
               title: "Discover Top Hair Stylists",
               desc:
-            'Find trusted professionals near you with ease. Browse profiles, compare services, and choose what suits you best.'),
+                  'Find trusted professionals near you with ease. Browse profiles, compare services, and choose what suits you best.',
+            ),
             OnBoardingModel(
               image: PngAssets.onboardingClt2,
               title: "Effortless Beauty Booking",
-              desc: "Search, select, and book in seconds. Managing your appointments has never been easier.",
+              desc:
+                  "Search, select, and book in seconds. Managing your appointments has never been easier.",
             ),
             OnBoardingModel(
               image: PngAssets.onboardingClt3,
               title: "Your Style, Your Choice",
-              desc: "Explore a wide range of services tailored to your needs. Pick the right stylist for your perfect look.",
+              desc:
+                  "Explore a wide range of services tailored to your needs. Pick the right stylist for your perfect look.",
             ),
           ];
     super.initState();
   }
 
-  late List<OnBoardingModel> _Pages;
-
   void _nextPage() {
-    if (_currentIndex < _Pages.length - 1) {
+    if (_currentIndex < _pages.length - 1) {
       _controller.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -89,7 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       Navigator.pushNamedAndRemoveUntil(
         context,
         LoginScreen.routeName,
-            (route) => false,
+        (route) => false,
       );
     }
   }
@@ -98,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Navigator.pushNamedAndRemoveUntil(
       context,
       LoginScreen.routeName,
-          (route) => false,
+      (route) => false,
     );
   }
 
@@ -110,7 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var page = _Pages[_currentIndex];
+    var page = _pages[_currentIndex];
 
     return Scaffold(
       body: Stack(
@@ -135,12 +137,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Expanded(
                 child: PageView.builder(
                   controller: _controller,
-                  itemCount: _Pages.length,
+                  itemCount: _pages.length,
                   onPageChanged: (index) {
                     setState(() => _currentIndex = index);
                   },
                   itemBuilder: (context, index) {
-                    final item = _Pages[index];
+                    final item = _pages[index];
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -175,70 +177,69 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               SizedBox(height: 30.h),
 
-            /// Dots indicator
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: List.generate(
-                  _Pages.length,
-                  (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.all(4),
-                    width:  57.sp,
-                    height:_currentIndex == index
-                        ? 3.sp: 2.sp,
-                    decoration: BoxDecoration(
-                      color: _currentIndex == index
-                          ? AppColors.white
-                          : AppColors.white.withValues(alpha: 0.6),
-                      borderRadius: BorderRadius.circular(10),
+              /// Dots indicator
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(
+                    _pages.length,
+                    (index) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      margin: const EdgeInsets.all(4),
+                      width: 57.sp,
+                      height: _currentIndex == index ? 3.sp : 2.sp,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == index
+                            ? AppColors.white
+                            : AppColors.white.withValues(alpha: 0.6),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 30.h),
+              SizedBox(height: 30.h),
 
-            /// Next / Get Started button
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        // minimumSize: const Size(double.infinity, 50),
-                      ),
-                      onPressed: _skip,
-                      child: const Text("Skip"),
-                    ),
-                  ),
-                  SizedBox(width: 20.w),
-                  Expanded(
-                    flex: 3,
-                    child: ElevatedButton(
-                      onPressed: _nextPage,
-                      style: ElevatedButton.styleFrom(
-                        // minimumSize: const Size(double.infinity, 50),
-                      ),
-                      child: Text(
-                        _currentIndex == _Pages.length - 1
-                            ? "Get Started"
-                            : "Next",
+              /// Next / Get Started button
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          // minimumSize: const Size(double.infinity, 50),
+                        ),
+                        onPressed: _skip,
+                        child: const Text("Skip"),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 20.w),
+                    Expanded(
+                      flex: 3,
+                      child: ElevatedButton(
+                        onPressed: _nextPage,
+                        style: ElevatedButton.styleFrom(
+                          // minimumSize: const Size(double.infinity, 50),
+                        ),
+                        child: Text(
+                          _currentIndex == _pages.length - 1
+                              ? "Get Started"
+                              : "Next",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 30),
-          ],
-        ),
-      ],
-    ),
-  );
-}
+              const SizedBox(height: 30),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
