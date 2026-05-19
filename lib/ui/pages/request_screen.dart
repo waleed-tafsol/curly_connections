@@ -27,7 +27,7 @@ class _RequestScreenState extends ConsumerState<RequestScreen> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
             title: Text(
@@ -126,7 +126,7 @@ class _RequestScreenState extends ConsumerState<RequestScreen> {
               );
             },
             child: Row(
-              mainAxisAlignment: .end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text("FILTER", style: AppFonts.black14w500),
                 SizedBox(width: 5.w),
@@ -146,8 +146,6 @@ class _RequestScreenState extends ConsumerState<RequestScreen> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.zero,
-              shrinkWrap: true,
-
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Padding(

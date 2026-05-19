@@ -1,4 +1,4 @@
-package com.curlyconnection.app.curly_connection
+package com.curlyconnection.app
 
 import io.flutter.embedding.android.FlutterActivity
 

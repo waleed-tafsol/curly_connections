@@ -83,6 +83,7 @@ class _FilterSheetState extends State<FilterSheet> {
       clipBehavior: Clip.none,
       children: [
         Container(
+          width: double.infinity,
           padding: EdgeInsets.all(20.w),
           decoration: BoxDecoration(
             color: AppColors.white,
@@ -91,91 +92,93 @@ class _FilterSheetState extends State<FilterSheet> {
               topRight: Radius.circular(24.r),
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Filter", style: AppFonts.black32w400),
-              SizedBox(height: 16.h),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Filter", style: AppFonts.black32w400),
+                SizedBox(height: 16.h),
 
-              Text("Booking Type", style: AppFonts.black14w500),
-              SizedBox(height: 10.h),
+                Text("Booking Type", style: AppFonts.black14w500),
+                SizedBox(height: 10.h),
 
-              // ── Upcoming / Completed toggle ──
-              ValueListenableBuilder<int>(
-                valueListenable: _selectedType,
-                builder: (context, selected, _) {
-                  return Row(
-                    children: [
-                      _bookingTypeChip(
-                        label: 'Upcoming',
-                        index: 0,
-                        selected: selected,
+                // ── Upcoming / Completed toggle ──
+                ValueListenableBuilder<int>(
+                  valueListenable: _selectedType,
+                  builder: (context, selected, _) {
+                    return Row(
+                      children: [
+                        _bookingTypeChip(
+                          label: 'Upcoming',
+                          index: 0,
+                          selected: selected,
+                        ),
+                        SizedBox(width: 10.w),
+                        _bookingTypeChip(
+                          label: 'Completed',
+                          index: 1,
+                          selected: selected,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+                SizedBox(height: 12.h),
+
+                Text("Date", style: AppFonts.black13w400),
+                SizedBox(height: 7.h),
+
+                GestureDetector(
+                  onTap: _pickDate,
+                  child: AbsorbPointer(
+                    child: TextField(
+                      readOnly: true,
+                      style: AppFonts.black14w400,
+                      controller: _dateController,
+                      decoration: const InputDecoration(
+                        hintText: 'April 24, Friday',
+                        suffixIcon: Icon(TablerIcons.calendarDue),
                       ),
-                      SizedBox(width: 10.w),
-                      _bookingTypeChip(
-                        label: 'Completed',
-                        index: 1,
-                        selected: selected,
-                      ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 12.h),
-
-              Text("Date", style: AppFonts.black13w400),
-              SizedBox(height: 7.h),
-
-              GestureDetector(
-                onTap: _pickDate,
-                child: AbsorbPointer(
-                  child: TextField(
-                    readOnly: true,
-                    style: AppFonts.black14w400,
-                    controller: _dateController,
-                    decoration: const InputDecoration(
-                      hintText: 'April 24, Friday',
-                      suffixIcon: Icon(TablerIcons.calendarDue),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 12.h),
+                SizedBox(height: 12.h),
 
-              Text("Service", style: AppFonts.black13w400),
-              SizedBox(height: 7.h),
-              AppDropdown<String>(
-                hPadding: 16.w,
-                items: const ['Option 1', 'Option 2'],
-                builder: (item) => Text(item),
-                onChanged: (_) {},
-                hint: 'Select Service',
-                broderColor: AppColors.textFeildStroke,
-              ),
-              SizedBox(height: 56.h),
-
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        iconAlignment: IconAlignment.end,
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(
-                          TablerIcons.arrowRight,
-                          size: 24.sp,
-                          color: AppColors.white,
-                        ),
-                        label: const Text('Apply Filter'),
-                      ),
-                    ),
-                  ],
+                Text("Service", style: AppFonts.black13w400),
+                SizedBox(height: 7.h),
+                AppDropdown<String>(
+                  hPadding: 16.w,
+                  items: const ['Option 1', 'Option 2'],
+                  builder: (item) => Text(item),
+                  onChanged: (_) {},
+                  hint: 'Select Service',
+                  broderColor: AppColors.textFeildStroke,
                 ),
-              ),
-             SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
-            ],
+                SizedBox(height: 56.h),
+
+                IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          iconAlignment: IconAlignment.end,
+                          onPressed: () => Navigator.pop(context),
+                          icon: Icon(
+                            TablerIcons.arrowRight,
+                            size: 24.sp,
+                            color: AppColors.white,
+                          ),
+                          label: const Text('Apply Filter'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
+              ],
+            ),
           ),
         ),
 

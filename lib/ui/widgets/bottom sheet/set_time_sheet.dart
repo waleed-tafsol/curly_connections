@@ -56,46 +56,6 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
     );
   }
 
-  // Future<void> _pickStartTime() async {
-  //   final picked = await showTimePicker(
-  //     context: context,
-  //     initialTime: _startTime,
-  //     builder: (context, child) => _timePickerTheme(child),
-  //   );
-  //   if (picked != null) setState(() => _startTime = picked);
-  // }
-
-  // Future<void> _pickEndTime() async {
-  //   final picked = await showTimePicker(
-  //     context: context,
-  //     initialTime: _endTime,
-  //     builder: (context, child) => _timePickerTheme(child),
-  //   );
-  //   if (picked != null) setState(() => _endTime = picked);
-  // }
-
-  // Widget _timePickerTheme(Widget? child) {
-  //   return Theme(
-  //     data: ThemeData.light().copyWith(
-  //       colorScheme: const ColorScheme.light(
-  //         primary: AppColors.mediumPurple,
-  //         onPrimary: AppColors.white,
-  //         surface: AppColors.white,
-  //       ),
-  //       timePickerTheme: TimePickerThemeData(
-  //         backgroundColor: AppColors.white,
-  //         hourMinuteShape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(12.r),
-  //         ),
-  //         dayPeriodShape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(8.r),
-  //         ),
-  //       ),
-  //     ),
-  //     child: child!,
-  //   );
-  // }
-
   void _save() {
     Navigator.pop(context, {'start': _startTime, 'end': _endTime});
   }
@@ -115,7 +75,7 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
             decoration: BoxDecoration(
               color: AppColors.darkPurple.withValues(alpha: 0.18),
               borderRadius: BorderRadius.circular(12.r),
-              border: .all(color: AppColors.darkPurple),
+              border: Border.all(color: AppColors.darkPurple),
             ),
             alignment: Alignment.center,
             child: Text(
@@ -132,224 +92,216 @@ class _SetTimeBottomSheetState extends State<SetTimeBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          padding: EdgeInsets.all(20.w),
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24.r),
-              topRight: Radius.circular(24.r),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // // Back button
-              // GestureDetector(
-              //   onTap: () => Navigator.pop(context),
-              //   child: Row(
-              //     mainAxisSize: MainAxisSize.min,
-              //     children: [
-              //       Icon(
-              //         TablerIcons.chevronLeft,
-              //         size: 24.sp,
-              //         color: AppColors.black,
-              //       ),
-              //       SizedBox(width: 5.w),
-              //       Text('Back', style: AppFonts.black14w500),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(height: 24.h),
-              Text('Set start and end time', style: AppFonts.black20w400),
-              SizedBox(height: 4.h),
-
-              // ── Starts from ──
-              Text('Starts from', style: AppFonts.grey12w400),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: _timeBox(
-                      value: _startTime.hour.toString().padLeft(2, '0'),
-                      label: 'Hour',
-                      onTap: () async {
-                        final h = await _pickHour(_startTime.hour);
-                        if (h != null) {
-                          setState(
-                            () => _startTime = _startTime.copyWith(
-                              hour: h,
-                              minute: _startTime.minute,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 12.w,
-                      right: 12.w,
-                      bottom: 20.h,
-                    ),
-                    child: Text(':', style: AppFonts.black30w700),
-                  ),
-                  Expanded(
-                    child: _timeBox(
-                      value: _startTime.minute.toString().padLeft(2, '0'),
-                      label: 'Minute',
-                      onTap: () async {
-                        final m = await _pickMinute(_startTime.minute);
-                        if (m != null) {
-                          setState(
-                            () => _startTime = _startTime.copyWith(
-                              hour: _startTime.hour,
-                              minute: m,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20.h),
-
-              Text('Ends at', style: AppFonts.grey12w400),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: _timeBox(
-                      value: _endTime.hour.toString().padLeft(2, '0'),
-                      label: 'Hour',
-                      onTap: () async {
-                        final h = await _pickHour(_endTime.hour);
-                        if (h != null) {
-                          setState(
-                            () => _endTime = _endTime.copyWith(
-                              hour: h,
-                              minute: _endTime.minute,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 12.w,
-                      right: 12.w,
-                      bottom: 20.h,
-                    ),
-                    child: Text(':', style: AppFonts.black30w700),
-                  ),
-                  Expanded(
-                    child: _timeBox(
-                      value: _endTime.minute.toString().padLeft(2, '0'),
-                      label: 'Minute',
-                      onTap: () async {
-                        final m = await _pickMinute(_endTime.minute);
-                        if (m != null) {
-                          setState(
-                            () => _endTime = _endTime.copyWith(
-                              hour: _endTime.hour,
-                              minute: m,
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  const Spacer(),
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      iconAlignment: .end,
-                      onPressed: () {
-                        _save();
-                        //   Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        TablerIcons.circleCheck,
-                        size: 24.sp,
-                        color: AppColors.white,
-                      ),
-                      label: const Text('Save'),
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      height: 50.h,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            blurRadius: 10.r,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Text('Cancel', style: AppFonts.black14w400),
-                          SizedBox(width: 4.w),
-                          Icon(
-                            TablerIcons.trash,
-                            size: 24.sp,
-                            color: AppColors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
-            ],
-          ),
-        ),
-        Positioned(
-          top: -20.h,
-          right: 8.w,
-          child: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 40.w,
-              height: 40.w,
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: double.infinity),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20.w),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
                 color: AppColors.white,
-                border: .all(color: AppColors.dividerColor),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24.r),
+                  topRight: Radius.circular(24.r),
+                ),
               ),
-              alignment: .center,
-              child: Center(
-                child: Icon(
-                  TablerIcons.playstationX,
-                  size: 30.sp,
-                  color: AppColors.black,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Set start and end time', style: AppFonts.black20w400),
+                    SizedBox(height: 4.h),
+    
+                    // ── Starts from ──
+                    Text('Starts from', style: AppFonts.grey12w400),
+                    SizedBox(height: 12.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _timeBox(
+                            value: _startTime.hour.toString().padLeft(2, '0'),
+                            label: 'Hour',
+                            onTap: () async {
+                              final h = await _pickHour(_startTime.hour);
+                              if (h != null) {
+                                setState(
+                                  () => _startTime = _startTime.copyWith(
+                                    hour: h,
+                                    minute: _startTime.minute,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 12.w,
+                            right: 12.w,
+                            bottom: 20.h,
+                          ),
+                          child: Text(':', style: AppFonts.black30w700),
+                        ),
+                        Expanded(
+                          child: _timeBox(
+                            value: _startTime.minute.toString().padLeft(2, '0'),
+                            label: 'Minute',
+                            onTap: () async {
+                              final m = await _pickMinute(_startTime.minute);
+                              if (m != null) {
+                                setState(
+                                  () => _startTime = _startTime.copyWith(
+                                    hour: _startTime.hour,
+                                    minute: m,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+    
+                    Text('Ends at', style: AppFonts.grey12w400),
+                    SizedBox(height: 12.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _timeBox(
+                            value: _endTime.hour.toString().padLeft(2, '0'),
+                            label: 'Hour',
+                            onTap: () async {
+                              final h = await _pickHour(_endTime.hour);
+                              if (h != null) {
+                                setState(
+                                  () => _endTime = _endTime.copyWith(
+                                    hour: h,
+                                    minute: _endTime.minute,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 12.w,
+                            right: 12.w,
+                            bottom: 20.h,
+                          ),
+                          child: Text(':', style: AppFonts.black30w700),
+                        ),
+                        Expanded(
+                          child: _timeBox(
+                            value: _endTime.minute.toString().padLeft(2, '0'),
+                            label: 'Minute',
+                            onTap: () async {
+                              final m = await _pickMinute(_endTime.minute);
+                              if (m != null) {
+                                setState(
+                                  () => _endTime = _endTime.copyWith(
+                                    hour: _endTime.hour,
+                                    minute: m,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12.h),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            iconAlignment: IconAlignment.end,
+                            onPressed: () {
+                              _save();
+                            },
+                            icon: Icon(
+                              TablerIcons.circleCheck,
+                              size: 24.sp,
+                              color: AppColors.white,
+                            ),
+                            label: const Text('Save'),
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            height: 50.h,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 8.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withValues(alpha: 0.5),
+                                  blurRadius: 10.r,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Cancel', style: AppFonts.black14w400),
+                                SizedBox(width: 4.w),
+                                Icon(
+                                  TablerIcons.trash,
+                                  size: 24.sp,
+                                  color: AppColors.black,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+    
+                    SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
+                  ],
                 ),
               ),
             ),
-          ),
+            Positioned(
+              top: -20.h,
+              right: 8.w,
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  width: 40.w,
+                  height: 40.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.white,
+                    border: Border.all(color: AppColors.dividerColor),
+                  ),
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Icon(
+                      TablerIcons.playstationX,
+                      size: 30.sp,
+                      color: AppColors.black,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -454,7 +406,7 @@ class _NumberPickerDialogState extends State<_NumberPickerDialog> {
               children: [
                 Expanded(
                   child: ElevatedButton.icon(
-                    iconAlignment: .end,
+                    iconAlignment: IconAlignment.end,
                     onPressed: () {
                       Navigator.pop(context, _selected);
                     },
@@ -487,7 +439,7 @@ class _NumberPickerDialogState extends State<_NumberPickerDialog> {
                         ],
                       ),
                       child: Row(
-                        mainAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Cancel', style: AppFonts.black14w400),
                           SizedBox(width: 4.w),
