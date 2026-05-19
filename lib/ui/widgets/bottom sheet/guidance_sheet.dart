@@ -26,162 +26,155 @@ class _GuidanceNoteBottomSheetState extends State<GuidanceNoteBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: .none,
-      children: [
-        Container(
-          padding: EdgeInsets.all(20.w),
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24.r),
-              topRight: Radius.circular(24.r),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // GestureDetector(
-              //   onTap: () => Navigator.pop(context),
-              //   child: Row(
-              //     mainAxisSize: MainAxisSize.min,
-              //     children: [
-              //       Icon(
-              //         TablerIcons.chevronLeft,
-              //         size: 24.sp,
-              //         color: AppColors.black,
-              //       ),
-              //       SizedBox(width: 5.w),
-              //       Text('Back', style: AppFonts.black14w500),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(height: 24.h),
-              Text('Guidance Note', style: AppFonts.black20w400),
-              SizedBox(height: 12.h),
-
-              Container(
-                padding: EdgeInsets.all(20.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: .all(color: AppColors.dividerColor),
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: double.infinity),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20.w),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24.r),
+                  topRight: Radius.circular(24.r),
                 ),
+              ),
+              child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: .start,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Type your note", style: AppFonts.black14w500),
+                    Text('Guidance Note', style: AppFonts.black20w400),
                     SizedBox(height: 12.h),
-                    TextFormField(
-                      controller: _noteCtrl,
-                      decoration: InputDecoration(
-                        hintText: "e.g estimated time",
-                        contentPadding: EdgeInsets.zero,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.r),
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
+
+                    Container(
+                      padding: EdgeInsets.all(20.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.r),
+                        border: Border.all(color: AppColors.dividerColor),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Type your note", style: AppFonts.black14w500),
+                          SizedBox(height: 12.h),
+                          TextFormField(
+                            controller: _noteCtrl,
+                            decoration: InputDecoration(
+                              hintText: "e.g estimated time",
+                              contentPadding: EdgeInsets.zero,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.r),
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.r),
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.r),
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                          ),
-                        ),
+                          Divider(height: 0.h, color: AppColors.dividerColor),
+                        ],
                       ),
                     ),
-                    Divider(height: 0.h, color: AppColors.dividerColor),
+                    SizedBox(height: 12.h),
+
+                    Row(
+                      children: [
+                        const Spacer(),
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            iconAlignment: IconAlignment.end,
+                            onPressed: () => Navigator.pop(context),
+                            icon: Icon(
+                              TablerIcons.circleCheck,
+                              size: 24.sp,
+                              color: AppColors.white,
+                            ),
+                            label: const Text('Save'),
+                          ),
+                        ),
+                        SizedBox(width: 16.w),
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            height: 50.h,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 8.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withValues(alpha: 0.5),
+                                  blurRadius: 10.r,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                Text('Cancel', style: AppFonts.black14w400),
+                                SizedBox(width: 4.w),
+                                Icon(
+                                  TablerIcons.trash,
+                                  size: 24.sp,
+                                  color: AppColors.black,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
                   ],
                 ),
               ),
-              SizedBox(height: 12.h),
-
-              Row(
-                children: [
-                  const Spacer(),
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      iconAlignment: .end,
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(
-                        TablerIcons.circleCheck,
-                        size: 24.sp,
-                        color: AppColors.white,
-                      ),
-                      label: const Text('Save'),
+            ),
+            Positioned(
+              top: -20.h,
+              right: 8.w,
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  width: 40.w,
+                  height: 40.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.white,
+                    border: Border.all(color: AppColors.dividerColor),
+                  ),
+                  alignment: Alignment.center,
+                  child: Center(
+                    child: Icon(
+                      TablerIcons.playstationX,
+                      size: 30.sp,
+                      color: AppColors.black,
                     ),
                   ),
-                  SizedBox(width: 16.w),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      height: 50.h,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            blurRadius: 10.r,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Text('Cancel', style: AppFonts.black14w400),
-                          SizedBox(width: 4.w),
-                          Icon(
-                            TablerIcons.trash,
-                            size: 24.sp,
-                            color: AppColors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
-            ],
-          ),
-        ),
-        Positioned(
-          top: -20.h,
-          right: 8.w,
-          child: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 40.w,
-              height: 40.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.white,
-                border: .all(color: AppColors.dividerColor),
-              ),
-              alignment: .center,
-              child: Center(
-                child: Icon(
-                  TablerIcons.playstationX,
-                  size: 30.sp,
-                  color: AppColors.black,
                 ),
               ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

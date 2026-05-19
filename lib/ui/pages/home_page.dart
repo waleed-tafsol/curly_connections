@@ -405,6 +405,9 @@ class HomePage extends StatelessWidget {
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
                     barrierColor: Colors.white.withValues(alpha: 0.9),
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width,
+                    ),
                     builder: (_) => index % 2 == 0
                         ? const StylistBookingRequestSheet(showButton: false)
                         : const StylistReschdulingRequestSheet(),

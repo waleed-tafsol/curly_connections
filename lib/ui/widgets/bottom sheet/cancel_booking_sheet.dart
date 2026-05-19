@@ -24,6 +24,7 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
         clipBehavior: Clip.none,
         children: [
           Container(
+            width: double.infinity,
             padding: EdgeInsets.all(20.w),
             decoration: BoxDecoration(
               color: AppColors.white,
@@ -73,7 +74,7 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                         ],
                       ),
                       child: Row(
-                        mainAxisAlignment: .center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Cancel Booking", style: AppFonts.black14w500),
                           SizedBox(width: 5.w),
@@ -86,7 +87,7 @@ class _CancelBookingSheetState extends State<CancelBookingSheet> {
                       ),
                     ),
                   ),
-                 SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom + 24.h),
                 ],
               ),
             ),

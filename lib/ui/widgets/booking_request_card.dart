@@ -26,6 +26,9 @@ class BookingRequestCard extends StatelessWidget {
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
             barrierColor: Colors.white.withValues(alpha: 0.9),
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width,
+            ),
             builder: (_) => const StylistReschdulingRequestSheet(),
           );
         }
@@ -101,6 +104,9 @@ class BookingRequestCard extends StatelessWidget {
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.white.withValues(alpha: 0.9),
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width,
+                          ),
                           builder: (_) => const ReschelulingRequestSheet(),
                         );
                       },
@@ -122,6 +128,9 @@ class BookingRequestCard extends StatelessWidget {
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           barrierColor: Colors.white.withValues(alpha: 0.9),
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width,
+                          ),
                           builder: (_) => const CancelBookingSheet(),
                         );
                       },
