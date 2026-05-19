@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
@@ -14,16 +14,17 @@ import 'home_page.dart';
 import 'profile_screen.dart';
 import 'request_screen.dart';
 
-class BottomNavPage extends StatelessWidget {
+class BottomNavPage extends ConsumerWidget {
   static const String routeName = '/bottom_nav_page';
   const BottomNavPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final bottomNavViewModel = context.watch<BottomNavViewModel>();
-    final userType = context.read<AuthViewModel>().userType;
-    final currentPage = bottomNavViewModel.currentPage;
-    final items = bottomNavViewModel.getBottomBarItems(userType);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentPage = ref.watch(bottomNavProvider);
+    final userType = ref.read(authProvider);
+    final items = ref
+        .read(bottomNavProvider.notifier)
+        .getBottomBarItems(userType);
     return Scaffold(
       extendBody: true,
       body: Container(
@@ -68,7 +69,8 @@ class BottomNavPage extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
           child: SalomonBottomBar(
-            onTap: (newIndex) => bottomNavViewModel.setCurrentPage(newIndex),
+            onTap: (newIndex) =>
+                ref.read(bottomNavProvider.notifier).setCurrentPage(newIndex),
             currentIndex: currentPage,
             margin: EdgeInsets.all(8.w),
             selectedItemColor: AppColors.primaryLight,

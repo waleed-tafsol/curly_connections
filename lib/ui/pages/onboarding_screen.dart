@@ -1,84 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../constants/assets.dart';
+import '../../models/ui/onboarding_data.dart';
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
 import '../resources/app_fonts.dart';
 import '../view_models/auth_view_model.dart';
 import 'login_screen.dart';
 
-class OnBoardingModel {
-  final String image;
-  final String title;
-  final String desc;
-
-  OnBoardingModel({
-    required this.image,
-    required this.title,
-    required this.desc,
-  });
-}
-
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
   static const String routeName = "/onboarding";
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
-  late List<OnBoardingModel> _pages;
+  static const _stylistPages = [
+    OnBoardingData(
+      image: PngAssets.onboardingSty1,
+      title: "Grow Your Beauty Business",
+      desc:
+          "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
+    ),
+    OnBoardingData(
+      image: PngAssets.onboardingSty2,
+      title: "Manage Bookings with Ease",
+      desc:
+          "Accept appointments, set your availability, and stay organized. Everything you need, all in one place.",
+    ),
+    OnBoardingData(
+      image: PngAssets.onboardingSty3,
+      title: "Showcase Your Skills",
+      desc:
+          "Create your profile, add services, and highlight your expertise. Let your work speak for itself.",
+    ),
+  ];
+  static const _clientPages = [
+    OnBoardingData(
+      image: PngAssets.onboardingClt1,
+      title: "Discover Top Hair Stylists",
+      desc:
+          'Find trusted professionals near you with ease. Browse profiles, compare services, and choose what suits you best.',
+    ),
+    OnBoardingData(
+      image: PngAssets.onboardingClt2,
+      title: "Effortless Beauty Booking",
+      desc:
+          "Search, select, and book in seconds. Managing your appointments has never been easier.",
+    ),
+    OnBoardingData(
+      image: PngAssets.onboardingClt3,
+      title: "Your Style, Your Choice",
+      desc:
+          "Explore a wide range of services tailored to your needs. Pick the right stylist for your perfect look.",
+    ),
+  ];
 
-  @override
-  void initState() {
-    _pages = context.read<AuthViewModel>().userType == UserType.stylist
-        ? [
-            OnBoardingModel(
-              image: PngAssets.onboardingSty1,
-              title: "Grow Your Beauty Business",
-              desc:
-                  "Join a platform where clients discover your talent. Build your presence and reach more customers effortlessly.",
-            ),
-            OnBoardingModel(
-              image: PngAssets.onboardingSty2,
-              title: "Manage Bookings with Ease",
-              desc:
-                  "Accept appointments, set your availability, and stay organized. Everything you need, all in one place.",
-            ),
-            OnBoardingModel(
-              image: PngAssets.onboardingSty3,
-              title: "Showcase Your Skills",
-              desc:
-                  "Create your profile, add services, and highlight your expertise. Let your work speak for itself.",
-            ),
-          ]
-        : [
-            OnBoardingModel(
-              image: PngAssets.onboardingClt1,
-              title: "Discover Top Hair Stylists",
-              desc:
-                  'Find trusted professionals near you with ease. Browse profiles, compare services, and choose what suits you best.',
-            ),
-            OnBoardingModel(
-              image: PngAssets.onboardingClt2,
-              title: "Effortless Beauty Booking",
-              desc:
-                  "Search, select, and book in seconds. Managing your appointments has never been easier.",
-            ),
-            OnBoardingModel(
-              image: PngAssets.onboardingClt3,
-              title: "Your Style, Your Choice",
-              desc:
-                  "Explore a wide range of services tailored to your needs. Pick the right stylist for your perfect look.",
-            ),
-          ];
-    super.initState();
+  List<OnBoardingData> get _pages {
+    final userType = ref.read(authProvider);
+    return switch (userType) {
+      UserType.stylist => _stylistPages,
+      UserType.client => _clientPages,
+    };
   }
 
   void _nextPage() {

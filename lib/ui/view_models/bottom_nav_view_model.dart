@@ -1,11 +1,12 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../models/ui/bottom_bar_item.dart';
 import '../../utils/enums.dart';
 import 'base_view_model.dart';
 
-class BottomNavViewModel extends BaseViewModel {
-  int currentPage = 0;
+class BottomNavViewModel extends BaseViewModel<int> {
+  BottomNavViewModel._() : super(0);
   static const List<BottomBarItem> _customerItems = [
     BottomBarItem(icon: TablerIcons.home, title: 'Home'),
     BottomBarItem(icon: TablerIcons.scissors, title: 'My Bookings'),
@@ -27,7 +28,8 @@ class BottomNavViewModel extends BaseViewModel {
   }
 
   void setCurrentPage(int newPage) {
-    currentPage = newPage;
-    notifyListeners();
+    state = newPage;
   }
 }
+
+final bottomNavProvider = NotifierProvider(() => BottomNavViewModel._());

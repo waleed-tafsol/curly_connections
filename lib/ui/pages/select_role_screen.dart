@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../constants/assets.dart';
 import '../../utils/enums.dart';
@@ -78,9 +78,9 @@ class SelectRoleScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 21.h),
-                  Selector<AuthViewModel, UserType>(
-                    selector: (_, vm) => vm.userType,
-                    builder: (_, selectedUserType, _) {
+                  Consumer(
+                    builder: (_, ref, _) {
+                      final selectedUserType = ref.watch(authProvider);
                       return Row(
                         spacing: 10.w,
                         children: UserType.values.map((userType) {
@@ -90,9 +90,9 @@ class SelectRoleScreen extends StatelessWidget {
                             description: getDescription(userType),
                             imagePath: getIcon(userType),
                             onTap: () {
-                              context.read<AuthViewModel>().setUserType(
-                                userType,
-                              );
+                              ref
+                                  .read(authProvider.notifier)
+                                  .setUserType(userType);
                             },
                           );
                         }).toList(),

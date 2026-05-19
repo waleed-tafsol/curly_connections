@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../utils/enums.dart';
 import '../resources/app_colors.dart';
@@ -10,31 +10,31 @@ import '../widgets/custom_appbar_back_button.dart';
 import 'bottom_nav_page.dart';
 import 'select_categories_screen.dart';
 
-class TurnNotificationPage extends StatelessWidget {
+class TurnNotificationPage extends ConsumerWidget {
   static const String routeName = '/turn_notification';
 
   const TurnNotificationPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    void onNextPressed() {
-      final role = context.read<AuthViewModel>().userType == UserType.stylist;
-      if (role) {
-        Navigator.pushNamed(context, SelectCategoriesScreen.routeName);
-      } else {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          BottomNavPage.routeName,
-          (route) => false,
-        );
-      }
+  void onNextPressed(WidgetRef ref) {
+    final role = ref.read(authProvider) == UserType.stylist;
+    if (role) {
+      Navigator.pushNamed(ref.context, SelectCategoriesScreen.routeName);
+    } else {
+      Navigator.pushNamedAndRemoveUntil(
+        ref.context,
+        BottomNavPage.routeName,
+        (route) => false,
+      );
     }
+  }
 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarBackButton(
         onNext: () {
-          onNextPressed();
+          onNextPressed(ref);
         },
       ),
       body: Container(
@@ -102,7 +102,7 @@ class TurnNotificationPage extends StatelessWidget {
               const Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  onNextPressed();
+                  onNextPressed(ref);
                 },
                 child: const Text("Yes, notify me"),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../constants/assets.dart';
@@ -23,19 +23,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<AuthViewModel, UserType>(
-      selector: (_, vm) => vm.userType,
-      builder: (_, userType, _) {
+    return Consumer(
+      builder: (_, ref, _) {
+        final userType = ref.watch(authProvider);
         return switch (userType) {
-          UserType.stylist => _buildStylistView(context),
-          UserType.client => _buildClientView(context),
+          UserType.stylist => _buildStylistView(context, userType),
+          UserType.client => _buildClientView(context, userType),
         };
       },
     );
   }
 
-  Column _buildStylistView(BuildContext context) {
-    final userType = context.read<AuthViewModel>().userType;
+  Column _buildStylistView(BuildContext context, UserType userType) {
     return Column(
       crossAxisAlignment: .start,
       children: [
@@ -73,8 +72,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildClientView(BuildContext context) {
-    final userType = context.read<AuthViewModel>().userType;
+  Widget _buildClientView(BuildContext context, UserType userType) {
     return Column(
       crossAxisAlignment: .start,
       children: [

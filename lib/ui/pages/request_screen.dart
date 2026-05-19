@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:tabler_icons_plus/tabler_icons_plus.dart';
 
 import '../../utils/enums.dart';
@@ -11,19 +11,19 @@ import '../widgets/booking_request_card.dart';
 import '../widgets/bottom sheet/filter_sheet.dart';
 import '../widgets/service_request_card.dart';
 
-class RequestScreen extends StatefulWidget {
+class RequestScreen extends ConsumerStatefulWidget {
   const RequestScreen({super.key});
 
   @override
-  State<RequestScreen> createState() => _RequestScreenState();
+  ConsumerState<RequestScreen> createState() => _RequestScreenState();
 }
 
-class _RequestScreenState extends State<RequestScreen> {
+class _RequestScreenState extends ConsumerState<RequestScreen> {
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final userType = context.read<AuthViewModel>().userType;
+    final userType = ref.read(authProvider);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Column(

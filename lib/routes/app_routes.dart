@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
 import '../ui/pages/booking_page.dart';
 import '../ui/pages/bottom_nav_page.dart';
@@ -23,7 +22,6 @@ import '../ui/pages/splash_page.dart';
 import '../ui/pages/subscription_screen.dart';
 import '../ui/pages/terms_conditions_screen.dart';
 import '../ui/pages/turn_notification_page.dart';
-import '../ui/view_models/bottom_nav_view_model.dart';
 
 abstract final class AppRoutes {
   static final navigatorKey = GlobalKey<NavigatorState>();
@@ -41,10 +39,7 @@ abstract final class AppRoutes {
       ),
       BottomNavPage.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: BottomNavPage.routeName),
-        builder: (_) => ChangeNotifierProvider(
-          create: (_) => BottomNavViewModel(),
-          child: const BottomNavPage(),
-        ),
+        builder: (_) => const BottomNavPage(),
       ),
       SelectRoleScreen.routeName => CupertinoPageRoute(
         settings: const RouteSettings(name: SelectRoleScreen.routeName),
