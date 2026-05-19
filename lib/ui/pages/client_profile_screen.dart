@@ -408,26 +408,6 @@ class ClientProfileScreen extends StatelessWidget {
   Widget _socialSectionWidget() {
     return Column(
       children: [
-        //Text('Follow us', style: AppFonts.black12w400),
-        // SizedBox(height: 8.h),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     _socialIconWidget(
-        //       icon: TablerIcons.brandTiktokFilled,
-        //       onTap: () {},
-        //     ),
-        //     SizedBox(width: 24.w),
-        //     _socialIconWidget(icon: TablerIcons.brandInstagram, onTap: () {}),
-        //     SizedBox(width: 24.w),
-        //     _socialIconWidget(
-        //       icon: TablerIcons.brandFacebookFilled,
-        //       onTap: () {},
-        //     ),
-        //   ],
-        // ),
-        // SizedBox(height: 16.h),
-        // Version
         Opacity(
           opacity: 0.5,
           child: Text(
@@ -439,25 +419,4 @@ class ClientProfileScreen extends StatelessWidget {
       ],
     );
   }
-
-  // Widget _socialIconWidget({
-  //   required IconData icon,
-  //   required VoidCallback onTap,
-  // }) {
-  //   return GestureDetector(
-  //     onTap: onTap,
-  //     child: Icon(
-  //       icon,
-  //       size: 24.w,
-  //       color: AppColors.black,
-  //       shadows: [
-  //         Shadow(
-  //           offset: const Offset(0, 1),
-  //           blurRadius: 3,
-  //           color: AppColors.black.withValues(alpha: 0.25),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

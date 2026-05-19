@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
 
   Column _buildStylistView(BuildContext context, UserType userType) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
         Expanded(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: .start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20.h),
                 const BookingSummary(),
@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildClientView(BuildContext context, UserType userType) {
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -127,7 +127,6 @@ class HomePage extends StatelessWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {},
-
                         child: Row(
                           children: [
                             Text('SEE ALL', style: AppFonts.black12w500),
@@ -189,7 +188,7 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: Column(
-                    crossAxisAlignment: .start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('FOR YOU', style: AppFonts.grey12w400),
                       SizedBox(height: 12.h),
@@ -237,96 +236,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Container _buildClientMap() {
-  //   return Container(
-  //     height: 180.h,
-  //     decoration: BoxDecoration(
-  //       color: AppColors.white,
-  //       image: const DecorationImage(
-  //         image: AssetImage(DummyAssets.smallMap),
-  //         fit: BoxFit.fill,
-  //       ),
-  //       borderRadius: BorderRadius.circular(24.r),
-  //       border: Border.all(color: AppColors.white),
-  //     ),
-  //     child: Column(
-  //       crossAxisAlignment: .stretch,
-  //       children: [
-  //         const AppCurrentLocationCard(),
-  //         // const Spacer(),
-  //         Align(
-  //           alignment: Alignment.bottomRight,
-  //           child: Material(
-  //             type: MaterialType.transparency,
-  //             child: Padding(
-  //               padding: EdgeInsets.all(16.w),
-  //               child: InkWell(
-  //                 onTap: () {},
-  //                 borderRadius: BorderRadius.circular(15.r),
-  //                 child: Ink(
-  //                   width: 40.w,
-  //                   height: 40.w,
-  //                   decoration: BoxDecoration(
-  //                     borderRadius: BorderRadius.circular(15.r),
-  //                     border: Border.all(color: AppColors.lightOrange),
-  //                     color: AppColors.white,
-  //                   ),
-  //                   child: Icon(TablerIcons.currentLocation, size: 20.sp),
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
-  // Container _buildClientTopView() {
-  //   return Container(
-  //     padding: EdgeInsets.all(24.w),
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(12.r),
-  //       border: Border.all(color: AppColors.white),
-  //       gradient: AppColors.gradientPrimaryToPeach,
-  //     ),
-  //     child: Column(
-  //       crossAxisAlignment: .start,
-  //       children: [
-  //         _buildAppBar(name: 'Olivia Bennett', plan: 'Starter Plan'),
-  //         AppDivider(margin: EdgeInsets.symmetric(vertical: 24.h)),
-  //         Text('Find Your Perfect Stylist', style: AppFonts.grey12w400),
-  //         SizedBox(height: 14.h),
-  //         AppDropdown<String>(
-  //           prefixIcon: TablerIcons.cut,
-  //           items: const ['Option 1', 'Option 2'],
-  //           builder: (item) => Text(item),
-  //           onChanged: (_) {},
-  //           hint: 'Service Type',
-  //         ),
-  //         SizedBox(height: 14.h),
-  //         AppDropdown<String>(
-  //           prefixIcon: TablerIcons.mapPin,
-  //           items: const ['Option 1', 'Option 2'],
-  //           builder: (item) => Text(item),
-  //           onChanged: (_) {},
-  //           hint: 'Location',
-  //         ),
-  //         SizedBox(height: 14.h),
-  //         AppDropdown<String>(
-  //           prefixIcon: TablerIcons.calendarDue,
-  //           items: const ['Option 1', 'Option 2'],
-  //           builder: (item) => Text(item),
-  //           onChanged: (_) {},
-  //           hint: 'Schedule',
-  //         ),
-  //         SizedBox(height: 14.h),
-  //         ElevatedButton(onPressed: () {}, child: const Text('Find a Match')),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   Widget _buildAppBar({
     required BuildContext context,
     required String name,
@@ -342,7 +251,7 @@ class HomePage extends StatelessWidget {
         ),
         SizedBox(width: 4.w),
         Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(name, style: AppFonts.black16w500),
             SizedBox(height: 2.h),
@@ -351,7 +260,7 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: const Color(0xFFFEE1D6),
                 borderRadius: BorderRadius.circular(50.r),
-                border: .all(color: AppColors.orange),
+                border: Border.all(color: AppColors.orange),
               ),
               child: Text("Free Plan", style: AppFonts.black10w400),
             ),
@@ -376,7 +285,7 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('UPCOMING AGENDA', style: AppFonts.grey12w400),
           SizedBox(height: 12.h),
